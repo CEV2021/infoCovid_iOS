@@ -1,9 +1,4 @@
-//
-//  ViewController.swift
-//  infoCovid
-//
-//  Created by Silvia Casanova Martinez on 15/3/21.
-//
+
 
 import UIKit
 
