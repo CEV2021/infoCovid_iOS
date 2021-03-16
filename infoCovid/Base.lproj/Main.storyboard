@@ -278,7 +278,7 @@
                             </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uOB-Pb-mTh"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="yT9-jl-qHf" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" priority="250" constant="49" id="00V-Zf-e59">
                                 <variation key="heightClass=regular-widthClass=regular" constant="240"/>
@@ -380,13 +380,13 @@
                                 <exclude reference="YcL-ub-sAX"/>
                                 <exclude reference="JZY-oq-eqD"/>
                                 <exclude reference="uKL-hI-G1W"/>
-                                <exclude reference="JX9-A5-ZOk"/>
                                 <exclude reference="Bcd-Id-Hh4"/>
+                                <exclude reference="JX9-A5-ZOk"/>
+                                <exclude reference="6rG-fw-hVn"/>
+                                <exclude reference="Qys-yu-GUv"/>
                                 <exclude reference="MsA-Yv-3WV"/>
                                 <exclude reference="TdA-cJ-a3r"/>
-                                <exclude reference="Qys-yu-GUv"/>
                                 <exclude reference="zHG-3h-cph"/>
-                                <exclude reference="6rG-fw-hVn"/>
                                 <exclude reference="KTp-1A-ADW"/>
                             </mask>
                         </variation>
@@ -399,13 +399,13 @@
                             <mask key="constraints">
                                 <include reference="JZY-oq-eqD"/>
                                 <include reference="uKL-hI-G1W"/>
-                                <include reference="JX9-A5-ZOk"/>
                                 <include reference="Bcd-Id-Hh4"/>
+                                <include reference="JX9-A5-ZOk"/>
+                                <include reference="6rG-fw-hVn"/>
+                                <include reference="Qys-yu-GUv"/>
                                 <include reference="MsA-Yv-3WV"/>
                                 <include reference="TdA-cJ-a3r"/>
-                                <include reference="Qys-yu-GUv"/>
                                 <include reference="zHG-3h-cph"/>
-                                <include reference="6rG-fw-hVn"/>
                                 <include reference="KTp-1A-ADW"/>
                             </mask>
                         </variation>
@@ -423,9 +423,6 @@
         <image name="paciente" width="170.66667175292969" height="170.66667175292969"/>
         <image name="person.crop.square.fill" catalog="system" width="128" height="114"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
