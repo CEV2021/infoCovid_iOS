@@ -5,6 +5,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var sevenDaysView: UIView!
+    @IBOutlet weak var conditionImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
