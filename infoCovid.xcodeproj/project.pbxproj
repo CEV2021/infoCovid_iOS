@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		611FCF1A26024D0900163B50 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611FCF1926024D0900163B50 /* SearchViewController.swift */; };
 		61CE6AF425FFBE17006DCB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CE6AF325FFBE17006DCB9C /* AppDelegate.swift */; };
 		61CE6AF625FFBE17006DCB9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CE6AF525FFBE17006DCB9C /* SceneDelegate.swift */; };
 		61CE6AF825FFBE17006DCB9C /* DetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CE6AF725FFBE17006DCB9C /* DetalleViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		611FCF1926024D0900163B50 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		61CE6AF025FFBE17006DCB9C /* infoCovid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = infoCovid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61CE6AF325FFBE17006DCB9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61CE6AF525FFBE17006DCB9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				61CE6AF525FFBE17006DCB9C /* SceneDelegate.swift */,
 				61CE6AF725FFBE17006DCB9C /* DetalleViewController.swift */,
 				65777F102601785400A3B7EF /* SettingsViewController.swift */,
+				611FCF1926024D0900163B50 /* SearchViewController.swift */,
 				61CE6AF925FFBE17006DCB9C /* Main.storyboard */,
 				61CE6AFC25FFBE17006DCB9C /* Assets.xcassets */,
 				61CE6AFE25FFBE17006DCB9C /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				611FCF1A26024D0900163B50 /* SearchViewController.swift in Sources */,
 				61CE6AF825FFBE17006DCB9C /* DetalleViewController.swift in Sources */,
 				61CE6AF425FFBE17006DCB9C /* AppDelegate.swift in Sources */,
 				61CE6AF625FFBE17006DCB9C /* SceneDelegate.swift in Sources */,
