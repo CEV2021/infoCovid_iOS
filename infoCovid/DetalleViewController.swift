@@ -2,7 +2,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DetalleViewController: UIViewController {
     
    
     @IBOutlet weak var sevenDaysView: UIStackView!
