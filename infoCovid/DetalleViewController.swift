@@ -8,7 +8,7 @@ class DetalleViewController: UIViewController {
     @IBOutlet weak var sevenDaysView: UIStackView!
     @IBOutlet weak var conditionImage: UIImageView!
     
-    var infectionsNumber : Int = 80
+    var infectionsNumber : Int = 228
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class DetalleViewController: UIViewController {
     
     func conditionImageControl(){
         
-        if infectionsNumber > 800{
+        if infectionsNumber > 500{
             conditionImage.image = UIImage.init(named: "coronavirusRojo")
         }else if infectionsNumber > 400{
             conditionImage.image = UIImage.init(named: "coronavirusAma")
