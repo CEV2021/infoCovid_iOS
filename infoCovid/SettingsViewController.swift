@@ -1,7 +1,7 @@
 
 import UIKit
 
-class SettingsViewController: DetalleViewController {
+class SettingsViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
