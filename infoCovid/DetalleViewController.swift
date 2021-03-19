@@ -12,14 +12,19 @@ class DetalleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        sevenDaysView.layer.cornerRadius = 20
-        sevenDaysView.layer.borderWidth = 3
+
+        // Modificado controlando el nil porque al ir a settings la vista era nula y daba error
+        if sevenDaysView != nil {
+            sevenDaysView.layer.cornerRadius = 20
+            sevenDaysView.layer.borderWidth = 3
+            conditionImageControl()
+        }
         
-        conditionImageControl()
+        
+        
         
     }
-    
+
     func conditionImageControl(){
         
         if infectionsNumber > 500{
@@ -29,7 +34,6 @@ class DetalleViewController: UIViewController {
         }else{
             conditionImage.image = UIImage.init(named: "coronavirusVerde")
         }
-        
     }
 
 
