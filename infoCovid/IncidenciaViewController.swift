@@ -35,7 +35,7 @@ class IncidenciaViewController: UIViewController {
         let dataSet = LineChartDataSet(entries: [dato1, dato2, dato3], label: "Incidencia")
         let data = LineChartData(dataSets: [dataSet])
         grafica.data = data
-        grafica.backgroundColor = .darkGray
+        grafica.backgroundColor = .black
         grafica.notifyDataSetChanged()
         
         
