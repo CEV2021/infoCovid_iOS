@@ -14,6 +14,8 @@
 		61CE6AFB25FFBE17006DCB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61CE6AF925FFBE17006DCB9C /* Main.storyboard */; };
 		61CE6AFD25FFBE17006DCB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61CE6AFC25FFBE17006DCB9C /* Assets.xcassets */; };
 		61CE6B0025FFBE17006DCB9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61CE6AFE25FFBE17006DCB9C /* LaunchScreen.storyboard */; };
+		655541CC2604F7920002D4BB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655541C92604F6A20002D4BB /* Charts.framework */; };
+		655541CD2604F7920002D4BB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 655541C92604F6A20002D4BB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65777F112601785400A3B7EF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65777F102601785400A3B7EF /* SettingsViewController.swift */; };
 		65FB46D22603F6BB0041C062 /* IncidenciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FB46D12603F6BB0041C062 /* IncidenciaViewController.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +44,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				655541CD2604F7920002D4BB /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				655541CC2604F7920002D4BB /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
