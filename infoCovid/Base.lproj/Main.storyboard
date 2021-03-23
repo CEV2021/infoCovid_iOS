@@ -318,6 +318,14 @@
                                 <rect key="frame" x="302" y="299" width="51" height="31"/>
                                 <color key="onTintColor" red="0.25476503369999998" green="0.59233212469999996" blue="0.53321099279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRU-N9-ttF">
+                                <rect key="frame" x="145" y="701" width="125" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Borra persistencia"/>
+                                <connections>
+                                    <action selector="deleteData:" destination="hDy-1K-TOn" eventType="touchUpInside" id="1eK-1a-LP1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uOB-Pb-mTh"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
