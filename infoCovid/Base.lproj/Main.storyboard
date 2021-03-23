@@ -276,6 +276,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wZ2-47-Mqu">
                                 <rect key="frame" x="301.5" y="252" width="51" height="31"/>
                                 <color key="onTintColor" red="0.25476503369999998" green="0.59233212469999996" blue="0.53321099279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="notificationsAction:" destination="hDy-1K-TOn" eventType="valueChanged" id="iBG-h8-qux"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notificaciones" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9p-fH-xlQ">
                                 <rect key="frame" x="50" y="262" width="115" height="21"/>
@@ -422,14 +425,14 @@
                                 <exclude reference="YcL-ub-sAX"/>
                                 <exclude reference="JZY-oq-eqD"/>
                                 <exclude reference="uKL-hI-G1W"/>
+                                <exclude reference="Bcd-Id-Hh4"/>
                                 <exclude reference="JX9-A5-ZOk"/>
+                                <exclude reference="6rG-fw-hVn"/>
                                 <exclude reference="Qys-yu-GUv"/>
                                 <exclude reference="MsA-Yv-3WV"/>
                                 <exclude reference="TdA-cJ-a3r"/>
-                                <exclude reference="Bcd-Id-Hh4"/>
-                                <exclude reference="KTp-1A-ADW"/>
                                 <exclude reference="zHG-3h-cph"/>
-                                <exclude reference="6rG-fw-hVn"/>
+                                <exclude reference="KTp-1A-ADW"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -441,18 +444,21 @@
                             <mask key="constraints">
                                 <include reference="JZY-oq-eqD"/>
                                 <include reference="uKL-hI-G1W"/>
+                                <include reference="Bcd-Id-Hh4"/>
                                 <include reference="JX9-A5-ZOk"/>
+                                <include reference="6rG-fw-hVn"/>
                                 <include reference="Qys-yu-GUv"/>
                                 <include reference="MsA-Yv-3WV"/>
                                 <include reference="TdA-cJ-a3r"/>
-                                <include reference="Bcd-Id-Hh4"/>
-                                <include reference="KTp-1A-ADW"/>
                                 <include reference="zHG-3h-cph"/>
-                                <include reference="6rG-fw-hVn"/>
+                                <include reference="KTp-1A-ADW"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="a1r-TT-6cF"/>
+                    <connections>
+                        <outlet property="notificationsSwitch" destination="wZ2-47-Mqu" id="Il1-Ry-nwT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MUT-4W-Ie9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -877,30 +883,30 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="9Sb-VR-R25"/>
-                                <exclude reference="lXI-Bm-miX"/>
-                                <exclude reference="flB-5a-VaL"/>
-                                <exclude reference="iHk-r3-oMT"/>
                                 <exclude reference="FaS-vR-NLb"/>
                                 <exclude reference="xOL-gd-fLl"/>
+                                <exclude reference="9Sb-VR-R25"/>
+                                <exclude reference="lXI-Bm-miX"/>
                                 <exclude reference="ASE-tC-WA5"/>
                                 <exclude reference="Ger-4K-BdU"/>
+                                <exclude reference="flB-5a-VaL"/>
+                                <exclude reference="iHk-r3-oMT"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="lXI-Bm-miX"/>
-                                <include reference="flB-5a-VaL"/>
                                 <include reference="xOL-gd-fLl"/>
+                                <include reference="lXI-Bm-miX"/>
                                 <include reference="ASE-tC-WA5"/>
+                                <include reference="flB-5a-VaL"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
-                                <include reference="9Sb-VR-R25"/>
-                                <include reference="iHk-r3-oMT"/>
                                 <include reference="FaS-vR-NLb"/>
+                                <include reference="9Sb-VR-R25"/>
                                 <include reference="Ger-4K-BdU"/>
+                                <include reference="iHk-r3-oMT"/>
                             </mask>
                         </variation>
                     </view>
