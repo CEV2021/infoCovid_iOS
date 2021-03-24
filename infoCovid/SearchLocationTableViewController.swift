@@ -60,7 +60,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         }
 
         if searchText == ""{
-            filteredData = searches
+            filteredData = lastSearches
         }else{
         
         for data in searches{
