@@ -9,16 +9,18 @@ class DetalleViewController: UIViewController {
     @IBOutlet weak var conditionImage: UIImageView!
     let kMKey = "MY_KEY"
     var notifications: Bool?
+    var tabla : SearchLocationTableViewController?
     
     // Constante con la que manejamos los elementos de settings
     let settings = SettingsViewController()
     
-    var infectionsNumber : Int = 200
+    var infectionsNumber : Int! = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         settings.setDefaultValues()
+        totalInfectionsLabel.text = String(infectionsNumber)
         notifications = UserDefaults.standard.bool(forKey: kMKey)
         print(notifications!)
         
