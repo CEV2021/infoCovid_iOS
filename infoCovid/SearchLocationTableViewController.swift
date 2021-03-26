@@ -12,15 +12,15 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Esconder el teclado al pulsar en la pantalla
-        let tapGesture = UITapGestureRecognizer(target: self, action:  #selector(tapGestureHandler))
-        view.addGestureRecognizer(tapGesture)
-        
+     
+        filteredData.sort(by: { $0!.name < $1!.name })
+        searchBar.placeholder = "Introduce localización"
+        searchBar.showsScopeBar = false
         filteredData = pokemons
         searchBar.delegate = self
         pokemons = [Pokemon?] (repeating: nil, count: MAX_POKEMONS)
         
+        //Se recorre el array hasta el numero de la variable Max_Pokemons recogiendo el contenido haciendo conexion con la API
         for i in 1...MAX_POKEMONS{
             connection.getPokemon(withID: i) { pokemon in
                 self.pokemonsDownload += 1
@@ -39,9 +39,6 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    @objc func tapGestureHandler(){
-        searchBar.endEditing(true)
-    }
     
     // MARK: - Table view data source
     
@@ -57,6 +54,9 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //Prueba con sorted, no funciona
+       // var pokemon = self.pokemons.sorted(by: {$0?.name ?? "" > $1?.name ?? ""})
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         let pokemon = filteredData[indexPath.row]
         cell.textLabel?.text = pokemon?.name ?? ""
@@ -65,7 +65,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         return cell
     }
     
-    //Baddara de busqueda que filtra los resultados buscando coincidencias entre los datos y lo escrito
+    //Barra de busqueda que filtra los resultados buscando coincidencias entre los datos y lo escrito
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if pokemonsDownload == MAX_POKEMONS {
             filteredData = pokemons.filter({ pokemon -> Bool in
@@ -131,7 +131,8 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Variable de tipo ViewController
         let nextViewController: DetalleViewController = segue.destination as! DetalleViewController
-        //Variable que recoge el index de la celda que se pulsa en la tabla y se lo pasa a indexSong del ViewController
+        
+        //Variable que recoge el index de la celda que se pulsa en la tabla
         let indexPath = self.tableView.indexPathForSelectedRow
         let pokemon = filteredData[indexPath!.row]
         
