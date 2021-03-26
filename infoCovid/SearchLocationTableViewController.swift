@@ -12,8 +12,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        filteredData.sort(by: { $0!.name < $1!.name })
+    
         searchBar.placeholder = "Introduce localización"
         searchBar.showsScopeBar = false
         filteredData = pokemons
@@ -53,9 +52,6 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //Prueba con sorted, no funciona
-       // var pokemon = self.pokemons.sorted(by: {$0?.name ?? "" > $1?.name ?? ""})
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         let pokemon = filteredData[indexPath.row]
