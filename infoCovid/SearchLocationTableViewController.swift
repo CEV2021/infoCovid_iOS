@@ -7,16 +7,15 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     var MAX_POKEMONS = 183
     var filteredData : [Pokemon?] = []
     var pokemonsDownload = 0
-   
     
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
      
+        filteredData.sort(by: { $0!.name < $1!.name })
         searchBar.placeholder = "Introduce localización"
         searchBar.showsScopeBar = false
-        
         filteredData = pokemons
         searchBar.delegate = self
         pokemons = [Pokemon?] (repeating: nil, count: MAX_POKEMONS)
