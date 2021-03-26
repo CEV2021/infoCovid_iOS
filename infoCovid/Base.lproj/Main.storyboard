@@ -205,6 +205,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2W5-Ca-f1Y"/>
                     <connections>
+                        <outlet property="comunityName" destination="QLB-5Q-FfD" id="VZt-bB-2u4"/>
                         <outlet property="conditionImage" destination="ybH-Ra-5MF" id="ekN-4z-f8t"/>
                         <outlet property="sevenDaysView" destination="QJf-mq-61q" id="XbE-NQ-p6F"/>
                         <outlet property="totalInfectionsLabel" destination="So3-m5-e8M" id="wiF-8R-3Vs"/>
@@ -314,17 +315,19 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="niK-wp-DZc">
                                 <rect key="frame" x="302" y="165" width="51" height="31"/>
                                 <color key="onTintColor" red="0.25476503369999998" green="0.59233212469999996" blue="0.53321099279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="actualLocationAction:" destination="hDy-1K-TOn" eventType="valueChanged" id="0Rf-fw-Xra"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wp6-gZ-Ry8">
                                 <rect key="frame" x="302" y="255" width="51" height="31"/>
                                 <color key="onTintColor" red="0.25476503369999998" green="0.59233212469999996" blue="0.53321099279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRU-N9-ttF">
-                                <rect key="frame" x="145" y="701" width="125" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRU-N9-ttF">
+                                <rect key="frame" x="145" y="607" width="125" height="30"/>
                                 <state key="normal" title="Borra persistencia"/>
                                 <connections>
-                                    <action selector="deleteData:" destination="hDy-1K-TOn" eventType="touchUpInside" id="1eK-1a-LP1"/>
+                                    <action selector="deleteData:" destination="hDy-1K-TOn" eventType="touchUpInside" id="lUm-YR-8O9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -354,10 +357,12 @@
                             <constraint firstItem="Wp6-gZ-Ry8" firstAttribute="top" secondItem="wZ2-47-Mqu" secondAttribute="bottom" constant="16" id="87V-2r-TDb">
                                 <variation key="heightClass=compact-widthClass=regular" constant="10"/>
                             </constraint>
+                            <constraint firstItem="TRU-N9-ttF" firstAttribute="top" secondItem="TOf-Fk-3lY" secondAttribute="bottom" constant="28" id="8cX-55-l3b"/>
                             <constraint firstItem="GZc-HA-w2Q" firstAttribute="top" secondItem="uOB-Pb-mTh" secondAttribute="top" constant="20" id="BNg-EW-m9v">
                                 <variation key="heightClass=regular-widthClass=regular" constant="30"/>
                             </constraint>
                             <constraint firstItem="V9p-fH-xlQ" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="Bcd-Id-Hh4"/>
+                            <constraint firstItem="TRU-N9-ttF" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" constant="145" id="Bu8-xF-Vlh"/>
                             <constraint firstItem="SB0-Ak-fFM" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" priority="250" constant="49" id="C0H-cY-IS5">
                                 <variation key="heightClass=compact-widthClass=regular" constant="400"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="240"/>
@@ -399,6 +404,7 @@
                                 <variation key="heightClass=compact-widthClass=compact" constant="23"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="50"/>
                             </constraint>
+                            <constraint firstItem="uOB-Pb-mTh" firstAttribute="trailing" secondItem="TRU-N9-ttF" secondAttribute="trailing" constant="144" id="Ufd-ho-ipn"/>
                             <constraint firstItem="uOB-Pb-mTh" firstAttribute="trailing" secondItem="SB0-Ak-fFM" secondAttribute="trailing" constant="102" id="YcL-ub-sAX"/>
                             <constraint firstItem="SB0-Ak-fFM" firstAttribute="top" secondItem="JtC-G7-YXn" secondAttribute="bottom" constant="19" id="cn4-ug-esC">
                                 <variation key="heightClass=compact-widthClass=regular" constant="-21"/>
@@ -466,6 +472,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="a1r-TT-6cF"/>
                     <connections>
+                        <outlet property="actualLocationSwitch" destination="niK-wp-DZc" id="Z73-Q4-TQg"/>
                         <outlet property="notificationsSwitch" destination="wZ2-47-Mqu" id="Il1-Ry-nwT"/>
                     </connections>
                 </viewController>

@@ -1,29 +1,44 @@
 // Cambio realizado por Dani
 
 import UIKit
+import CoreLocation
 
-class DetalleViewController: UIViewController {
+class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var totalInfectionsLabel: UILabel!
     @IBOutlet weak var sevenDaysView: UIStackView!
     @IBOutlet weak var conditionImage: UIImageView!
-    let kMKey = "MY_KEY"
+    @IBOutlet weak var comunityName: UILabel!
+    
+    let kMKeyNotifications = "MY_KEY_NOTIFICATIONS"
+    let kMkeyActualLocation = "MY_KEY_ACTUALLOCATION"
     var notifications: Bool?
+    var actualLocation: Bool?
     var tabla : SearchLocationTableViewController?
     
     // Constante con la que manejamos los elementos de settings
     let settings = SettingsViewController()
     
+    // Constante para el manager del location
+    let locationManager = CLLocationManager()
+    
+    lazy var geocoder = CLGeocoder()
+    var actualLocationLongitude: Double = 0.0
+    var actualLocationLatitude: Double = 0.0
+    
+    
     var infectionsNumber : Int! = 3
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateCityName()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         settings.setDefaultValues()
         totalInfectionsLabel.text = String(infectionsNumber)
-        notifications = UserDefaults.standard.bool(forKey: kMKey)
-        print(notifications!)
-        
+        notifications = UserDefaults.standard.bool(forKey: kMKeyNotifications)
         
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
@@ -41,6 +56,8 @@ class DetalleViewController: UIViewController {
         conditionImageControl()
         
     }
+    
+    
     
     func conditionImageControl(){
         
@@ -83,5 +100,57 @@ class DetalleViewController: UIViewController {
             }
         }
     }
+    
+    func sendReverseRequest() {
+        let location = CLLocation(latitude: actualLocationLatitude, longitude: actualLocationLongitude)
+        geocoder.reverseGeocodeLocation(location) { (placemarks, error)  in
+            self.processReverseGeocoder(withPlacemarks: placemarks, error: error)
+        }
+        
+    }
+    
+    /*
+     Función para procesar la respuesta del reverse
+     */
+    func processReverseGeocoder(withPlacemarks placermarks: [CLPlacemark]?, error: Error?){
+        if let error = error {
+            comunityName.text = "Error en localización"
+        }else {
+            if let placemarks = placermarks, let placemark = placermarks?.first {
+                print(placemark)
+                comunityName.text = placemark.locality
+            }else {
+                comunityName.text = "Error"
+            }
+        }
+    }
+    
+    func updateCityName(){
+        actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
+        if actualLocation! {
+            locationManager.delegate = self
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestLocation()
+        }else {
+            comunityName.text = "Favorita"
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("Location enabled")
+        
+        if let location = locations.first {
+            actualLocationLatitude = location.coordinate.latitude
+            actualLocationLongitude = location.coordinate.longitude
+            sendReverseRequest()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error: \(error)")
+    }
 }
+
+
+
 
