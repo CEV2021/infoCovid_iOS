@@ -6,6 +6,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     var connection = Connection()
     var MAX_POKEMONS = 183
     var filteredData : [Pokemon?] = []
+    var pokemonsDownload = 0
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -22,11 +23,14 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         
         for i in 1...MAX_POKEMONS{
             connection.getPokemon(withID: i) { pokemon in
+                self.pokemonsDownload += 1
                 if let pokemon = pokemon, let id = pokemon.id{
                     self.pokemons[id-1] = pokemon
                 }
             }
         }
+        
+ 
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -63,11 +67,10 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     //Baddara de busqueda que filtra los resultados buscando coincidencias entre los datos y lo escrito
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredData = pokemons.filter({ pokemon -> Bool in
-            guard let text = searchBar.text else { return false }
-            return pokemon!.name.lowercased().contains(text.lowercased())
-        })
-        
+            filteredData = pokemons.filter({ pokemon -> Bool in
+                guard let text = searchBar.text else { return false }
+                return pokemon!.name.lowercased().contains(text.lowercased())
+            })
         tableView.reloadData()
     }
     
@@ -125,9 +128,11 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         let nextViewController: DetalleViewController = segue.destination as! DetalleViewController
         //Variable que recoge el index de la celda que se pulsa en la tabla y se lo pasa a indexSong del ViewController
         let indexPath = self.tableView.indexPathForSelectedRow
-        let pokemon = pokemons[indexPath!.row]
+        let pokemon = filteredData[indexPath!.row]
         
         nextViewController.infectionsNumber = pokemon?.height
+        nextViewController.locationSelected = pokemon?.name
+        nextViewController.locationIsSelected = true
         
     }
 }

@@ -14,6 +14,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     let kMkeyActualLocation = "MY_KEY_ACTUALLOCATION"
     var notifications: Bool?
     var actualLocation: Bool?
+    var locationIsSelected: Bool = false
     var tabla : SearchLocationTableViewController?
     
     // Constante con la que manejamos los elementos de settings
@@ -28,6 +29,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
     
     var infectionsNumber : Int! = 3
+    var locationSelected: String?
     
     override func viewWillAppear(_ animated: Bool) {
         updateCityName()
@@ -127,11 +129,14 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
     func updateCityName(){
         actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
-        if actualLocation! {
+        if actualLocation! && !(locationIsSelected ?? false) {
             locationManager.delegate = self
             locationManager.requestWhenInUseAuthorization()
             locationManager.requestLocation()
-        }else {
+        }else if locationIsSelected {
+            comunityName.text = locationSelected
+        }
+        else {
             comunityName.text = "Favorita"
         }
     }
