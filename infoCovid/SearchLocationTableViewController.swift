@@ -4,16 +4,15 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     var pokemons: [Pokemon?] = []
     var connection = Connection()
-    var MAX_POKEMONS = 50
+    var MAX_POKEMONS = 183
     var filteredData : [Pokemon?] = []
-    
     
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Esconder el teclado al pulsar fuera
+        //Esconder el teclado al pulsar en la pantalla
         let tapGesture = UITapGestureRecognizer(target: self, action:  #selector(tapGestureHandler))
         view.addGestureRecognizer(tapGesture)
         
@@ -62,10 +61,11 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         return cell
     }
     
+    //Baddara de busqueda que filtra los resultados buscando coincidencias entre los datos y lo escrito
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredData = pokemons.filter({ pokemon -> Bool in
             guard let text = searchBar.text else { return false }
-            return pokemon!.name.contains(text)
+            return pokemon!.name.lowercased().contains(text.lowercased())
         })
         
         tableView.reloadData()
@@ -130,7 +130,5 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         nextViewController.infectionsNumber = pokemon?.height
         
     }
-    
-    
 }
 
