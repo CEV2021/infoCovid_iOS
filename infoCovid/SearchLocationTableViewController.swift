@@ -67,10 +67,15 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     //Baddara de busqueda que filtra los resultados buscando coincidencias entre los datos y lo escrito
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if pokemonsDownload == MAX_POKEMONS {
             filteredData = pokemons.filter({ pokemon -> Bool in
                 guard let text = searchBar.text else { return false }
                 return pokemon!.name.lowercased().contains(text.lowercased())
+            }).sorted(by: { (item1, item2) -> Bool in
+                return item1!.name.compare(item2!.name) == ComparisonResult.orderedAscending
             })
+        }
+        
         tableView.reloadData()
     }
     
