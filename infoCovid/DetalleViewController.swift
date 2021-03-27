@@ -1,4 +1,4 @@
-// Cambio realizado por Dani
+// Cambio realizado por Danis
 
 import UIKit
 import CoreLocation
