@@ -2,7 +2,7 @@
 //pruebo
 import UIKit
 
-class SearchLocationTableViewController: UITableViewController, UISearchBarDelegate {
+class SearchLocationTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     
     var pokemons: [Pokemon?] = []
     var connection = Connection()
@@ -10,15 +10,22 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     var filteredData : [Pokemon?] = []
     var pokemonsDownload = 0
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    let searchController = UISearchController()
+    
+    
+    //@IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        searchBar.placeholder = "Introduce localización"
-        searchBar.showsScopeBar = false
+        //searchBar.placeholder = "Introduce localización"
+       // searchBar.showsScopeBar = false
+        //searchBar.delegate = self
         filteredData = pokemons
-        searchBar.delegate = self
+        setupSearch()
+        
+        
+        
         pokemons = [Pokemon?] (repeating: nil, count: MAX_POKEMONS)
         
         //Se recorre el array hasta el numero de la variable Max_Pokemons recogiendo el contenido haciendo conexion con la API
@@ -31,13 +38,26 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
             }
         }
         
- 
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    //Configuracion de la barra de busqueda
+    func setupSearch(){
+        
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+        navigationItem.searchController = searchController
+        let searchBar = searchController.searchBar
+        searchBar.delegate = self
+        searchBar.placeholder = "Introduce ubicación"
     }
     
     
@@ -63,6 +83,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         return cell
     }
     
+    /*
     //Barra de busqueda que filtra los resultados buscando coincidencias entre los datos y lo escrito
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if pokemonsDownload == MAX_POKEMONS {
@@ -74,6 +95,19 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
             })
         }
         
+        tableView.reloadData()
+    }
+ */
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if pokemonsDownload == MAX_POKEMONS {
+            filteredData = pokemons.filter({ pokemon -> Bool in
+                guard let text = searchController.searchBar.text else { return false }
+                return pokemon!.name.lowercased().contains(text.lowercased())
+            }).sorted(by: { (item1, item2) -> Bool in
+                return item1!.name.compare(item2!.name) == ComparisonResult.orderedAscending
+            })
+        }
         tableView.reloadData()
     }
     
