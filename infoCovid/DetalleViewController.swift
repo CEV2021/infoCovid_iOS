@@ -1,4 +1,4 @@
-// Cambio realizado por Danis
+
 
 import UIKit
 import CoreLocation
@@ -129,7 +129,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
     func updateCityName(){
         actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
-        if actualLocation! && !(locationIsSelected ?? false) {
+        if actualLocation! && !(locationIsSelected) {
             locationManager.delegate = self
             locationManager.requestWhenInUseAuthorization()
             locationManager.requestLocation()

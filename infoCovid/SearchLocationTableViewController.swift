@@ -14,8 +14,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        filteredData.sort(by: { $0!.name < $1!.name })
+    
         searchBar.placeholder = "Introduce localización"
         searchBar.showsScopeBar = false
         filteredData = pokemons
@@ -56,9 +55,6 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //Prueba con sorted, no funciona
-       // var pokemon = self.pokemons.sorted(by: {$0?.name ?? "" > $1?.name ?? ""})
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         let pokemon = filteredData[indexPath.row]
         cell.textLabel?.text = pokemon?.name ?? ""
@@ -69,11 +65,15 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     //Barra de busqueda que filtra los resultados buscando coincidencias entre los datos y lo escrito
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredData = pokemons.filter({ pokemon -> Bool in
-            guard let text = searchBar.text else { return false }
-            return pokemon!.name.lowercased().contains(text.lowercased())
-           
-        })
+        if pokemonsDownload == MAX_POKEMONS {
+            filteredData = pokemons.filter({ pokemon -> Bool in
+                guard let text = searchBar.text else { return false }
+                return pokemon!.name.lowercased().contains(text.lowercased())
+            }).sorted(by: { (item1, item2) -> Bool in
+                return item1!.name.compare(item2!.name) == ComparisonResult.orderedAscending
+            })
+        }
+        
         tableView.reloadData()
     }
     
