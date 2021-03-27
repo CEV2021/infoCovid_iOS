@@ -23,6 +23,8 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         //searchBar.delegate = self
         filteredData = pokemons
         setupSearch()
+
+        
         
         
         
@@ -109,6 +111,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
             })
         }
         tableView.reloadData()
+        
     }
     
     /*
