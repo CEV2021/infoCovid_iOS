@@ -1,4 +1,4 @@
-// Cambio realizado por Dani para corregir errores
+
 
 import UIKit
 import CoreLocation
