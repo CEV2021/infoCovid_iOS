@@ -120,7 +120,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         }else {
             if let placemarks = placermarks, let placemark = placermarks?.first {
                 print(placemark)
-                comunityName.text = placemark.locality
+                comunityName.text = placemark.administrativeArea
             }else {
                 comunityName.text = "Error"
             }
