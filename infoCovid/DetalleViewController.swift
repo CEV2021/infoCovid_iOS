@@ -154,6 +154,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error: \(error)")
     }
+    
+    @IBAction func addButton(_ sender: Any) {
+        
+       
+        
+    }
+    
 }
 
 

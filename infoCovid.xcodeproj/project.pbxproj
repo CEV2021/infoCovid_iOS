@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		610A01BF26108B160050AC3D /* UbicationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610A01BE26108B160050AC3D /* UbicationsViewController.swift */; };
 		61C4D9F8260B890C00D40147 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C4D9F7260B890C00D40147 /* Mappable.swift */; };
 		61CE6AF425FFBE17006DCB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CE6AF325FFBE17006DCB9C /* AppDelegate.swift */; };
 		61CE6AF625FFBE17006DCB9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CE6AF525FFBE17006DCB9C /* SceneDelegate.swift */; };
@@ -15,6 +14,7 @@
 		61CE6AFB25FFBE17006DCB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61CE6AF925FFBE17006DCB9C /* Main.storyboard */; };
 		61CE6AFD25FFBE17006DCB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61CE6AFC25FFBE17006DCB9C /* Assets.xcassets */; };
 		61CE6B0025FFBE17006DCB9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61CE6AFE25FFBE17006DCB9C /* LaunchScreen.storyboard */; };
+		61E13CC12611C10B0013EDCE /* UbicationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E13CC02611C10B0013EDCE /* UbicationsTableViewController.swift */; };
 		61E623A6260BBA7A00638AC0 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E623A5260BBA7A00638AC0 /* Connection.swift */; };
 		61E623AA260BC04A00638AC0 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E623A9260BC04A00638AC0 /* Pokemon.swift */; };
 		61E65567260AA18C002016BA /* SearchLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E65566260AA18C002016BA /* SearchLocationTableViewController.swift */; };
@@ -24,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		610A01BE26108B160050AC3D /* UbicationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbicationsViewController.swift; sourceTree = "<group>"; };
 		61C4D9F7260B890C00D40147 /* Mappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
 		61CE6AF025FFBE17006DCB9C /* infoCovid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = infoCovid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61CE6AF325FFBE17006DCB9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +33,7 @@
 		61CE6AFC25FFBE17006DCB9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61CE6AFF25FFBE17006DCB9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61CE6B0125FFBE17006DCB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61E13CC02611C10B0013EDCE /* UbicationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbicationsTableViewController.swift; sourceTree = "<group>"; };
 		61E623A5260BBA7A00638AC0 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		61E623A9260BC04A00638AC0 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		61E65566260AA18C002016BA /* SearchLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewController.swift; sourceTree = "<group>"; };
@@ -82,9 +82,9 @@
 				65777F102601785400A3B7EF /* SettingsViewController.swift */,
 				61E623A9260BC04A00638AC0 /* Pokemon.swift */,
 				61E623A5260BBA7A00638AC0 /* Connection.swift */,
-				610A01BE26108B160050AC3D /* UbicationsViewController.swift */,
 				65FB46D12603F6BB0041C062 /* IncidenciaViewController.swift */,
 				61C4D9F7260B890C00D40147 /* Mappable.swift */,
+				61E13CC02611C10B0013EDCE /* UbicationsTableViewController.swift */,
 				61CE6AF925FFBE17006DCB9C /* Main.storyboard */,
 				61CE6AFC25FFBE17006DCB9C /* Assets.xcassets */,
 				61CE6AFE25FFBE17006DCB9C /* LaunchScreen.storyboard */,
@@ -186,7 +186,7 @@
 				61E623A6260BBA7A00638AC0 /* Connection.swift in Sources */,
 				61CE6AF625FFBE17006DCB9C /* SceneDelegate.swift in Sources */,
 				65777F112601785400A3B7EF /* SettingsViewController.swift in Sources */,
-				610A01BF26108B160050AC3D /* UbicationsViewController.swift in Sources */,
+				61E13CC12611C10B0013EDCE /* UbicationsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
