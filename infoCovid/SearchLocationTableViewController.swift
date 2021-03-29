@@ -106,9 +106,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
             filteredData = pokemons.filter({ pokemon -> Bool in
                 guard let text = searchController.searchBar.text else { return false }
                 return pokemon!.name.lowercased().contains(text.lowercased())
-            }).sorted(by: { (item1, item2) -> Bool in
-                return item1!.name.compare(item2!.name) == ComparisonResult.orderedAscending
-            })
+            }).sorted { $0!.name < $1!.name }
         }
         tableView.reloadData()
         
