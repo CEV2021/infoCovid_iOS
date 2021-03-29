@@ -1,9 +1,4 @@
-//
-//  PruebaTableViewController.swift
-//  infoCovid
-//
-//  Created by Silvia Casanova Martinez on 29/3/21.
-//
+
 
 import UIKit
 
