@@ -5,6 +5,7 @@ import CoreLocation
 
 class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var lastUpdateLabel: UILabel!
     @IBOutlet weak var newCasesLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var deathsLabel: UILabel!
@@ -40,19 +41,16 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var locationSelected: String?
     var totalNumber: Int! = 0
     var newCasesNumber: Int! = 0
-    var name = ""
+    var name = "Andalusia"
     var connection = Connection()
     
     override func viewWillAppear(_ animated: Bool) {
         updateCityName()
-        print("Imprimimos el nombre \(name)")
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         
         //Se calculan los nuevos casos
         newCasesNumber = ((datos?.data![10].confirmed) ?? 0) - (datos?.data![9].confirmed ?? 0)
@@ -80,7 +78,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         sevenDaysView.layer.borderWidth = 3
         conditionImageControl()
         
-        
     }
 
     func conditionImageControl(){
@@ -88,9 +85,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         if infectionsNumber > 150{
             conditionImage.image = UIImage.init(named: "coronavirusRojo")
             self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "ALTO")
-            
-            
-            
+     
         }else if infectionsNumber > 50{
             conditionImage.image = UIImage.init(named: "coronavirusAma")
             self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "MEDIO")
@@ -127,7 +122,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         geocoder.reverseGeocodeLocation(location) { (placemarks, error)  in
             self.processReverseGeocoder(withPlacemarks: placemarks, error: error)
         }
-        
     }
     
     /*
@@ -138,14 +132,27 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
             comunityName.text = "Error en localización"
         }else {
             if let placemarks = placermarks, let placemark = placermarks?.first {
-                print(placemark)
-                comunityName.text = placemark.administrativeArea
-                print("ReverseGeocoder \(placemark.administrativeArea)")
                 name = placemark.administrativeArea!
- 
+                connection.getRegionByName(withString: name) { (region) in
+                    if let region = region {
+                        if region.name == "Andalusia"{
+                            region.name = "Andalucia"
+                        }
+                        DispatchQueue.main.async{
+                            self.comunityName.text = region.name
+                            self.deathsLabel.text = String( region.data![10].deaths!)
+                            self.recoveredLabel.text = String( region.data![10].recovered!)
+                            self.newCasesLabel.text = String( ((region.data![10].confirmed) ?? 0) - (region.data![9].confirmed ?? 0))
+                            self.totalLabel.text = String( region.data![10].confirmed!)
+                            self.totalInfectionsLabel.text = String(format:"%.0f", region.data![10].incidentRate!)
+                            self.lastUpdateLabel.text = "Última actualización: " + region.data![10].date!
+                        }
+                    }
+                }
 
             }else {
                 comunityName.text = "Error"
+                print("caca")
             }
         }
     }
@@ -160,12 +167,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
             comunityName.text = locationSelected
         }
         else {
-            comunityName.text = "Favorita"
-            connection.getRegionByName(withString: name) { (region) in
-                if let region = region {
-                    print(" Desde el connection \(region.name)")
-                }
-            }
+            comunityName.text = name
+            
         }
     }
     

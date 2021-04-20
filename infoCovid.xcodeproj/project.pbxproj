@@ -18,7 +18,6 @@
 		61D9CECD262F1595004711DA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D9CECC262F1595004711DA /* Data.swift */; };
 		61E13CC12611C10B0013EDCE /* UbicationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E13CC02611C10B0013EDCE /* UbicationsTableViewController.swift */; };
 		61E623A6260BBA7A00638AC0 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E623A5260BBA7A00638AC0 /* Connection.swift */; };
-		61E623AA260BC04A00638AC0 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E623A9260BC04A00638AC0 /* Pokemon.swift */; };
 		61E65567260AA18C002016BA /* SearchLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E65566260AA18C002016BA /* SearchLocationTableViewController.swift */; };
 		65777F112601785400A3B7EF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65777F102601785400A3B7EF /* SettingsViewController.swift */; };
 		6595C3F8260ABCAC00BBC4D5 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 6595C3F7260ABCAC00BBC4D5 /* Charts */; };
@@ -39,7 +38,6 @@
 		61D9CECC262F1595004711DA /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		61E13CC02611C10B0013EDCE /* UbicationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbicationsTableViewController.swift; sourceTree = "<group>"; };
 		61E623A5260BBA7A00638AC0 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
-		61E623A9260BC04A00638AC0 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		61E65566260AA18C002016BA /* SearchLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewController.swift; sourceTree = "<group>"; };
 		65777F102601785400A3B7EF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		658EF8612610D8FF00770C99 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 				61E65566260AA18C002016BA /* SearchLocationTableViewController.swift */,
 				61CE6AF725FFBE17006DCB9C /* DetalleViewController.swift */,
 				65777F102601785400A3B7EF /* SettingsViewController.swift */,
-				61E623A9260BC04A00638AC0 /* Pokemon.swift */,
 				61D9CECC262F1595004711DA /* Data.swift */,
 				6112D236262EE2D8007F3925 /* Region.swift */,
 				61E623A5260BBA7A00638AC0 /* Connection.swift */,
@@ -187,7 +184,6 @@
 				61E65567260AA18C002016BA /* SearchLocationTableViewController.swift in Sources */,
 				61C4D9F8260B890C00D40147 /* Mappable.swift in Sources */,
 				61CE6AF825FFBE17006DCB9C /* DetalleViewController.swift in Sources */,
-				61E623AA260BC04A00638AC0 /* Pokemon.swift in Sources */,
 				61CE6AF425FFBE17006DCB9C /* AppDelegate.swift in Sources */,
 				61E623A6260BBA7A00638AC0 /* Connection.swift in Sources */,
 				61D9CECD262F1595004711DA /* Data.swift in Sources */,

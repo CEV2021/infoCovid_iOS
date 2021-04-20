@@ -8,4 +8,5 @@ class Datas: Mappable {
     var deaths: Int?
     var recovered: Int?
     var incidentRate: Double?
+    var date: String?
 }

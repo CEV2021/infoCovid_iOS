@@ -4,12 +4,9 @@ import UIKit
 
 class SearchLocationTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     
-    var pokemons: [Pokemon?] = []
     var regions: [Region?] = []
     var connection = Connection()
-    var MAX_POKEMONS = 183
     var filteredData : [Region?] = []
-    var pokemonsDownload = 0
     
     let searchController = UISearchController()
     
@@ -19,14 +16,6 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         filteredData = regions
         setupSearch()
 
-//        for _ in 1...10{
-//            connection.getRegion { (regions) in
-//                if let regions = regions{
-//                    self.regions.append(regions[14])
-//                }
-//                print(self.regions[0]?.name)
-//            }
-//        }
         
         connection.getRegions { (regions) in
             if let regions = regions {
@@ -34,20 +23,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
                 print(regions.count)
             }
         }
-        
-        
-        
-        pokemons = [Pokemon?] (repeating: nil, count: MAX_POKEMONS)
-        
-        //Se recorre el array hasta el numero de la variable Max_Pokemons recogiendo el contenido haciendo conexion con la API
-        for i in 1...MAX_POKEMONS{
-            connection.getPokemon(withID: i) { pokemon in
-                self.pokemonsDownload += 1
-                if let pokemon = pokemon, let id = pokemon.id{
-                    self.pokemons[id-1] = pokemon
-                }
-            }
-        }
+      
     }
     
     //Configuracion de la barra de busqueda
@@ -78,6 +54,12 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         let region = filteredData[indexPath.row]
+        if region?.name == "Andalusia"{
+            region?.name = "Andalucia"
+        }
+        if region?.name == "Catalonia"{
+            region?.name = "Cataluña"
+        }
         cell.textLabel?.text = region?.name ?? ""
         
         return cell
@@ -85,12 +67,12 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     
     func updateSearchResults(for searchController: UISearchController) {
-        if pokemonsDownload == MAX_POKEMONS {
+       
             filteredData = regions.filter({ region -> Bool in
                 guard let text = searchController.searchBar.text else { return false }
                 return region!.name!.lowercased().contains(text.lowercased())
             }).sorted { $0!.name! < $1!.name! }
-        }
+        
         tableView.reloadData()
         
     }
