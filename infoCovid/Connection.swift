@@ -23,8 +23,8 @@ class Connection{
         task.resume()
     }
     
-    func getRegions( TotalRegions regions: Int, completion: @escaping(_ region: [Region?]?)-> Void){
-        guard let url = URL(string: "\(baseURLString2)?count=\(regions)")else{
+    func getRegions(completion: @escaping(_ region: [Region?]?)-> Void){
+        guard let url = URL(string: baseURLString2)else{
             completion(nil)
             return
         }
@@ -51,6 +51,25 @@ class Connection{
         let task = urlSession.dataTask(with: url){ data, response, error in
             if error == nil, let data = data{
                 let region = try? JSONDecoder().decode([Region].self, from: data)
+                completion(region)
+                
+            }else{
+                completion(nil)
+            }
+            
+        }
+        task.resume()
+    }
+    
+    func getRegionByName(withString name: String, completion: @escaping(_ region: Region?)-> Void){
+        guard let url = URL(string: "\(baseURLString2)/\(name)")else{
+            completion(nil)
+            return
+        }
+        let urlSession = URLSession(configuration: .default)
+        let task = urlSession.dataTask(with: url){ data, response, error in
+            if error == nil, let data = data{
+                let region = Region(withJSONData: data)
                 completion(region)
                 
             }else{

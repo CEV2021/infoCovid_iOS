@@ -40,13 +40,19 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var locationSelected: String?
     var totalNumber: Int! = 0
     var newCasesNumber: Int! = 0
+    var name = ""
+    var connection = Connection()
     
     override func viewWillAppear(_ animated: Bool) {
         updateCityName()
+        print("Imprimimos el nombre \(name)")
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         
         //Se calculan los nuevos casos
         newCasesNumber = ((datos?.data![10].confirmed) ?? 0) - (datos?.data![9].confirmed ?? 0)
@@ -73,6 +79,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         sevenDaysView.layer.cornerRadius = 20
         sevenDaysView.layer.borderWidth = 3
         conditionImageControl()
+        
         
     }
 
@@ -133,6 +140,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
             if let placemarks = placermarks, let placemark = placermarks?.first {
                 print(placemark)
                 comunityName.text = placemark.administrativeArea
+                print("ReverseGeocoder \(placemark.administrativeArea)")
+                name = placemark.administrativeArea!
+ 
+
             }else {
                 comunityName.text = "Error"
             }
@@ -150,6 +161,11 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         }
         else {
             comunityName.text = "Favorita"
+            connection.getRegionByName(withString: name) { (region) in
+                if let region = region {
+                    print(" Desde el connection \(region.name)")
+                }
+            }
         }
     }
     

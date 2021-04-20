@@ -19,12 +19,19 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         filteredData = regions
         setupSearch()
 
-        for _ in 1...10{
-            connection.getRegion { (regions) in
-                if let regions = regions{
-                    self.regions.append(regions[14])
-                }
-                print(self.regions[0]?.name)
+//        for _ in 1...10{
+//            connection.getRegion { (regions) in
+//                if let regions = regions{
+//                    self.regions.append(regions[14])
+//                }
+//                print(self.regions[0]?.name)
+//            }
+//        }
+        
+        connection.getRegions { (regions) in
+            if let regions = regions {
+                self.regions = regions
+                print(regions.count)
             }
         }
         
