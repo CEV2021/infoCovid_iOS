@@ -5,6 +5,10 @@ import CoreLocation
 
 class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var newCasesLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var deathsLabel: UILabel!
+    @IBOutlet weak var recoveredLabel: UILabel!
     @IBOutlet weak var totalInfectionsLabel: UILabel!
     @IBOutlet weak var sevenDaysView: UIStackView!
     @IBOutlet weak var conditionImage: UIImageView!
@@ -17,6 +21,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var locationIsSelected: Bool = false
     var tabla : SearchLocationTableViewController?
     
+    var datos: Region?//prueba recibiendo el los datos completos de la seleccion
+    
     // Constante con la que manejamos los elementos de settings
     let settings = SettingsViewController()
     
@@ -28,8 +34,12 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var actualLocationLatitude: Double = 0.0
     
     
-    var infectionsNumber : Int! = 3
+    var infectionsNumber : Double! = 600
+    var deathsNumber: Int! = 0
+    var recoveredNumber: Int! = 0
     var locationSelected: String?
+    var totalNumber: Int! = 0
+    var newCasesNumber: Int! = 0
     
     override func viewWillAppear(_ animated: Bool) {
         updateCityName()
@@ -38,8 +48,15 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Se calculan los nuevos casos
+        newCasesNumber = ((datos?.data![10].confirmed) ?? 0) - (datos?.data![9].confirmed ?? 0)
+        
         settings.setDefaultValues()
-        totalInfectionsLabel.text = String(infectionsNumber)
+        totalInfectionsLabel.text = String(format:"%.0f", infectionsNumber)
+        newCasesLabel.text = String(newCasesNumber)
+        recoveredLabel.text = String(recoveredNumber)
+        deathsLabel.text = String(deathsNumber)
+        totalLabel.text = String(totalNumber)
         notifications = UserDefaults.standard.bool(forKey: kMKeyNotifications)
         
         
@@ -58,27 +75,22 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         conditionImageControl()
         
     }
-    
-    
-    
+
     func conditionImageControl(){
         
-        if infectionsNumber > 500{
+        if infectionsNumber > 150{
             conditionImage.image = UIImage.init(named: "coronavirusRojo")
             self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "ALTO")
             
             
             
-        }else if infectionsNumber > 400{
+        }else if infectionsNumber > 50{
             conditionImage.image = UIImage.init(named: "coronavirusAma")
             self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "MEDIO")
-            
             
         }else{
             conditionImage.image = UIImage.init(named: "coronavirusVerde")
             self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "BAJO")
-            
-            
         }
     }
     

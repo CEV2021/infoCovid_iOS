@@ -5,26 +5,28 @@ import UIKit
 class SearchLocationTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     
     var pokemons: [Pokemon?] = []
+    var regions: [Region?] = []
     var connection = Connection()
     var MAX_POKEMONS = 183
-    var filteredData : [Pokemon?] = []
+    var filteredData : [Region?] = []
     var pokemonsDownload = 0
     
     let searchController = UISearchController()
     
-    
-    //@IBOutlet weak var searchBar: UISearchBar!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        //searchBar.placeholder = "Introduce localización"
-       // searchBar.showsScopeBar = false
-        //searchBar.delegate = self
-        filteredData = pokemons
+
+        filteredData = regions
         setupSearch()
 
-        
+        for _ in 1...10{
+            connection.getRegion { (regions) in
+                if let regions = regions{
+                    self.regions.append(regions[14])
+                }
+                print(self.regions[0]?.name)
+            }
+        }
         
         
         
@@ -39,13 +41,6 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
                 }
             }
         }
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     //Configuracion de la barra de busqueda
@@ -63,10 +58,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     }
     
     
-    // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
@@ -78,100 +70,39 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-        let pokemon = filteredData[indexPath.row]
-        cell.textLabel?.text = pokemon?.name ?? ""
-        //cell.textLabel?.text = String(pokemon?.height ?? 3)
+        let region = filteredData[indexPath.row]
+        cell.textLabel?.text = region?.name ?? ""
         
         return cell
     }
     
-    /*
-    //Barra de busqueda que filtra los resultados buscando coincidencias entre los datos y lo escrito
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if pokemonsDownload == MAX_POKEMONS {
-            filteredData = pokemons.filter({ pokemon -> Bool in
-                guard let text = searchBar.text else { return false }
-                return pokemon!.name.lowercased().contains(text.lowercased())
-            }).sorted(by: { (item1, item2) -> Bool in
-                return item1!.name.compare(item2!.name) == ComparisonResult.orderedAscending
-            })
-        }
-        
-        tableView.reloadData()
-    }
- */
     
     func updateSearchResults(for searchController: UISearchController) {
         if pokemonsDownload == MAX_POKEMONS {
-            filteredData = pokemons.filter({ pokemon -> Bool in
+            filteredData = regions.filter({ region -> Bool in
                 guard let text = searchController.searchBar.text else { return false }
-                return pokemon!.name.lowercased().contains(text.lowercased())
-            }).sorted { $0!.name < $1!.name }
+                return region!.name!.lowercased().contains(text.lowercased())
+            }).sorted { $0!.name! < $1!.name! }
         }
         tableView.reloadData()
         
     }
     
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Variable de tipo ViewController
         let nextViewController: DetalleViewController = segue.destination as! DetalleViewController
         
         //Variable que recoge el index de la celda que se pulsa en la tabla
         let indexPath = self.tableView.indexPathForSelectedRow
-        let pokemon = filteredData[indexPath!.row]
+        let region = filteredData[indexPath!.row]
         
-        nextViewController.infectionsNumber = pokemon?.height
-        nextViewController.locationSelected = pokemon?.name
+        nextViewController.infectionsNumber = region?.data?[10].incidentRate
+        nextViewController.deathsNumber = region?.data?[10].deaths
+        nextViewController.recoveredNumber = region?.data?[10].recovered
+        nextViewController.locationSelected = region?.name
+        nextViewController.totalNumber = region?.data?[10].confirmed
         nextViewController.locationIsSelected = true
+        nextViewController.datos = region
         
     }
 }

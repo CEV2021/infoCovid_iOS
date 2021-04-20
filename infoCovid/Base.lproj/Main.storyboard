@@ -208,8 +208,12 @@
                     <connections>
                         <outlet property="comunityName" destination="QLB-5Q-FfD" id="VZt-bB-2u4"/>
                         <outlet property="conditionImage" destination="ybH-Ra-5MF" id="ekN-4z-f8t"/>
+                        <outlet property="deathsLabel" destination="cOI-3e-miK" id="SwI-Qu-39R"/>
+                        <outlet property="newCasesLabel" destination="3qo-MH-dc0" id="UYz-nh-v4w"/>
+                        <outlet property="recoveredLabel" destination="gPe-pt-Osq" id="qpl-8N-dhf"/>
                         <outlet property="sevenDaysView" destination="QJf-mq-61q" id="XbE-NQ-p6F"/>
                         <outlet property="totalInfectionsLabel" destination="So3-m5-e8M" id="wiF-8R-3Vs"/>
+                        <outlet property="totalLabel" destination="Oe9-nB-gJB" id="HJ7-Uc-CGn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -500,7 +504,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFX-fw-sdU">
-                                    <rect key="frame" x="0.0" y="50" width="414" height="76"/>
+                                    <rect key="frame" x="0.0" y="49.999999999999993" width="414" height="76.333333333333314"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Madrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQe-2y-CNe">
@@ -518,7 +522,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mis Ubucaciones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tyv-oh-dta">
-                                    <rect key="frame" x="27" y="156" width="271" height="21"/>
+                                    <rect key="frame" x="27" y="156.33333333333334" width="271" height="21"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -569,7 +573,6 @@
         <!--Navigation Controller-->
         <scene sceneID="9SG-jl-ZWF">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i0T-Sv-BJI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="gEe-jq-sGk" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i9G-tX-bFw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -579,6 +582,7 @@
                         <segue destination="4d3-Cs-JVw" kind="relationship" relationship="rootViewController" id="ebh-PI-5UR"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i0T-Sv-BJI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2841" y="898"/>
         </scene>
@@ -907,8 +911,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ebh-PI-5UR"/>
-        <segue reference="gsx-GG-o6y"/>
+        <segue reference="C9Y-hE-bLQ"/>
+        <segue reference="ZCQ-wa-a9H"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>
