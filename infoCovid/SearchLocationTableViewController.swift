@@ -92,10 +92,12 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         nextViewController.deathsNumber = region?.data?[downloadDataNumber].deaths
         nextViewController.recoveredNumber = region?.data?[downloadDataNumber].recovered
         nextViewController.locationSelected = region?.name
-        nextViewController.totalNumber = region?.data?[downloadDataNumber].active
+        nextViewController.totalNumber = region?.data?[downloadDataNumber].confirmed
         nextViewController.locationIsSelected = true
         nextViewController.datos = region
         nextViewController.downloadData = downloadDataNumber
+        nextViewController.activeCasesNumber = region?.data?[downloadDataNumber].active
+        nextViewController.updateDate = (region?.data?[downloadDataNumber].date)!
         
     }
 }

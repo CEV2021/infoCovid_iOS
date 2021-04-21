@@ -35,15 +35,17 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var actualLocationLatitude: Double = 0.0
     
     
-    var infectionsNumber : Double! = 600
+    var infectionsNumber : Double! = 0.0
     var deathsNumber: Int! = 0
     var recoveredNumber: Int! = 0
     var locationSelected: String?
     var totalNumber: Int! = 0
-    var newCasesNumber: Int! = 0
+    var activeCasesNumber: Int! = 0
     var name = "Andalusia"
     var connection = Connection()
     var downloadData = 0
+    var ia : Double = 0.0
+    var updateDate = ""
     
     override func viewWillAppear(_ animated: Bool) {
         updateCityName()
@@ -56,12 +58,17 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         //Se calculan los nuevos casos
         //newCasesNumber = ((datos?.data![downloadData].confirmed) ?? 0) - (datos?.data![downloadData-1].confirmed ?? 0)
         
+        //calculo de incidencia acumulada tomando los datos de la ultima fecha y 14 dias
+        ia = ((datos?.data![downloadData].incidentRate) ?? 0) - (datos?.data![downloadData-7].incidentRate ?? 0)
+        
         settings.setDefaultValues()
-        totalInfectionsLabel.text = String(format:"%.0f", infectionsNumber)
-        newCasesLabel.text = String(totalNumber)
+        totalInfectionsLabel.text = String(format:"%.0f", ia)
+        newCasesLabel.text = String(activeCasesNumber)
         recoveredLabel.text = String(recoveredNumber)
         deathsLabel.text = String(deathsNumber)
         totalLabel.text = String(totalNumber)
+        lastUpdateLabel.text = "Última actualización: " +
+            updateDate
         notifications = UserDefaults.standard.bool(forKey: kMKeyNotifications)
         
         
@@ -77,17 +84,22 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         
         sevenDaysView.layer.cornerRadius = 20
         sevenDaysView.layer.borderWidth = 3
+        
+        //se comprueba la variable ia para que no salten dos notificaciones cuando tome los datos desde la ubicacion
+        if ia != 0{
         conditionImageControl()
+        }
         
     }
 
+    //Funcion que se ocupa del formato de la imagen de cambio de nivel de alarma
     func conditionImageControl(){
         
-        if infectionsNumber > 150{
+        if ia > 150{
             conditionImage.image = UIImage.init(named: "coronavirusRojo")
             self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "ALTO")
      
-        }else if infectionsNumber > 50{
+        }else if ia > 50{
             conditionImage.image = UIImage.init(named: "coronavirusAma")
             self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "MEDIO")
             
@@ -139,14 +151,24 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
                         if region.name == "Andalusia"{
                             region.name = "Andalucia"
                         }
+                        
+                        //se rellena la vista con los datos obtenidos desde la localizacion
                         DispatchQueue.main.async{
+                            var downData = (region.data!.count) - 1
                             self.comunityName.text = region.name
-                            self.deathsLabel.text = String( region.data![10].deaths!)
-                            self.recoveredLabel.text = String( region.data![10].recovered!)
-                            self.newCasesLabel.text = String( ((region.data![10].confirmed) ?? 0) - (region.data![9].confirmed ?? 0))
-                            self.totalLabel.text = String( region.data![10].confirmed!)
-                            self.totalInfectionsLabel.text = String(format:"%.0f", region.data![10].incidentRate!)
-                            self.lastUpdateLabel.text = "Última actualización: " + region.data![10].date!
+                            self.deathsLabel.text = String( region.data![downData].deaths!)
+                            self.recoveredLabel.text = String( region.data![downData].recovered!)
+                            self.newCasesLabel.text = String(region.data![downData].active!)
+                            self.totalLabel.text = String( region.data![downData].confirmed!)
+                            self.totalInfectionsLabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0))
+                            self.lastUpdateLabel.text = "Última actualización: " +
+                                region.data![downData].date!
+                            
+                            //se le da valor a la variable para el cambio de alerta
+                            self.ia = ((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0)
+                            
+                            //se llama a la funcion de cofiguracion de icono de cambio de alerta 
+                            self.conditionImageControl()
                         }
                     }
                 }

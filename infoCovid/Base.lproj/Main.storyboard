@@ -211,7 +211,9 @@
                             <constraint firstItem="QJf-mq-61q" firstAttribute="top" secondItem="FBD-gJ-xwd" secondAttribute="bottom" constant="99.5" id="5dr-He-8f9">
                                 <variation key="heightClass=regular-widthClass=regular" constant="97"/>
                             </constraint>
-                            <constraint firstItem="QJf-mq-61q" firstAttribute="top" secondItem="FBD-gJ-xwd" secondAttribute="bottom" constant="60.000000000000028" id="9FH-fa-BeR"/>
+                            <constraint firstItem="QJf-mq-61q" firstAttribute="top" secondItem="FBD-gJ-xwd" secondAttribute="bottom" constant="60.000000000000028" id="9FH-fa-BeR">
+                                <variation key="heightClass=compact-widthClass=regular" constant="36"/>
+                            </constraint>
                             <constraint firstItem="Hgx-kf-ZaN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="9Rw-2T-amT">
                                 <variation key="heightClass=compact-widthClass=compact" constant="166"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="237"/>
@@ -367,51 +369,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AJUSTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZc-HA-w2Q">
-                                <rect key="frame" x="164" y="20" width="86.333333333333314" height="23"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="FAQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90J-H1-Fe9">
-                                <rect key="frame" x="25.999999999999996" y="229" width="35.666666666666657" height="22"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="¿De dónde obtenemos los datos?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yT9-jl-qHf">
-                                <rect key="frame" x="26" y="259" width="263.66666666666669" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="¿Cómo puedo evitar contagios?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtC-G7-YXn">
-                                <rect key="frame" x="26" y="294" width="250" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="¿Puedo tener varias cuentas?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SB0-Ak-fFM">
-                                <rect key="frame" x="26.000000000000014" y="323" width="233.33333333333337" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRU-N9-ttF">
-                                <rect key="frame" x="49" y="461" width="297" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRU-N9-ttF">
+                                <rect key="frame" x="131" y="657" width="152" height="30"/>
                                 <state key="normal" title="Borra persistencia"/>
                                 <connections>
                                     <action selector="deleteData:" destination="hDy-1K-TOn" eventType="touchUpInside" id="lUm-YR-8O9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="¿Qué pasa si cambio de smartphone?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOf-Fk-3lY">
-                                <rect key="frame" x="23" y="352" width="296.33333333333331" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="fk4-3S-who">
-                                <rect key="frame" x="52" y="92" width="311.33333333333331" height="111"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="fk4-3S-who">
+                                <rect key="frame" x="52" y="180" width="311.33333333333331" height="161"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="91" translatesAutoresizingMaskIntoConstraints="NO" id="eUO-V6-hJM">
                                         <rect key="frame" x="0.0" y="0.0" width="311" height="31"/>
@@ -432,7 +398,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="69" translatesAutoresizingMaskIntoConstraints="NO" id="5NX-FH-CcU">
-                                        <rect key="frame" x="0.0" y="40" width="310.66666666666669" height="31"/>
+                                        <rect key="frame" x="0.0" y="65" width="310.66666666666669" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activar widget del Covid" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnb-Xc-j1G">
                                                 <rect key="frame" x="0.0" y="0.0" width="192.66666666666666" height="31"/>
@@ -450,7 +416,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="148" translatesAutoresizingMaskIntoConstraints="NO" id="lIO-Sp-YRH">
-                                        <rect key="frame" x="0.0" y="80" width="311.33333333333331" height="31"/>
+                                        <rect key="frame" x="0.0" y="130" width="311.33333333333331" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notificaciones" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9p-fH-xlQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="114.33333333333333" height="31"/>
@@ -465,9 +431,56 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <variation key="heightClass=compact-widthClass=compact" spacing="9"/>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Info - Covid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Us-88-evC">
-                                <rect key="frame" x="20" y="62" width="99" height="21.666666666666671"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AJUSTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZc-HA-w2Q">
+                                <rect key="frame" x="164" y="20" width="86.333333333333314" height="23"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="ObZ-6k-D3p">
+                                <rect key="frame" x="59" y="416" width="296.33333333333331" height="176.33333333333337"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90J-H1-Fe9">
+                                        <rect key="frame" x="0.0" y="0.0" width="296.33333333333331" height="21.666666666666668"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿De dónde obtenemos los datos?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yT9-jl-qHf">
+                                        <rect key="frame" x="0.0" y="38.666666666666686" width="296.33333333333331" height="21.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Cómo puedo evitar contagios?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtC-G7-YXn">
+                                        <rect key="frame" x="0.0" y="77.333333333333314" width="296.33333333333331" height="21.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Puedo tener varias cuentas?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SB0-Ak-fFM">
+                                        <rect key="frame" x="0.0" y="116" width="296.33333333333331" height="21.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Qué pasa si cambio de smartphone?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOf-Fk-3lY">
+                                        <rect key="frame" x="0.0" y="154.66666666666663" width="296.33333333333331" height="21.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <variation key="heightClass=compact-widthClass=compact" spacing="7"/>
+                                <variation key="heightClass=compact-widthClass=regular" spacing="45"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info - Covid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Us-88-evC">
+                                <rect key="frame" x="52" y="150" width="99" height="21.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21.5" id="mdk-cR-B7L"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -476,94 +489,83 @@
                         <viewLayoutGuide key="safeArea" id="uOB-Pb-mTh"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstItem="yT9-jl-qHf" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" priority="250" constant="49" id="00V-Zf-e59">
-                                <variation key="heightClass=regular-widthClass=compact" constant="26"/>
-                                <variation key="heightClass=regular-widthClass=regular" constant="240"/>
-                            </constraint>
-                            <constraint firstItem="90J-H1-Fe9" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" priority="250" constant="26" id="64m-wF-2vX">
-                                <variation key="heightClass=regular-widthClass=regular" constant="360"/>
-                            </constraint>
-                            <constraint firstItem="JtC-G7-YXn" firstAttribute="top" secondItem="yT9-jl-qHf" secondAttribute="bottom" constant="20" id="6vI-dV-Mor">
-                                <variation key="heightClass=regular-widthClass=compact" constant="14"/>
-                            </constraint>
-                            <constraint firstItem="TRU-N9-ttF" firstAttribute="top" secondItem="TOf-Fk-3lY" secondAttribute="bottom" constant="28" id="8cX-55-l3b">
-                                <variation key="heightClass=regular-widthClass=compact" constant="88"/>
-                            </constraint>
                             <constraint firstItem="GZc-HA-w2Q" firstAttribute="top" secondItem="uOB-Pb-mTh" secondAttribute="top" constant="20" id="BNg-EW-m9v">
+                                <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="30"/>
                             </constraint>
-                            <constraint firstItem="TRU-N9-ttF" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" constant="49" id="Bu8-xF-Vlh"/>
-                            <constraint firstItem="SB0-Ak-fFM" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" priority="250" constant="49" id="C0H-cY-IS5">
-                                <variation key="heightClass=compact-widthClass=regular" constant="400"/>
-                                <variation key="heightClass=regular-widthClass=compact" constant="26"/>
-                                <variation key="heightClass=regular-widthClass=regular" constant="240"/>
-                            </constraint>
-                            <constraint firstItem="TOf-Fk-3lY" firstAttribute="top" secondItem="SB0-Ak-fFM" secondAttribute="bottom" constant="22" id="EjM-Ta-Ugu">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-102"/>
-                                <variation key="heightClass=compact-widthClass=regular" constant="-62"/>
-                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            <constraint firstItem="TRU-N9-ttF" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" constant="49" id="Bu8-xF-Vlh">
+                                <variation key="heightClass=compact-widthClass=compact" constant="340"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="131"/>
                             </constraint>
                             <constraint firstItem="2Us-88-evC" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" priority="250" constant="26" id="ISf-Lb-hGd">
-                                <variation key="heightClass=regular-widthClass=compact" constant="16"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="52"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="350"/>
                             </constraint>
                             <constraint firstItem="2Us-88-evC" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="JZY-oq-eqD"/>
-                            <constraint firstItem="TOf-Fk-3lY" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="KTp-1A-ADW"/>
-                            <constraint firstItem="yT9-jl-qHf" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="MsA-Yv-3WV"/>
-                            <constraint firstItem="90J-H1-Fe9" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="Qys-yu-GUv"/>
-                            <constraint firstItem="JtC-G7-YXn" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="TdA-cJ-a3r"/>
-                            <constraint firstItem="uOB-Pb-mTh" firstAttribute="trailing" secondItem="TRU-N9-ttF" secondAttribute="trailing" constant="68" id="Ufd-ho-ipn"/>
-                            <constraint firstItem="uOB-Pb-mTh" firstAttribute="trailing" secondItem="SB0-Ak-fFM" secondAttribute="trailing" constant="102" id="YcL-ub-sAX"/>
-                            <constraint firstItem="SB0-Ak-fFM" firstAttribute="top" secondItem="JtC-G7-YXn" secondAttribute="bottom" constant="19" id="cn4-ug-esC">
-                                <variation key="heightClass=compact-widthClass=regular" constant="-21"/>
-                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            <constraint firstItem="uOB-Pb-mTh" firstAttribute="trailing" secondItem="TRU-N9-ttF" secondAttribute="trailing" constant="68" id="Ufd-ho-ipn">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-12"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="131"/>
                             </constraint>
-                            <constraint firstItem="2Us-88-evC" firstAttribute="top" secondItem="uOB-Pb-mTh" secondAttribute="top" constant="104" id="djt-dm-d6U">
-                                <variation key="heightClass=compact-widthClass=compact" constant="58"/>
+                            <constraint firstItem="fk4-3S-who" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" constant="42" id="VBF-VY-wrF">
+                                <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="52"/>
+                            </constraint>
+                            <constraint firstItem="uOB-Pb-mTh" firstAttribute="trailing" secondItem="fk4-3S-who" secondAttribute="trailing" constant="60.670000000000002" id="Zcs-tU-cLf">
+                                <variation key="heightClass=compact-widthClass=compact" constant="102.5"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="50.666666666666686"/>
+                            </constraint>
+                            <constraint firstItem="2Us-88-evC" firstAttribute="top" secondItem="uOB-Pb-mTh" secondAttribute="top" constant="108" id="djt-dm-d6U">
+                                <variation key="heightClass=compact-widthClass=compact" constant="1"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="55"/>
-                                <variation key="heightClass=regular-widthClass=compact" constant="51"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="150"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="201"/>
                             </constraint>
-                            <constraint firstItem="JtC-G7-YXn" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" priority="250" constant="49" id="ewQ-gW-UI6">
-                                <variation key="heightClass=regular-widthClass=compact" constant="26"/>
-                                <variation key="heightClass=regular-widthClass=regular" constant="240"/>
+                            <constraint firstItem="ObZ-6k-D3p" firstAttribute="top" secondItem="fk4-3S-who" secondAttribute="bottom" constant="136.33000000000001" id="fJf-ib-OOe">
+                                <variation key="heightClass=compact-widthClass=compact" constant="8"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="-233.66666666666669"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="75"/>
                             </constraint>
-                            <constraint firstItem="yT9-jl-qHf" firstAttribute="top" secondItem="90J-H1-Fe9" secondAttribute="bottom" constant="24" id="hOL-tT-uBu">
-                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            <constraint firstItem="fk4-3S-who" firstAttribute="top" secondItem="2Us-88-evC" secondAttribute="bottom" constant="50.329999999999998" id="grn-DS-Z3Q">
+                                <variation key="heightClass=compact-widthClass=compact" constant="36.5"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="8.3333333333333144"/>
                             </constraint>
-                            <constraint firstItem="TOf-Fk-3lY" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" priority="250" constant="49" id="rZw-EC-W9G">
-                                <variation key="heightClass=compact-widthClass=compact" constant="350"/>
-                                <variation key="heightClass=compact-widthClass=regular" constant="400"/>
-                                <variation key="heightClass=regular-widthClass=compact" constant="23"/>
-                                <variation key="heightClass=regular-widthClass=regular" constant="240"/>
+                            <constraint firstItem="TRU-N9-ttF" firstAttribute="top" secondItem="Wp6-gZ-Ry8" secondAttribute="bottom" constant="62.333333333333314" id="izf-AP-AyB">
+                                <variation key="heightClass=compact-widthClass=compact" constant="127"/>
                             </constraint>
-                            <constraint firstItem="GZc-HA-w2Q" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="wUf-8V-0aS"/>
-                            <constraint firstItem="SB0-Ak-fFM" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="zHG-3h-cph"/>
+                            <constraint firstItem="ObZ-6k-D3p" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" constant="59" id="oXT-kf-LXF">
+                                <variation key="heightClass=compact-widthClass=compact" constant="7"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="415"/>
+                            </constraint>
+                            <constraint firstItem="uOB-Pb-mTh" firstAttribute="trailing" secondItem="ObZ-6k-D3p" secondAttribute="trailing" constant="58.670000000000002" id="tM8-Pk-aYB">
+                                <variation key="heightClass=compact-widthClass=compact" constant="110.5"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="-297.33333333333348"/>
+                            </constraint>
+                            <constraint firstItem="GZc-HA-w2Q" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="wUf-8V-0aS">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-9.8333333333333712"/>
+                            </constraint>
+                            <constraint firstItem="TRU-N9-ttF" firstAttribute="top" secondItem="TOf-Fk-3lY" secondAttribute="bottom" constant="64.666666666666742" id="wpY-U4-R8R"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="YcL-ub-sAX"/>
                                 <exclude reference="JZY-oq-eqD"/>
-                                <exclude reference="Qys-yu-GUv"/>
-                                <exclude reference="MsA-Yv-3WV"/>
-                                <exclude reference="TdA-cJ-a3r"/>
-                                <exclude reference="zHG-3h-cph"/>
-                                <exclude reference="KTp-1A-ADW"/>
+                                <exclude reference="izf-AP-AyB"/>
+                                <exclude reference="wpY-U4-R8R"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="izf-AP-AyB"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <exclude reference="YcL-ub-sAX"/>
+                                <include reference="wpY-U4-R8R"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
                                 <include reference="JZY-oq-eqD"/>
-                                <include reference="Qys-yu-GUv"/>
-                                <include reference="MsA-Yv-3WV"/>
-                                <include reference="TdA-cJ-a3r"/>
-                                <include reference="zHG-3h-cph"/>
-                                <include reference="KTp-1A-ADW"/>
                             </mask>
                         </variation>
                     </view>
@@ -575,7 +577,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MUT-4W-Ie9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895.6521739130437" y="85.59782608695653"/>
+            <point key="canvasLocation" x="1893.75" y="82.5"/>
         </scene>
         <!--Ubicaciones-->
         <scene sceneID="drf-kS-OEx">
