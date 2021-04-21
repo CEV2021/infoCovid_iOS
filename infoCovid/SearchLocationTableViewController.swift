@@ -28,7 +28,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
                 DispatchQueue.main.async{
                 if regions.count == 19{
                     self.setupSearch()
-                    self.loadingLabel.text = "Introduce comunidad autónoma"
+                    self.loadingLabel.text = "Info-COVID"
                 }
                 }
                 
