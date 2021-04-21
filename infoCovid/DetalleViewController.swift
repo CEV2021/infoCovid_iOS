@@ -152,7 +152,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
 
             }else {
                 comunityName.text = "Error"
-                print("caca")
             }
         }
     }
