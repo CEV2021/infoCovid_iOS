@@ -5,7 +5,10 @@ import UIKit
 class UbicationsTableViewController: UITableViewController {
     
     var locationList = ["Madrid", "Murcia", "Galicia", "Extremadura"]
-
+    
+    
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +35,7 @@ class UbicationsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Celda", for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Celda", for: indexPath) as! UbicationsCellTableViewCell
         let ubication = locationList[indexPath.row]
         cell.textLabel?.text = ubication
         
@@ -103,6 +106,8 @@ class UbicationsTableViewController: UITableViewController {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-
+    
+  
+    
    
 }
