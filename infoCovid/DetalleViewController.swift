@@ -43,6 +43,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var newCasesNumber: Int! = 0
     var name = "Andalusia"
     var connection = Connection()
+    var downloadData = 0
     
     override func viewWillAppear(_ animated: Bool) {
         updateCityName()
@@ -51,13 +52,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(downloadData-1)
         //Se calculan los nuevos casos
-        newCasesNumber = ((datos?.data![10].confirmed) ?? 0) - (datos?.data![9].confirmed ?? 0)
+        //newCasesNumber = ((datos?.data![downloadData].confirmed) ?? 0) - (datos?.data![downloadData-1].confirmed ?? 0)
         
         settings.setDefaultValues()
         totalInfectionsLabel.text = String(format:"%.0f", infectionsNumber)
-        newCasesLabel.text = String(newCasesNumber)
+        newCasesLabel.text = String(totalNumber)
         recoveredLabel.text = String(recoveredNumber)
         deathsLabel.text = String(deathsNumber)
         totalLabel.text = String(totalNumber)

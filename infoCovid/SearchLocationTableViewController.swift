@@ -7,6 +7,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     var regions: [Region?] = []
     var connection = Connection()
     var filteredData : [Region?] = []
+    var downloadDataNumber = 0
     
     let searchController = UISearchController()
     
@@ -21,6 +22,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
             if let regions = regions {
                 self.regions = regions
                 print(regions.count)
+                
             }
         }
       
@@ -61,6 +63,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
             region?.name = "Cataluña"
         }
         cell.textLabel?.text = region?.name ?? ""
+        downloadDataNumber = (region?.data!.count)! - 1
         
         return cell
     }
@@ -85,13 +88,14 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         let indexPath = self.tableView.indexPathForSelectedRow
         let region = filteredData[indexPath!.row]
         
-        nextViewController.infectionsNumber = region?.data?[10].incidentRate
-        nextViewController.deathsNumber = region?.data?[10].deaths
-        nextViewController.recoveredNumber = region?.data?[10].recovered
+        nextViewController.infectionsNumber = region?.data?[downloadDataNumber].incidentRate
+        nextViewController.deathsNumber = region?.data?[downloadDataNumber].deaths
+        nextViewController.recoveredNumber = region?.data?[downloadDataNumber].recovered
         nextViewController.locationSelected = region?.name
-        nextViewController.totalNumber = region?.data?[10].confirmed
+        nextViewController.totalNumber = region?.data?[downloadDataNumber].active
         nextViewController.locationIsSelected = true
         nextViewController.datos = region
+        nextViewController.downloadData = downloadDataNumber
         
     }
 }
