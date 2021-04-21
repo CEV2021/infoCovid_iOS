@@ -4,6 +4,9 @@ import UIKit
 
 class SearchLocationTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     
+    @IBOutlet weak var loadingLabel: UILabel!
+    
+    
     var regions: [Region?] = []
     var connection = Connection()
     var filteredData : [Region?] = []
@@ -13,15 +16,21 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         filteredData = regions
-        setupSearch()
-
-        
+      
+      
         connection.getRegions { (regions) in
             if let regions = regions {
                 self.regions = regions
-                print(regions.count)
+                
+                DispatchQueue.main.async{
+                if regions.count == 19{
+                    self.setupSearch()
+                    self.loadingLabel.text = "Introduce comunidad autónoma"
+                }
+                }
                 
             }
         }
@@ -80,6 +89,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         
     }
     
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Variable de tipo ViewController
         let nextViewController: DetalleViewController = segue.destination as! DetalleViewController
