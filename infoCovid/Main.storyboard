@@ -347,6 +347,7 @@
                         <outlet property="conditionImage" destination="ybH-Ra-5MF" id="ekN-4z-f8t"/>
                         <outlet property="deathsLabel" destination="cOI-3e-miK" id="SwI-Qu-39R"/>
                         <outlet property="lastUpdateLabel" destination="4nk-gc-dsI" id="uQZ-fT-w1S"/>
+                        <outlet property="listButton" destination="uzl-Ng-6UF" id="BSu-Dl-8E2"/>
                         <outlet property="newCasesLabel" destination="3qo-MH-dc0" id="UYz-nh-v4w"/>
                         <outlet property="recoveredLabel" destination="gPe-pt-Osq" id="qpl-8N-dhf"/>
                         <outlet property="sevenDaysView" destination="QJf-mq-61q" id="XbE-NQ-p6F"/>
@@ -373,14 +374,14 @@
                         <segue destination="JMm-0p-uhb" kind="relationship" relationship="viewControllers" id="Gaw-nN-uTi"/>
                         <segue destination="Ywy-oh-sli" kind="relationship" relationship="viewControllers" id="Wr4-5c-AMC"/>
                         <segue destination="2KG-eO-d47" kind="relationship" relationship="viewControllers" id="JHN-3C-y4n"/>
-                        <segue destination="hDy-1K-TOn" kind="relationship" relationship="viewControllers" id="x5n-uR-f7z"/>
+                        <segue destination="Hs7-jg-vXV" kind="relationship" relationship="viewControllers" id="x5n-uR-f7z"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DqQ-Fv-aSj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="88.043478260869577"/>
         </scene>
-        <!--Settings-->
+        <!--Settings View Controller-->
         <scene sceneID="Qag-Ow-bu4">
             <objects>
                 <viewController id="hDy-1K-TOn" customClass="SettingsViewController" customModule="infoCovid" customModuleProvider="target" sceneMemberID="viewController">
@@ -389,13 +390,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AJUSTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZc-HA-w2Q">
-                                <rect key="frame" x="164" y="64" width="86.5" height="23"/>
+                                <rect key="frame" x="164" y="108" width="86.5" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info - Covid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Us-88-evC">
-                                <rect key="frame" x="20" y="111" width="118" height="21.5"/>
+                                <rect key="frame" x="20" y="155" width="118" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21.5" id="mdk-cR-B7L">
                                         <variation key="heightClass=regular-widthClass=regular" constant="40"/>
@@ -409,43 +410,51 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90J-H1-Fe9">
-                                <rect key="frame" x="16" y="421.5" width="153" height="20.5"/>
+                                <rect key="frame" x="16" y="465.5" width="153" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="ObZ-6k-D3p">
-                                <rect key="frame" x="59" y="461.5" width="296.5" height="248"/>
+                                <rect key="frame" x="64" y="505.5" width="286" height="248"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿De dónde obtenemos los datos?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yT9-jl-qHf">
-                                        <rect key="frame" x="0.0" y="0.0" width="296.5" height="49.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Cómo puedo evitar contagios?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtC-G7-YXn">
-                                        <rect key="frame" x="0.0" y="66.5" width="296.5" height="49"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Puedo tener varias cuentas?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SB0-Ak-fFM">
-                                        <rect key="frame" x="0.0" y="132.5" width="296.5" height="49.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Qué pasa si cambio de smartphone?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOf-Fk-3lY">
-                                        <rect key="frame" x="0.0" y="199" width="296.5" height="49"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pbt-tg-Cii">
+                                        <rect key="frame" x="0.0" y="0.0" width="286" height="49.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="¿De dónde obtenemos los datos?"/>
+                                        <connections>
+                                            <segue destination="gSZ-AN-tlc" kind="show" id="N1R-D1-3GJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vG5-vA-eDT">
+                                        <rect key="frame" x="0.0" y="66.5" width="286" height="49"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="¿Cómo puedo evitar contagios?"/>
+                                        <connections>
+                                            <segue destination="9kt-dS-sld" kind="show" id="ny6-04-hFI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHy-jp-7Xn">
+                                        <rect key="frame" x="0.0" y="132.5" width="286" height="49.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="¿Puedo tener varias cuentas?"/>
+                                        <connections>
+                                            <segue destination="h0w-Sr-ato" kind="show" id="YtF-la-SCv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxI-i8-p3m">
+                                        <rect key="frame" x="0.0" y="199" width="286" height="49"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="¿Qué pasa si cambio de smartphone?"/>
+                                        <connections>
+                                            <segue destination="sPA-TJ-pTm" kind="show" id="OgX-ao-AbF"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <variation key="heightClass=compact-widthClass=compact" spacing="7"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="14r-a1-gTF">
-                                <rect key="frame" x="49.5" y="154" width="315" height="259.5"/>
+                                <rect key="frame" x="49.5" y="198" width="315" height="259.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="JPq-6V-HWc">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="71"/>
@@ -596,7 +605,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="a1r-TT-6cF"/>
+                    <navigationItem key="navigationItem" id="xwm-af-jc7"/>
                     <connections>
                         <outlet property="actualLocationSwitch" destination="niK-wp-DZc" id="Z73-Q4-TQg"/>
                         <outlet property="notificationsSwitch" destination="wZ2-47-Mqu" id="Il1-Ry-nwT"/>
@@ -604,7 +613,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MUT-4W-Ie9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1890.625" y="80.2734375"/>
+            <point key="canvasLocation" x="2800" y="79.6875"/>
+        </scene>
+        <!--Web01 View Controller-->
+        <scene sceneID="8Do-im-SS2">
+            <objects>
+                <viewController id="gSZ-AN-tlc" customClass="Web01ViewController" customModule="infoCovid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RXg-0n-ILZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Hvj-94-GF1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="J86-lq-Y0K"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ae-TP-F0K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4110.144927536232" y="-483.48214285714283"/>
+        </scene>
+        <!--Web02 View Controller-->
+        <scene sceneID="lEq-3k-sJN">
+            <objects>
+                <viewController id="9kt-dS-sld" customClass="Web02ViewController" customModule="infoCovid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eKT-Bo-uLZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="qdR-VO-9Q1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HgG-HO-YkO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="00S-52-kvT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5055.072463768116" y="-318.08035714285711"/>
+        </scene>
+        <!--Web04 View Controller-->
+        <scene sceneID="C1e-5g-XCM">
+            <objects>
+                <viewController id="sPA-TJ-pTm" customClass="Web04ViewController" customModule="infoCovid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0kg-Lo-3QR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="TfX-m7-doC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HbV-Jz-1EX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="czy-SJ-flA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4805.7971014492759" y="432.58928571428572"/>
+        </scene>
+        <!--Web03 View Controller-->
+        <scene sceneID="7EJ-DP-5K0">
+            <objects>
+                <viewController id="h0w-Sr-ato" customClass="Web03ViewController" customModule="infoCovid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fyj-o6-g5A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="oZR-Zr-XyE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="alM-lM-uLR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uqt-3D-TiW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5821.739130434783" y="99.776785714285708"/>
         </scene>
         <!--Ubicaciones-->
         <scene sceneID="drf-kS-OEx">
@@ -1080,10 +1153,29 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="1705.4347826086957"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="rbp-AN-xOG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hs7-jg-vXV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="a1r-TT-6cF"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cSL-1h-XQb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hDy-1K-TOn" kind="relationship" relationship="rootViewController" id="QCF-kN-grJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hdD-HW-VqZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1889.8550724637682" y="79.6875"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="C9Y-hE-bLQ"/>
-        <segue reference="4cv-X3-n4H"/>
+        <segue reference="ZCQ-wa-a9H"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>

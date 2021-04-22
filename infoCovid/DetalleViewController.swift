@@ -5,6 +5,7 @@ import CoreLocation
 
 class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var listButton: UIBarButtonItem!
     @IBOutlet weak var lastUpdateLabel: UILabel!
     @IBOutlet weak var newCasesLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
@@ -58,6 +59,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(downloadData-1)
+        
+        
         //Se calculan los nuevos casos
         //newCasesNumber = ((datos?.data![downloadData].confirmed) ?? 0) - (datos?.data![downloadData-1].confirmed ?? 0)
         
