@@ -1,9 +1,10 @@
 
-//pruebo
+
 import UIKit
 
 class SearchLocationTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     
+    @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var loadingLabel: UILabel!
     
     
@@ -16,25 +17,28 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
+        //se iguala filter data a regions para poder mostrar los resultados en la nusqueda por filtrado
         filteredData = regions
       
-      
+        //Connection para recibir la lista de regiones
         connection.getRegions { (regions) in
             if let regions = regions {
                 self.regions = regions
                 
-                DispatchQueue.main.async{
-                if regions.count == 19{
-                    self.setupSearch()
-                    self.loadingLabel.text = "Info-COVID"
-                }
-                }
                 
+                DispatchQueue.main.async{
+                    //calculo para llenar la progressBar
+                    self.progressBar.setProgress(Float(regions.capacity + regions.capacity - regions.capacity) / Float(regions.capacity), animated: true)
+                    
+                    if self.progressBar.progress == 1{
+                        self.setupSearch()
+                        self.loadingLabel.text = "Info-COVID"
+                        
+                    }
+                }
             }
         }
-      
     }
     
     //Configuracion de la barra de busqueda
@@ -72,8 +76,11 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
             region?.name = "Cataluña"
         }
         cell.textLabel?.text = region?.name ?? ""
-        downloadDataNumber = (region?.data!.count)! - 1
-        
+        downloadDataNumber = (region?.data!.count)!
+            - 1
+
+        progressBar.isHidden = true
+      
         return cell
     }
     
@@ -82,14 +89,15 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
        
             filteredData = regions.filter({ region -> Bool in
                 guard let text = searchController.searchBar.text else { return false }
-                return region!.name!.lowercased().contains(text.lowercased())
+                return
+                    region!.name!.lowercased().contains(text.lowercased())
             }).sorted { $0!.name! < $1!.name! }
         
         tableView.reloadData()
-        
     }
     
    
+    //Funcion para pasar los datos a las vistas
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Variable de tipo ViewController
         let nextViewController: DetalleViewController = segue.destination as! DetalleViewController
