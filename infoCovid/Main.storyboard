@@ -410,62 +410,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="14r-a1-gTF">
-                                <rect key="frame" x="5" y="154" width="404" height="259.5"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="JPq-6V-HWc">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="71"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usar ubicación actual" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNB-sa-52d">
-                                                <rect key="frame" x="0.0" y="25.5" width="223" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="niK-wp-DZc">
-                                                <rect key="frame" x="313" y="20" width="93" height="31"/>
-                                                <color key="onTintColor" red="0.25476503369999998" green="0.59233212469999996" blue="0.53321099279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="actualLocationAction:" destination="hDy-1K-TOn" eventType="valueChanged" id="0Rf-fw-Xra"/>
-                                                </connections>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="NuS-hF-KMx">
-                                        <rect key="frame" x="0.0" y="94" width="404" height="71.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activar notificaciones" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9p-fH-xlQ">
-                                                <rect key="frame" x="0.0" y="25.5" width="290.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wZ2-47-Mqu">
-                                                <rect key="frame" x="308.5" y="20" width="97.5" height="31"/>
-                                                <color key="onTintColor" red="0.25476503369999998" green="0.59233212469999996" blue="0.53321099279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="notificationsAction:" destination="hDy-1K-TOn" eventType="valueChanged" id="iBG-h8-qux"/>
-                                                </connections>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="7R4-3f-sSh">
-                                        <rect key="frame" x="0.0" y="188.5" width="404" height="71"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activar widget del Covid" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnb-Xc-j1G">
-                                                <rect key="frame" x="0.0" y="25" width="299.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wp6-gZ-Ry8">
-                                                <rect key="frame" x="317.5" y="20" width="88.5" height="31"/>
-                                                <color key="onTintColor" red="0.25476503369999998" green="0.59233212469999996" blue="0.53321099279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="ObZ-6k-D3p">
                                 <rect key="frame" x="12" y="461.5" width="390.5" height="248"/>
                                 <subviews>
@@ -496,6 +440,74 @@
                                 </subviews>
                                 <variation key="heightClass=compact-widthClass=compact" spacing="7"/>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="14r-a1-gTF">
+                                <rect key="frame" x="5" y="154" width="404" height="259.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="JPq-6V-HWc">
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="71"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usar ubicación actual" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNB-sa-52d">
+                                                <rect key="frame" x="0.0" y="25.5" width="200" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="wgt-r6-TVN"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="niK-wp-DZc">
+                                                <rect key="frame" x="250" y="20" width="156" height="31"/>
+                                                <color key="onTintColor" red="0.25476503369999998" green="0.59233212469999996" blue="0.53321099279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="actualLocationAction:" destination="hDy-1K-TOn" eventType="valueChanged" id="0Rf-fw-Xra"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                        <variation key="heightClass=regular-widthClass=compact" spacing="50"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="NuS-hF-KMx">
+                                        <rect key="frame" x="0.0" y="94" width="404" height="71.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activar notificaciones" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9p-fH-xlQ">
+                                                <rect key="frame" x="0.0" y="25.5" width="200" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="64k-9m-QsR"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wZ2-47-Mqu">
+                                                <rect key="frame" x="250" y="20" width="156" height="31"/>
+                                                <color key="onTintColor" red="0.25476503369999998" green="0.59233212469999996" blue="0.53321099279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="notificationsAction:" destination="hDy-1K-TOn" eventType="valueChanged" id="iBG-h8-qux"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                        <variation key="heightClass=regular-widthClass=compact" spacing="50"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="7R4-3f-sSh">
+                                        <rect key="frame" x="0.0" y="188.5" width="404" height="71"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activar widget del Covid" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnb-Xc-j1G">
+                                                <rect key="frame" x="0.0" y="25" width="200" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="tKO-Q2-wU4"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wp6-gZ-Ry8">
+                                                <rect key="frame" x="250" y="20" width="156" height="31"/>
+                                                <color key="onTintColor" red="0.25476503369999998" green="0.59233212469999996" blue="0.53321099279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </switch>
+                                        </subviews>
+                                        <variation key="heightClass=regular-widthClass=compact" spacing="50"/>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uOB-Pb-mTh"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -518,14 +530,18 @@
                             <constraint firstItem="2Us-88-evC" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="JZY-oq-eqD">
                                 <variation key="heightClass=regular-widthClass=regular" constant="1"/>
                             </constraint>
-                            <constraint firstItem="ObZ-6k-D3p" firstAttribute="height" secondItem="mfQ-gi-H9z" secondAttribute="height" multiplier="0.277083" id="ODg-mW-erE"/>
+                            <constraint firstItem="ObZ-6k-D3p" firstAttribute="height" secondItem="mfQ-gi-H9z" secondAttribute="height" multiplier="0.277083" id="ODg-mW-erE">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-100"/>
+                            </constraint>
+                            <constraint firstItem="ObZ-6k-D3p" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="OuL-mE-vDq"/>
                             <constraint firstItem="14r-a1-gTF" firstAttribute="top" secondItem="2Us-88-evC" secondAttribute="bottom" constant="21.5" id="UlE-6A-S7a">
                                 <variation key="heightClass=compact-widthClass=regular" constant="7.5"/>
-                                <variation key="heightClass=regular-widthClass=regular" constant="48"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="uOB-Pb-mTh" firstAttribute="trailing" secondItem="90J-H1-Fe9" secondAttribute="trailing" constant="245" id="Van-TJ-tby">
                                 <variation key="heightClass=compact-widthClass=regular" constant="241"/>
                             </constraint>
+                            <constraint firstItem="14r-a1-gTF" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="X3i-yp-dlJ"/>
                             <constraint firstItem="uOB-Pb-mTh" firstAttribute="trailing" secondItem="14r-a1-gTF" secondAttribute="trailing" constant="5" id="XnY-HF-baM">
                                 <variation key="heightClass=compact-widthClass=regular" constant="-2"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="-2"/>
@@ -536,7 +552,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="67"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="93"/>
                             </constraint>
-                            <constraint firstItem="14r-a1-gTF" firstAttribute="height" secondItem="mfQ-gi-H9z" secondAttribute="height" multiplier="0.289583" id="lVL-Ks-DOh"/>
+                            <constraint firstItem="14r-a1-gTF" firstAttribute="height" secondItem="mfQ-gi-H9z" secondAttribute="height" multiplier="0.289583" id="lVL-Ks-DOh">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-150"/>
+                            </constraint>
                             <constraint firstItem="ObZ-6k-D3p" firstAttribute="top" secondItem="90J-H1-Fe9" secondAttribute="bottom" constant="19.5" id="nWR-tf-4DP">
                                 <variation key="heightClass=compact-widthClass=regular" constant="7.5"/>
                             </constraint>
@@ -544,6 +562,7 @@
                             <constraint firstItem="90J-H1-Fe9" firstAttribute="leading" secondItem="uOB-Pb-mTh" secondAttribute="leading" constant="16" id="tsv-db-efM">
                                 <variation key="heightClass=compact-widthClass=regular" constant="20"/>
                             </constraint>
+                            <constraint firstItem="90J-H1-Fe9" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="u2K-Vv-57A"/>
                             <constraint firstItem="GZc-HA-w2Q" firstAttribute="centerX" secondItem="mfQ-gi-H9z" secondAttribute="centerX" id="wUf-8V-0aS">
                                 <variation key="heightClass=compact-widthClass=compact" constant="-9.8333333333333712"/>
                             </constraint>
@@ -554,12 +573,24 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="X3i-yp-dlJ"/>
                                 <exclude reference="JZY-oq-eqD"/>
+                                <exclude reference="u2K-Vv-57A"/>
+                                <exclude reference="OuL-mE-vDq"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
+                                <exclude reference="Van-TJ-tby"/>
+                                <exclude reference="XnY-HF-baM"/>
+                                <exclude reference="quw-rH-gEW"/>
+                                <include reference="X3i-yp-dlJ"/>
+                                <exclude reference="y02-iV-pNn"/>
                                 <include reference="JZY-oq-eqD"/>
+                                <exclude reference="tsv-db-efM"/>
+                                <include reference="u2K-Vv-57A"/>
+                                <exclude reference="93h-ya-Iq2"/>
+                                <include reference="OuL-mE-vDq"/>
                             </mask>
                         </variation>
                     </view>

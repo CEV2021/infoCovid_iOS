@@ -168,7 +168,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         }
         else {
             comunityName.text = name
-            
         }
     }
     
