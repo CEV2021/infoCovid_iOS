@@ -44,11 +44,12 @@ class SettingsViewController: UIViewController{
         
     }
     
-    
+   /*
     @IBAction func deleteData(_ sender: UIButton) {
         UserDefaults.standard.removeObject(forKey: "MY_KEY_NOTIFICATIONS")
         UserDefaults.standard.removeObject(forKey: "MY_KEY_ACTUALLOCATION")
     }
+    */
     
     /* Función con la que damos el valor true por defecto
      al booleano del almacenamiento interno, ya que de no haber nada

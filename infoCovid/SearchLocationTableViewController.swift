@@ -4,14 +4,19 @@ import UIKit
 
 class SearchLocationTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     
-    @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var imageCity: UIImageView!
+    @IBOutlet weak var container: UIView!
     
     
     var regions: [Region?] = []
     var connection = Connection()
     var filteredData : [Region?] = []
     var downloadDataNumber = 0
+    
+    //variables para el indicador de carga
+    var activityIndicator = UIActivityIndicatorView()
+    var loadingView = UIView()
+    var loadingLabels = UILabel()
     
     let searchController = UISearchController()
     
@@ -20,20 +25,26 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
 
         //se iguala filter data a regions para poder mostrar los resultados en la nusqueda por filtrado
         filteredData = regions
-      
+        
+        
+        self.setupLoadingViews()//se hace la llamada a la funcion de carga
+        self.showLoading()
+        
         //Connection para recibir la lista de regiones
         connection.getRegions { (regions) in
             if let regions = regions {
                 self.regions = regions
-                
-                
+
                 DispatchQueue.main.async{
+                    /*
                     //calculo para llenar la progressBar
                     self.progressBar.setProgress(Float(regions.capacity + regions.capacity - regions.capacity) / Float(regions.capacity), animated: true)
+                    */
                     
-                    if self.progressBar.progress == 1{
+                    if regions.count == 19{
                         self.setupSearch()
-                        self.loadingLabel.text = "Info-COVID"
+                        self.hideLoading()
+                        self.imageCity.isHidden = false
                         
                     }
                 }
@@ -78,8 +89,6 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         cell.textLabel?.text = region?.name ?? ""
         downloadDataNumber = (region?.data!.count)!
             - 1
-
-        progressBar.isHidden = true
       
         return cell
     }
@@ -117,6 +126,50 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         nextViewController.activeCasesNumber = region?.data?[downloadDataNumber].active
         nextViewController.updateDate = (region?.data?[downloadDataNumber].date)!
         
+    }
+    
+    //configuracion del activity indicator
+    func setupLoadingViews(){
+        self.container.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y + 140, width: self.view.frame.width, height: self.view.frame.height - 140)
+        self.container.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
+        
+        //Loading View
+        self.loadingView.frame = CGRect(x: 0, y: 0, width: 180, height: 180)
+        self.loadingView.center = self.view.center
+        self.loadingView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
+        self.loadingView.clipsToBounds = true
+        self.loadingView.layer.cornerRadius = 10
+        
+        //Activity Indicator View
+        self.activityIndicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        self.activityIndicator.style = .large
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.color = .white
+        self.activityIndicator.startAnimating()
+        
+        //Label
+        self.loadingLabels.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
+        let center = self.activityIndicator.center
+        self.loadingLabels.center = CGPoint(x: center.x, y: center.y + 40)
+        self.loadingLabels.textAlignment = .center
+        self.loadingLabels.text = "Loading..."
+        self.loadingLabels.textColor = .white
+    }
+    
+    //Funcion para mostrar la vista de loading
+    func showLoading(){
+        self.view.addSubview(self.container)
+        self.view.addSubview(self.loadingView)
+        self.view.addSubview(self.activityIndicator)
+        self.view.addSubview(self.loadingLabels)
+    }
+    
+    //funcion para esconder la vista de loading
+    func hideLoading(){
+        self.loadingLabels.removeFromSuperview()
+        self.activityIndicator.removeFromSuperview()
+        self.loadingView.removeFromSuperview()
+        //self.container.removeFromSuperview()
     }
 }
 

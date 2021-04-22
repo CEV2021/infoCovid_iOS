@@ -22,7 +22,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var locationIsSelected: Bool = false
     var tabla : SearchLocationTableViewController?
     
-    var datos: Region?//prueba recibiendo el los datos completos de la seleccion
+    var datos: Region?//prueba recibiendo los datos completos de la seleccion
     
     // Constante con la que manejamos los elementos de settings
     let settings = SettingsViewController()
@@ -46,6 +46,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var downloadData = 0
     var ia : Double = 0.0
     var updateDate = ""
+
+    
     
     override func viewWillAppear(_ animated: Bool) {
         updateCityName()
