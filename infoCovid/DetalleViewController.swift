@@ -42,7 +42,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var locationSelected: String?
     var totalNumber: Int! = 0
     var activeCasesNumber: Int! = 0
-    var name = "Andalusia"
+    var name = ""
     var connection = Connection()
     var downloadData = 0
     var ia : Double = 0.0
@@ -232,6 +232,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         }
         if name == "Comunidad Valenciana" || name == "C. Valenciana" {
             self.name = "C.%20Valenciana"
+        }
+        if name == "Andalucia" {
+            self.name = "Andalusia"
         }
         print(self.name + "Esto es desde el método")
         connection.getRegionByName(withString: self.name) { (region) in
