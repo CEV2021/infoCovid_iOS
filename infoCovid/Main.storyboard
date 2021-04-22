@@ -24,7 +24,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
                                 </state>
                                 <connections>
-                                    <action selector="addButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LDm-aM-Ily"/>
+                                    <action selector="addButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihN-r5-wKA"/>
                                     <segue destination="4d3-Cs-JVw" kind="show" identifier="addLocation" id="C9Y-hE-bLQ"/>
                                 </connections>
                             </button>
@@ -343,6 +343,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="LFJ-XL-Dge" id="Mcq-Eg-AYJ"/>
                         <outlet property="comunityName" destination="QLB-5Q-FfD" id="VZt-bB-2u4"/>
                         <outlet property="conditionImage" destination="ybH-Ra-5MF" id="ekN-4z-f8t"/>
                         <outlet property="deathsLabel" destination="cOI-3e-miK" id="SwI-Qu-39R"/>
@@ -351,6 +352,7 @@
                         <outlet property="newCasesLabel" destination="3qo-MH-dc0" id="UYz-nh-v4w"/>
                         <outlet property="recoveredLabel" destination="gPe-pt-Osq" id="qpl-8N-dhf"/>
                         <outlet property="sevenDaysView" destination="QJf-mq-61q" id="XbE-NQ-p6F"/>
+                        <outlet property="showListButton" destination="uzl-Ng-6UF" id="xIJ-Wt-IH0"/>
                         <outlet property="totalInfectionsLabel" destination="So3-m5-e8M" id="wiF-8R-3Vs"/>
                         <outlet property="totalLabel" destination="Oe9-nB-gJB" id="HJ7-Uc-CGn"/>
                     </connections>

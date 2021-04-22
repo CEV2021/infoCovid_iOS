@@ -65,6 +65,7 @@ class UbicationsTableViewController: UITableViewController {
         
         nextViewController.locationSelected = location
         nextViewController.locationIsSelected = true
+        nextViewController.fromFavoriteLocationList = true
     }
     
 

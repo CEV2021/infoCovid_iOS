@@ -15,6 +15,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var sevenDaysView: UIStackView!
     @IBOutlet weak var conditionImage: UIImageView!
     @IBOutlet weak var comunityName: UILabel!
+    @IBOutlet weak var showListButton: UIBarButtonItem!
+    @IBOutlet weak var addButton: UIButton!
     
     let kMKeyNotifications = "MY_KEY_NOTIFICATIONS"
     let kMkeyActualLocation = "MY_KEY_ACTUALLOCATION"
@@ -23,6 +25,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var locationIsSelected: Bool = false
     var tabla : SearchLocationTableViewController?
     var persistencia = Persistencia()
+    var fromFavoriteLocationList = false
     
     var datos: Region?//prueba recibiendo los datos completos de la seleccion
     
@@ -53,6 +56,15 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         updateCityName()
+        self.tabBarController?.tabBar.isHidden = false
+        if fromFavoriteLocationList {
+            addButton.isHidden = true
+            showListButton.isEnabled = false
+        }
+        else {
+            addButton.isHidden = false
+            showListButton.isEnabled = true
+        }
         
     }
     
@@ -188,7 +200,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         print("Error: \(error)")
     }
     
-    @IBAction func addButton(_ sender: Any) {
+    @IBAction func addButtonAction(_ sender: Any) {
         
         
         
@@ -208,6 +220,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
                 print("Desde vista \(destination.locationList.count)")
             }
         }
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     
@@ -238,6 +251,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         }
         if name == "Andalucia" {
             self.name = "Andalusia"
+        }
+        if name == "Pais Vasco" {
+            self.name = "Pais%20Vasco"
         }
         print(self.name + "Esto es desde el método")
         connection.getRegionByName(withString: self.name) { (region) in
