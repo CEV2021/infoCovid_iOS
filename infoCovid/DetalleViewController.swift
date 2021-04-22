@@ -110,6 +110,14 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        let tableController = self.tabBarController!.viewControllers![1] as! IncidenciaViewController
+        print(tabBarController?.viewControllers?[1])
+        tableController.region = datos
+        print(datos?.name)
+        print("Vista detalle desaparece")
+    }
+    
     //Funcion que se ocupa del formato de la imagen de cambio de nivel de alarma
     func conditionImageControl(){
         
@@ -256,9 +264,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
             self.name = "Pais%20Vasco"
         }
         print(self.name + "Esto es desde el método")
-        connection.getRegionByName(withString: self.name) { (region) in
-            print(region)
+        connection.getRegionByName(withString: self.name) { [self] (region) in
             if let region = region {
+                datos = region
                 print("Tengo region")
                 if region.name == "Andalusia"{
                     region.name = "Andalucia"
@@ -282,6 +290,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
                     
                     //se llama a la funcion de cofiguracion de icono de cambio de alerta
                     self.conditionImageControl()
+                    
+                    let tableController = self.tabBarController!.viewControllers![1] as! IncidenciaViewController
+                    print(tabBarController?.viewControllers?[1])
+                    tableController.region = datos
+                    print(datos?.name)
+                    print("Estamos en el metodo de descarga de datos")
+                    
                 }
             }
         }

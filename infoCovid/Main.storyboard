@@ -337,7 +337,7 @@
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="4d3-Cs-JVw" kind="show" id="aeq-ti-Ctv"/>
+                                    <segue destination="4d3-Cs-JVw" kind="show" identifier="goToList" id="aeq-ti-Ctv"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -1130,6 +1130,7 @@
                         <outlet property="antesStack" destination="sbP-xQ-DVk" id="aYo-Pw-iZK"/>
                         <outlet property="grafica" destination="Zjc-cS-ukg" id="yKc-Dk-jJv"/>
                         <outlet property="hoyStack" destination="PHI-da-mZj" id="6ac-dM-hev"/>
+                        <outlet property="regionNameLabel" destination="opf-gY-fDf" id="6Td-Cl-YO3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KwR-ak-2TE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1176,7 +1177,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="C9Y-hE-bLQ"/>
+        <segue reference="aeq-ti-Ctv"/>
         <segue reference="ZCQ-wa-a9H"/>
     </inferredMetricsTieBreakers>
     <resources>

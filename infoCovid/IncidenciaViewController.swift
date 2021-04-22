@@ -8,16 +8,25 @@ class IncidenciaViewController: UIViewController {
     @IBOutlet weak var grafica: LineChartView!
     @IBOutlet weak var hoyStack: UIStackView!
     @IBOutlet weak var antesStack: UIStackView!
+    @IBOutlet weak var regionNameLabel: UILabel!
+    
+    var region: Region?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("Cargo vista de grafica")
+       
         hoyStack.layer.cornerRadius = 20
         antesStack.layer.cornerRadius = 20
         hoyStack.layer.borderWidth = 3
         antesStack.layer.borderWidth = 3
         generaGraficoLinea()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Vista aparece")
+        regionNameLabel.text = region?.name
     }
     
     func generaGraficoLinea () {
