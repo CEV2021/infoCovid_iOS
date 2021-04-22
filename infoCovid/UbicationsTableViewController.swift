@@ -4,7 +4,9 @@ import UIKit
 
 class UbicationsTableViewController: UITableViewController {
     
-    var locationList = ["Madrid", "Murcia", "Galicia", "Extremadura"]
+    var locationList: [String] = []
+    var persistencia = Persistencia()
+    var comunityName: String?
     
     
     
@@ -13,6 +15,10 @@ class UbicationsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = editButtonItem
+        locationList = persistencia.RecoverArray()
+        locationList.append(comunityName!)
+        tableView.reloadData()
+        print(locationList.count)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -48,7 +54,7 @@ class UbicationsTableViewController: UITableViewController {
         
         //Variable que recoge el index de la celda que se pulsa en la tabla
         let indexPath = self.tableView.indexPathForSelectedRow
-        let pokemon = locationList[indexPath!.row]
+        let location = locationList[indexPath!.row]
         
         
         nextViewController.locationSelected = "pokemon"

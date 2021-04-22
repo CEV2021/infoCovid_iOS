@@ -23,6 +23,7 @@
 		61E65567260AA18C002016BA /* SearchLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E65566260AA18C002016BA /* SearchLocationTableViewController.swift */; };
 		65777F112601785400A3B7EF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65777F102601785400A3B7EF /* SettingsViewController.swift */; };
 		6595C3F8260ABCAC00BBC4D5 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 6595C3F7260ABCAC00BBC4D5 /* Charts */; };
+		65ADCBBB2631E3D0007EEBC3 /* Persistencia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ADCBBA2631E3D0007EEBC3 /* Persistencia.swift */; };
 		65C5825C2630B12600B48C57 /* UbicationsCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C5825B2630B12600B48C57 /* UbicationsCellTableViewCell.swift */; };
 		65FB46D22603F6BB0041C062 /* IncidenciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FB46D12603F6BB0041C062 /* IncidenciaViewController.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		61E65566260AA18C002016BA /* SearchLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewController.swift; sourceTree = "<group>"; };
 		65777F102601785400A3B7EF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		658EF8622610D8FF00770C99 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		65ADCBBA2631E3D0007EEBC3 /* Persistencia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistencia.swift; sourceTree = "<group>"; };
 		65C5825B2630B12600B48C57 /* UbicationsCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbicationsCellTableViewCell.swift; sourceTree = "<group>"; };
 		65FB46D12603F6BB0041C062 /* IncidenciaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidenciaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 				61CE6AFC25FFBE17006DCB9C /* Assets.xcassets */,
 				61CE6AFE25FFBE17006DCB9C /* LaunchScreen.storyboard */,
 				61CE6B0125FFBE17006DCB9C /* Info.plist */,
+				65ADCBBA2631E3D0007EEBC3 /* Persistencia.swift */,
 			);
 			path = infoCovid;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65ADCBBB2631E3D0007EEBC3 /* Persistencia.swift in Sources */,
 				65FB46D22603F6BB0041C062 /* IncidenciaViewController.swift in Sources */,
 				61E65567260AA18C002016BA /* SearchLocationTableViewController.swift in Sources */,
 				61C4D9F8260B890C00D40147 /* Mappable.swift in Sources */,

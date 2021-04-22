@@ -21,6 +21,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var actualLocation: Bool?
     var locationIsSelected: Bool = false
     var tabla : SearchLocationTableViewController?
+    var persistencia = Persistencia()
     
     var datos: Region?//prueba recibiendo los datos completos de la seleccion
     
@@ -214,6 +215,35 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         
        
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? UbicationsTableViewController{
+            var arrayLocations = persistencia.RecoverArray()
+            for location in arrayLocations {
+                if location == comunityName.text {
+                    mostrarAlert(title: "Ubicación existente", message: "La localización ya se encuentra en la lista de favoritos")
+                    return
+                }
+            }
+            destination.comunityName = comunityName.text
+            print("Desde vista \(destination.locationList.count)")
+        }
+    }
+    
+    
+    // Función para mostrar alert en la app
+    func mostrarAlert(title: String, message: String) {
+        
+        // Creamos la alerta
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        
+        // Botones del alert para ejecutar acciones tras su pulsación
+        let ok = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(ok)
+        
+        present(alert, animated: true, completion: nil)
     }
     
 }
