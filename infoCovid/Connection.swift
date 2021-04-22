@@ -45,6 +45,7 @@ class Connection{
     func getRegionByName(withString name: String, completion: @escaping(_ region: Region?)-> Void){
         guard let url = URL(string: "\(baseURLString2)/\(name)")else{
             completion(nil)
+            print("Error en url")
             return
         }
         let urlSession = URLSession(configuration: .default)
@@ -55,6 +56,7 @@ class Connection{
                 
             }else{
                 completion(nil)
+                print("No llegan datos")
             }
             
         }

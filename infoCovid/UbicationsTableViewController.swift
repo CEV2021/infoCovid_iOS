@@ -9,7 +9,10 @@ class UbicationsTableViewController: UITableViewController {
     var comunityName: String?
     
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        persistencia.SaveArray(array: locationList)
+        print("Desaparece vista de ubicaciones")
+    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +60,8 @@ class UbicationsTableViewController: UITableViewController {
         let location = locationList[indexPath!.row]
         
         
-        nextViewController.locationSelected = "pokemon"
-        nextViewController.infectionsNumber = 344
-       
-        
+        nextViewController.locationSelected = location
+        nextViewController.locationIsSelected = true
     }
     
 

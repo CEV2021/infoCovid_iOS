@@ -47,7 +47,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var downloadData = 0
     var ia : Double = 0.0
     var updateDate = ""
-
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,18 +90,18 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         
         //se comprueba la variable ia para que no salten dos notificaciones cuando tome los datos desde la ubicacion
         if ia != 0{
-        conditionImageControl()
+            conditionImageControl()
         }
         
     }
-
+    
     //Funcion que se ocupa del formato de la imagen de cambio de nivel de alarma
     func conditionImageControl(){
         
         if ia > 150{
             conditionImage.image = UIImage.init(named: "coronavirusRojo")
             self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "ALTO")
-     
+            
         }else if ia > 50{
             conditionImage.image = UIImage.init(named: "coronavirusAma")
             self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "MEDIO")
@@ -149,33 +149,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         }else {
             if let placemarks = placermarks, let placemark = placermarks?.first {
                 name = placemark.administrativeArea!
-                connection.getRegionByName(withString: name) { (region) in
-                    if let region = region {
-                        if region.name == "Andalusia"{
-                            region.name = "Andalucia"
-                        }
-                        
-                        //se rellena la vista con los datos obtenidos desde la localizacion
-                        DispatchQueue.main.async{
-                            var downData = (region.data!.count) - 1
-                            self.comunityName.text = region.name
-                            self.deathsLabel.text = String( region.data![downData].deaths!)
-                            self.recoveredLabel.text = String( region.data![downData].recovered!)
-                            self.newCasesLabel.text = String(region.data![downData].active!)
-                            self.totalLabel.text = String( region.data![downData].confirmed!)
-                            self.totalInfectionsLabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0))
-                            self.lastUpdateLabel.text = "Última actualización: " +
-                                region.data![downData].date!
-                            
-                            //se le da valor a la variable para el cambio de alerta
-                            self.ia = ((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0)
-                            
-                            //se llama a la funcion de cofiguracion de icono de cambio de alerta 
-                            self.conditionImageControl()
-                        }
-                    }
-                }
-
+                downloadAndSetRegion(name: name)
             }else {
                 comunityName.text = "Error"
             }
@@ -190,6 +164,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.requestLocation()
         }else if locationIsSelected {
             comunityName.text = locationSelected
+            downloadAndSetRegion(name: locationSelected!)
         }
         else {
             comunityName.text = name
@@ -213,7 +188,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func addButton(_ sender: Any) {
         
-       
+        
         
     }
     
@@ -244,6 +219,49 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         alert.addAction(ok)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    func downloadAndSetRegion(name: String) {
+        self.name = name
+        if name == "Castilla - La Mancha" {
+            self.name = "Castilla%20-%20La%20Mancha"
+        }
+        if name == "Castilla y Leon" {
+            self.name = "Castilla%20y%20Leon"
+        }
+        if name == "Comunidad Valenciana" || name == "C. Valenciana" {
+            self.name = "C.%20Valenciana"
+        }
+        print(self.name + "Esto es desde el método")
+        connection.getRegionByName(withString: self.name) { (region) in
+            print(region)
+            if let region = region {
+                print("Tengo region")
+                if region.name == "Andalusia"{
+                    region.name = "Andalucia"
+                }
+                
+                
+                //se rellena la vista con los datos obtenidos desde la localizacion
+                DispatchQueue.main.async{
+                    var downData = (region.data!.count) - 1
+                    self.comunityName.text = region.name
+                    self.deathsLabel.text = String( region.data![downData].deaths!)
+                    self.recoveredLabel.text = String( region.data![downData].recovered!)
+                    self.newCasesLabel.text = String(region.data![downData].active!)
+                    self.totalLabel.text = String( region.data![downData].confirmed!)
+                    self.totalInfectionsLabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0))
+                    self.lastUpdateLabel.text = "Última actualización: " +
+                        region.data![downData].date!
+                    
+                    //se le da valor a la variable para el cambio de alerta
+                    self.ia = ((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0)
+                    
+                    //se llama a la funcion de cofiguracion de icono de cambio de alerta
+                    self.conditionImageControl()
+                }
+            }
+        }
     }
     
 }
