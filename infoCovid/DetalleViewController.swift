@@ -193,16 +193,18 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? UbicationsTableViewController{
-            var arrayLocations = persistencia.RecoverArray()
-            for location in arrayLocations {
-                if location == comunityName.text {
-                    mostrarAlert(title: "Ubicación existente", message: "La localización ya se encuentra en la lista de favoritos")
-                    return
+        if segue.identifier == "addLocation" {
+            if let destination = segue.destination as? UbicationsTableViewController{
+                var arrayLocations = persistencia.RecoverArray()
+                for location in arrayLocations {
+                    if location == comunityName.text {
+                        mostrarAlert(title: "Ubicación existente", message: "La localización ya se encuentra en la lista de favoritos")
+                        return
+                    }
                 }
+                destination.comunityName = comunityName.text
+                print("Desde vista \(destination.locationList.count)")
             }
-            destination.comunityName = comunityName.text
-            print("Desde vista \(destination.locationList.count)")
         }
     }
     

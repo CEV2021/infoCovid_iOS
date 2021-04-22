@@ -19,9 +19,12 @@ class UbicationsTableViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = editButtonItem
         locationList = persistencia.RecoverArray()
-        locationList.append(comunityName!)
-        tableView.reloadData()
-        print(locationList.count)
+        if let name = comunityName {
+            locationList.append(name)
+            tableView.reloadData()
+            print(locationList.count)
+        }
+      
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

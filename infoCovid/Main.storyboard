@@ -25,7 +25,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LDm-aM-Ily"/>
-                                    <segue destination="4d3-Cs-JVw" kind="show" id="C9Y-hE-bLQ"/>
+                                    <segue destination="4d3-Cs-JVw" kind="show" identifier="addLocation" id="C9Y-hE-bLQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actualizado: 2021-04-21" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nk-gc-dsI">
@@ -191,6 +191,13 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtU-A8-drd">
+                                <rect key="frame" x="369" y="69" width="20" height="22"/>
+                                <state key="normal" image="location.fill" catalog="system"/>
+                                <connections>
+                                    <segue destination="4d3-Cs-JVw" kind="show" id="aeq-ti-Ctv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -242,6 +249,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FBD-gJ-xwd" secondAttribute="trailing" constant="31" id="dGW-cY-n6h">
                                 <variation key="heightClass=regular-widthClass=compact" constant="32"/>
                             </constraint>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TtU-A8-drd" secondAttribute="trailing" constant="25" id="dtV-YE-cFe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hgx-kf-ZaN" secondAttribute="trailing" constant="31" id="eG9-vf-kft">
                                 <variation key="heightClass=regular-widthClass=compact" constant="32"/>
                             </constraint>
@@ -280,6 +288,7 @@
                                 <variation key="heightClass=compact-widthClass=regular" constant="218"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="30"/>
                             </constraint>
+                            <constraint firstItem="TtU-A8-drd" firstAttribute="top" secondItem="QLB-5Q-FfD" secondAttribute="bottom" constant="12" id="sKR-2a-UD4"/>
                             <constraint firstItem="4nk-gc-dsI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vP1-XX-ORz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ybH-Ra-5MF" secondAttribute="trailing" constant="63" id="xrh-Z7-2m0">
                                 <variation key="heightClass=compact-widthClass=compact" constant="294"/>
@@ -981,10 +990,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="9Sb-VR-R25"/>
-                                <exclude reference="lXI-Bm-miX"/>
                                 <exclude reference="FaS-vR-NLb"/>
                                 <exclude reference="xOL-gd-fLl"/>
+                                <exclude reference="9Sb-VR-R25"/>
+                                <exclude reference="lXI-Bm-miX"/>
                                 <exclude reference="ASE-tC-WA5"/>
                                 <exclude reference="Ger-4K-BdU"/>
                                 <exclude reference="flB-5a-VaL"/>
@@ -993,16 +1002,16 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="lXI-Bm-miX"/>
                                 <include reference="xOL-gd-fLl"/>
+                                <include reference="lXI-Bm-miX"/>
                                 <include reference="ASE-tC-WA5"/>
                                 <include reference="flB-5a-VaL"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
-                                <include reference="9Sb-VR-R25"/>
                                 <include reference="FaS-vR-NLb"/>
+                                <include reference="9Sb-VR-R25"/>
                                 <include reference="Ger-4K-BdU"/>
                                 <include reference="iHk-r3-oMT"/>
                             </mask>
@@ -1051,6 +1060,7 @@
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="note.text" catalog="system" width="128" height="106"/>
         <image name="paciente" width="170.66667175292969" height="170.66667175292969"/>
