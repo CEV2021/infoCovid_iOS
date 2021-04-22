@@ -15,7 +15,6 @@ class IncidenciaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Cargo vista de grafica")
-       
         hoyStack.layer.cornerRadius = 20
         antesStack.layer.cornerRadius = 20
         hoyStack.layer.borderWidth = 3
