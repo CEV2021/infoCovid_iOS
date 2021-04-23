@@ -94,13 +94,13 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         ia6 = ((region?.data![downData].incidentRate) ?? 0) - (region?.data![downData-6].incidentRate ?? 0)
   
         print(ia4)
-        let dato1 = BarChartDataEntry(x: 0.0, y: ia / 100)
-        let dato2 = BarChartDataEntry(x: 1.0, y: ia1 / 100)
-        let dato3 = BarChartDataEntry(x: 2.0, y: ia2 / 100)
-        let dato4 = BarChartDataEntry(x: 3.0, y: ia3 / 100)
-        let dato5 = BarChartDataEntry(x: 4.0, y: ia4 / 100)
-        let dato6 = BarChartDataEntry(x: 5.0, y: ia5 / 100)
-        let dato7 = BarChartDataEntry(x: 6.0, y: ia6 / 100)
+        let dato1 = BarChartDataEntry(x: 0.0, y: ia )
+        let dato2 = BarChartDataEntry(x: 1.0, y: ia1 )
+        let dato3 = BarChartDataEntry(x: 2.0, y: ia2 )
+        let dato4 = BarChartDataEntry(x: 3.0, y: ia3 )
+        let dato5 = BarChartDataEntry(x: 4.0, y: ia4 )
+        let dato6 = BarChartDataEntry(x: 5.0, y: ia5 )
+        let dato7 = BarChartDataEntry(x: 6.0, y: ia6 )
         
         let dataSet = LineChartDataSet(entries: [dato1, dato2, dato3, dato4, dato5, dato6, dato7], label: "Incidencia")
         let data = LineChartData(dataSets: [dataSet])
@@ -112,14 +112,14 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         // Configuración del eje Y (Vertical)
         grafica.rightAxis.enabled = false
         grafica.leftAxis.labelFont = .boldSystemFont(ofSize: 12)
-        grafica.leftAxis.setLabelCount(7, force: false)
+        //grafica.leftAxis.setLabelCount(10, force: true)
         grafica.leftAxis.labelTextColor = .red
-        grafica.leftAxis.labelPosition = .outsideChart
-        let incidence = ["0","100", "200", "300", "400", "500","600","700"]
-        grafica.leftAxis.valueFormatter = IndexAxisValueFormatter(values: incidence)
-        grafica.leftAxis.granularity = 1
-        grafica.leftAxis.drawGridLinesEnabled = false
-        grafica.leftAxis.drawAxisLineEnabled = false
+        //grafica.leftAxis.labelPosition = .outsideChart
+        //let incidence = ["0","100", "200", "300", "350", "400", "500","600","700","900"]
+       // grafica.leftAxis.valueFormatter = IndexAxisValueFormatter(values: incidence)
+        //grafica.leftAxis.granularity = 1
+        //grafica.leftAxis.drawGridLinesEnabled = false
+        //grafica.leftAxis.drawAxisLineEnabled = false
         
         // Configuración del eje X (Horizontal)
         grafica.xAxis.labelPosition = .bottom
