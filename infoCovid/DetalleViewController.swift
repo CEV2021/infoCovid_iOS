@@ -279,6 +279,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
                 //se rellena la vista con los datos obtenidos desde la localizacion
                 DispatchQueue.main.async{
                     var downData = (region.data!.count) - 1
+                    print(downData)
                     self.comunityName.text = region.name
                     self.deathsLabel.text = String( region.data![downData].deaths!)
                     self.recoveredLabel.text = String( region.data![downData].recovered!)
@@ -289,7 +290,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
                         region.data![downData].date
                     
                     //se le da valor a la variable para el cambio de alerta
-                    self.ia = ((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0)
+                    self.ia = ((region.data![downData].incidentRate) ?? 0) - (region.data![downData-6].incidentRate ?? 0)
                     
                     //se llama a la funcion de cofiguracion de icono de cambio de alerta
                     self.conditionImageControl()

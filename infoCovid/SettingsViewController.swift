@@ -14,10 +14,14 @@ class SettingsViewController: UIViewController{
     @IBOutlet weak var notificationsSwitch: UISwitch!
     @IBOutlet weak var actualLocationSwitch: UISwitch!
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+       
         setDefaultValues()
         // Obtenemos el estado de las notificaciones y de la localización actual del almacenamiento interno
         notifications = UserDefaults.standard.bool(forKey: kMyKeyNotifications)
@@ -44,7 +48,19 @@ class SettingsViewController: UIViewController{
         
     }
     
-   /*
+    @IBAction func web01Button(_ sender: Any) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    @IBAction func web02Button(_ sender: Any) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    @IBAction func web03Button(_ sender: Any) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    @IBAction func web04Button(_ sender: Any) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    /*
     @IBAction func deleteData(_ sender: UIButton) {
         UserDefaults.standard.removeObject(forKey: "MY_KEY_NOTIFICATIONS")
         UserDefaults.standard.removeObject(forKey: "MY_KEY_ACTUALLOCATION")

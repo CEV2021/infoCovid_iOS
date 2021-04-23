@@ -495,6 +495,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="¿De dónde obtenemos los datos?"/>
                                         <connections>
+                                            <action selector="web01Button:" destination="hDy-1K-TOn" eventType="touchUpInside" id="b81-I5-34W"/>
                                             <segue destination="gSZ-AN-tlc" kind="show" id="N1R-D1-3GJ"/>
                                         </connections>
                                     </button>
@@ -503,6 +504,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="¿Cómo puedo evitar contagios?"/>
                                         <connections>
+                                            <action selector="web02Button:" destination="hDy-1K-TOn" eventType="touchUpInside" id="wDF-ah-Agz"/>
                                             <segue destination="9kt-dS-sld" kind="show" id="ny6-04-hFI"/>
                                         </connections>
                                     </button>
@@ -511,6 +513,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="¿Puedo tener varias cuentas?"/>
                                         <connections>
+                                            <action selector="web03Button:" destination="hDy-1K-TOn" eventType="touchUpInside" id="0r5-1l-8na"/>
                                             <segue destination="h0w-Sr-ato" kind="show" id="YtF-la-SCv"/>
                                         </connections>
                                     </button>
@@ -519,6 +522,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="¿Qué pasa si cambio de smartphone?"/>
                                         <connections>
+                                            <action selector="web04Button:" destination="hDy-1K-TOn" eventType="touchUpInside" id="EQX-ut-vDe"/>
                                             <segue destination="sPA-TJ-pTm" kind="show" id="OgX-ao-AbF"/>
                                         </connections>
                                     </button>
@@ -647,7 +651,18 @@
                         <viewLayoutGuide key="safeArea" id="Hvj-94-GF1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="J86-lq-Y0K"/>
+                    <navigationItem key="navigationItem" id="J86-lq-Y0K">
+                        <barButtonItem key="rightBarButtonItem" image="arrow.clockwise" catalog="system" style="plain" id="nSv-id-6HF">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TXJ-6x-GiV">
+                                <rect key="frame" x="322" y="11" width="72" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="arrow.clockwise" catalog="system"/>
+                                <connections>
+                                    <action selector="reloadButton:" destination="gSZ-AN-tlc" eventType="touchUpInside" id="7tR-Y2-sPH"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ae-TP-F0K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -663,7 +678,18 @@
                         <viewLayoutGuide key="safeArea" id="qdR-VO-9Q1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HgG-HO-YkO"/>
+                    <navigationItem key="navigationItem" id="HgG-HO-YkO">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="xfu-fe-eST">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5Sw-df-XaN">
+                                <rect key="frame" x="302" y="7" width="72" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="arrow.clockwise" catalog="system"/>
+                                <connections>
+                                    <action selector="reloadButton:" destination="9kt-dS-sld" eventType="touchUpInside" id="chR-eG-vv5"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00S-52-kvT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -679,7 +705,18 @@
                         <viewLayoutGuide key="safeArea" id="TfX-m7-doC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HbV-Jz-1EX"/>
+                    <navigationItem key="navigationItem" id="HbV-Jz-1EX">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="MVL-Gp-GGk">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cBp-bg-D93">
+                                <rect key="frame" x="302" y="7" width="18" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="arrow.clockwise" catalog="system"/>
+                                <connections>
+                                    <action selector="reloadButton:" destination="sPA-TJ-pTm" eventType="touchUpInside" id="8R3-Pb-dme"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czy-SJ-flA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -695,7 +732,18 @@
                         <viewLayoutGuide key="safeArea" id="oZR-Zr-XyE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="alM-lM-uLR"/>
+                    <navigationItem key="navigationItem" id="alM-lM-uLR">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Eyk-WP-bWR">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="trp-Oa-oUA">
+                                <rect key="frame" x="302" y="7" width="72" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="arrow.clockwise" catalog="system"/>
+                                <connections>
+                                    <action selector="reloadButton:" destination="h0w-Sr-ato" eventType="touchUpInside" id="Nh7-QU-qX3"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uqt-3D-TiW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1208,6 +1256,7 @@
         <segue reference="ZCQ-wa-a9H"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>
         <image name="coronavirusVerde" width="512" height="512"/>
         <image name="cruz" width="170.66667175292969" height="170.66667175292969"/>
