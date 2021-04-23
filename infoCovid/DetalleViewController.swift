@@ -5,6 +5,7 @@ import CoreLocation
 
 class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var seeListButton: UIButton!
     @IBOutlet weak var listButton: UIBarButtonItem!
     @IBOutlet weak var lastUpdateLabel: UILabel!
     @IBOutlet weak var newCasesLabel: UILabel!
@@ -60,10 +61,12 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         if fromFavoriteLocationList {
             addButton.isHidden = true
             showListButton.isEnabled = false
+            seeListButton.isHidden = true
         }
         else {
             addButton.isHidden = false
             showListButton.isEnabled = true
+            seeListButton.isHidden = false
         }
         
     }
@@ -77,7 +80,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         //newCasesNumber = ((datos?.data![downloadData].confirmed) ?? 0) - (datos?.data![downloadData-1].confirmed ?? 0)
         
         //calculo de incidencia acumulada tomando los datos de la ultima fecha y 14 dias
-        ia = ((datos?.data![downloadData].incidentRate) ?? 0) - (datos?.data![downloadData-7].incidentRate ?? 0)
+        ia = ((datos?.data![downloadData].incidentRate) ?? 0) - (datos?.data![downloadData-6].incidentRate ?? 0)
         
         settings.setDefaultValues()
         totalInfectionsLabel.text = String(format:"%.0f", ia)
@@ -281,9 +284,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
                     self.recoveredLabel.text = String( region.data![downData].recovered!)
                     self.newCasesLabel.text = String(region.data![downData].active!)
                     self.totalLabel.text = String( region.data![downData].confirmed!)
-                    self.totalInfectionsLabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0))
+                    self.totalInfectionsLabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-6].incidentRate ?? 0))
                     self.lastUpdateLabel.text = "Última actualización: " +
-                        region.data![downData].date!
+                        region.data![downData].date
                     
                     //se le da valor a la variable para el cambio de alerta
                     self.ia = ((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0)

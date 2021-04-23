@@ -351,6 +351,7 @@
                         <outlet property="listButton" destination="uzl-Ng-6UF" id="BSu-Dl-8E2"/>
                         <outlet property="newCasesLabel" destination="3qo-MH-dc0" id="UYz-nh-v4w"/>
                         <outlet property="recoveredLabel" destination="gPe-pt-Osq" id="qpl-8N-dhf"/>
+                        <outlet property="seeListButton" destination="TtU-A8-drd" id="zUN-Ja-rJl"/>
                         <outlet property="sevenDaysView" destination="QJf-mq-61q" id="XbE-NQ-p6F"/>
                         <outlet property="showListButton" destination="uzl-Ng-6UF" id="xIJ-Wt-IH0"/>
                         <outlet property="totalInfectionsLabel" destination="So3-m5-e8M" id="wiF-8R-3Vs"/>
@@ -594,25 +595,25 @@
                                 <exclude reference="JZY-oq-eqD"/>
                                 <exclude reference="FKc-9c-iGp"/>
                                 <exclude reference="X3i-yp-dlJ"/>
-                                <exclude reference="OuL-mE-vDq"/>
-                                <exclude reference="Whx-ny-WrC"/>
-                                <exclude reference="lTi-6d-yIG"/>
                                 <exclude reference="7cy-LV-0Bg"/>
                                 <exclude reference="de7-Tw-CTk"/>
                                 <exclude reference="u2K-Vv-57A"/>
+                                <exclude reference="OuL-mE-vDq"/>
+                                <exclude reference="Whx-ny-WrC"/>
+                                <exclude reference="lTi-6d-yIG"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
                             <mask key="constraints">
                                 <exclude reference="Van-TJ-tby"/>
                                 <exclude reference="FKc-9c-iGp"/>
-                                <include reference="Whx-ny-WrC"/>
-                                <exclude reference="lTi-6d-yIG"/>
-                                <exclude reference="nWR-tf-4DP"/>
                                 <exclude reference="1c0-x3-DHV"/>
                                 <include reference="7cy-LV-0Bg"/>
                                 <include reference="de7-Tw-CTk"/>
                                 <exclude reference="tsv-db-efM"/>
+                                <include reference="Whx-ny-WrC"/>
+                                <exclude reference="lTi-6d-yIG"/>
+                                <exclude reference="nWR-tf-4DP"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -620,9 +621,9 @@
                                 <exclude reference="Van-TJ-tby"/>
                                 <include reference="JZY-oq-eqD"/>
                                 <include reference="X3i-yp-dlJ"/>
-                                <include reference="OuL-mE-vDq"/>
                                 <exclude reference="tsv-db-efM"/>
                                 <include reference="u2K-Vv-57A"/>
+                                <include reference="OuL-mE-vDq"/>
                             </mask>
                         </variation>
                     </view>
@@ -916,7 +917,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="106" height="29.333333333333332"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="243" text="Nuevos Casos: " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="2nb-vd-d4c">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="243" text="Casos Activos:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="2nb-vd-d4c">
                                                 <rect key="frame" x="87" y="0.0" width="106" height="29.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -991,7 +992,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="106" height="29.333333333333332"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="243" text="Nuevos Casos: " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="CKF-Jv-Wv8">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="243" text="Casos Activos:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="CKF-Jv-Wv8">
                                                 <rect key="frame" x="87" y="0.0" width="106" height="29.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1057,20 +1058,20 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ANTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Nw-NE-AVo">
-                                <rect key="frame" x="172.66666666666663" y="673.33333333333337" width="69" height="25.333333333333371"/>
+                                <rect key="frame" x="172.66666666666666" y="673.33333333333337" width="69" height="25.333333333333371"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emh-fH-Guk">
-                                <rect key="frame" x="184.66666666666663" y="519" width="45" height="25.333333333333371"/>
+                                <rect key="frame" x="184.66666666666666" y="519" width="45" height="25.333333333333371"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opf-gY-fDf">
-                                <rect key="frame" x="67" y="64" width="280" height="20.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="67" y="64" width="280" height="37"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1146,9 +1147,16 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Incidencia Acumulada" image="chart.bar.xaxis" catalog="system" id="34R-Zy-HKg"/>
                     <connections>
+                        <outlet property="activeCasesBefore" destination="AfF-TS-Yo4" id="naj-Dx-4k9"/>
+                        <outlet property="activeCasesToday" destination="pJT-HM-ggW" id="4xk-Xb-9Lh"/>
                         <outlet property="antesStack" destination="sbP-xQ-DVk" id="aYo-Pw-iZK"/>
+                        <outlet property="beforeDateLabel" destination="9Nw-NE-AVo" id="gc6-Wt-Bwf"/>
+                        <outlet property="deathBefore" destination="8YX-sE-xS2" id="pjs-WD-9ju"/>
+                        <outlet property="deathToday" destination="jNY-f3-eWK" id="TPo-wO-atH"/>
                         <outlet property="grafica" destination="Zjc-cS-ukg" id="yKc-Dk-jJv"/>
                         <outlet property="hoyStack" destination="PHI-da-mZj" id="6ac-dM-hev"/>
+                        <outlet property="recoveryBefore" destination="eWB-bf-jzx" id="Baa-oz-u7A"/>
+                        <outlet property="recoveryToday" destination="Rru-6p-xIg" id="eFM-vx-z6M"/>
                         <outlet property="regionNameLabel" destination="opf-gY-fDf" id="6Td-Cl-YO3"/>
                     </connections>
                 </viewController>

@@ -5,12 +5,27 @@ import Charts
 
 class IncidenciaViewController: UIViewController {
     
+    @IBOutlet weak var beforeDateLabel: UILabel!
+    @IBOutlet weak var deathBefore: UILabel!
+    @IBOutlet weak var recoveryBefore: UILabel!
+    @IBOutlet weak var activeCasesBefore: UILabel!
+    @IBOutlet weak var recoveryToday: UILabel!
+    @IBOutlet weak var deathToday: UILabel!
+    @IBOutlet weak var activeCasesToday: UILabel!
     @IBOutlet weak var grafica: LineChartView!
     @IBOutlet weak var hoyStack: UIStackView!
     @IBOutlet weak var antesStack: UIStackView!
     @IBOutlet weak var regionNameLabel: UILabel!
     
     var region: Region?
+    var downData = 0
+    var ia : Double = 0.0
+    var ia1 : Double = 0.0
+    var ia2 : Double = 0.0
+    var ia3 : Double = 0.0
+    var ia4 : Double = 0.0
+    var ia5 : Double = 0.0
+    var chartNumber = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +40,20 @@ class IncidenciaViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         print("Vista aparece")
+        
+       
+        
+        var downData = ((region?.data!.count)!) - 1
+        
+        
         regionNameLabel.text = region?.name
+        activeCasesToday.text = String((region?.data![downData].active)!)
+        recoveryToday.text = String((region?.data![downData].recovered)! )
+        deathToday.text = String((region?.data![downData].deaths)!)
+        activeCasesBefore.text = String((region?.data![downData-7].active)!)
+        recoveryBefore.text = String((region?.data![downData-7].recovered)!)
+        deathBefore.text = String((region?.data![downData-7].deaths)!)
+        beforeDateLabel.text = String((region?.data![downData-7].date)!)
     }
     
     func generaGraficoLinea () {
@@ -48,13 +76,26 @@ class IncidenciaViewController: UIViewController {
          ...
          
          */
-        let dato1 = BarChartDataEntry(x: 0, y: Double(0))
-        let dato2 = BarChartDataEntry(x: 1, y: Double(1))
-        let dato3 = BarChartDataEntry(x: 2.0, y: Double(4))
-        let dato4 = BarChartDataEntry(x: 3.0, y: Double(5))
-        let dato5 = BarChartDataEntry(x: 4.0, y: Double(3))
-        let dato6 = BarChartDataEntry(x: 5.0, y: Double(2))
-        let dato7 = BarChartDataEntry(x: 6.0, y: Double(2))
+        
+       
+        var downData = ((region?.data!.count)!) - 1
+        ia = ((region?.data![downData].incidentRate) ?? 0) - (region?.data![downData-7].incidentRate ?? 0)
+        
+        ia1 = Double((region?.data![downData-6].active)!)
+        ia2 = ((region?.data![downData].incidentRate) ?? 0) - (region?.data![downData-5].incidentRate ?? 0)
+        ia3 = ((region?.data![downData].incidentRate) ?? 0) - (region?.data![downData-4].incidentRate ?? 0)
+        ia4 = ((region?.data![downData].incidentRate) ?? 0) - (region?.data![downData-3].incidentRate ?? 0)
+        ia5 = ((region?.data![downData].incidentRate) ?? 0) - (region?.data![downData-2].incidentRate ?? 0)
+       print(downData-12)
+        print(downData-3)
+        
+        let dato1 = BarChartDataEntry(x: 0, y: Double((region?.data![downData-6].active)!))
+        let dato2 = BarChartDataEntry(x: 1, y: Double((region?.data![downData-5].active)!))
+        let dato3 = BarChartDataEntry(x: 2.0, y: Double((region?.data![downData-4].active)!))
+        let dato4 = BarChartDataEntry(x: 3.0, y: Double((region?.data![downData-3].active)!))
+        let dato5 = BarChartDataEntry(x: 4.0, y: Double((region?.data![downData-2].active)!))
+        let dato6 = BarChartDataEntry(x: 5.0, y: Double((region?.data![downData-1].active)!))
+        let dato7 = BarChartDataEntry(x: 6.0, y: Double((region?.data![downData].active)!))
         let dataSet = LineChartDataSet(entries: [dato1, dato2, dato3, dato4, dato5, dato6, dato7], label: "Incidencia")
         let data = LineChartData(dataSets: [dataSet])
         grafica.data = data
@@ -64,10 +105,10 @@ class IncidenciaViewController: UIViewController {
         // Configuración del eje Y (Vertical)
         grafica.rightAxis.enabled = false
         grafica.leftAxis.labelFont = .boldSystemFont(ofSize: 12)
-        grafica.leftAxis.setLabelCount(6, force: false)
+        grafica.leftAxis.setLabelCount(7, force: false)
         grafica.leftAxis.labelTextColor = .red
         grafica.leftAxis.labelPosition = .outsideChart
-        let incidence = ["0","200", "400", "600", "800", "1000"]
+        let incidence = ["500000","1000", "1000000", "600", "800", "700000"]
         grafica.leftAxis.valueFormatter = IndexAxisValueFormatter(values: incidence)
         grafica.leftAxis.granularity = 1
         grafica.leftAxis.drawGridLinesEnabled = false
@@ -75,9 +116,10 @@ class IncidenciaViewController: UIViewController {
         
         // Configuración del eje X (Horizontal)
         grafica.xAxis.labelPosition = .bottom
-        grafica.xAxis.labelFont = .boldSystemFont(ofSize: 12)
-        grafica.xAxis.setLabelCount(12, force: false)
-        let months = ["En", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+        grafica.xAxis.labelFont = .boldSystemFont(ofSize: 6)
+        grafica.xAxis.setLabelCount(7, force: false)
+        let months = [region!.data![downData-6].date
+                      , region!.data![downData-5].date, region!.data![downData-4].date, region!.data![downData-3].date, region!.data![downData-2].date, region!.data![downData-1].date, "Hoy", region!.data![downData-1].date, region!.data![4].date, region!.data![3].date, region!.data![2].date, region!.data![1].date]
         grafica.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
         grafica.xAxis.granularity = 1
         grafica.xAxis.drawGridLinesEnabled = false
