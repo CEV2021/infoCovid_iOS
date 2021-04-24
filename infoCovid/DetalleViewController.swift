@@ -68,6 +68,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation")!
         updateCityName()
+        self.showLoading()
         self.tabBarController?.tabBar.isHidden = false
         self.showLoading()
         if fromFavoriteLocationList {

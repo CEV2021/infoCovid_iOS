@@ -93,7 +93,7 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         ia5 = ((region?.data![downData-1].incidentRate) ?? 0) - (region?.data![downData-7].incidentRate ?? 0)
         ia6 = ((region?.data![downData].incidentRate) ?? 0) - (region?.data![downData-6].incidentRate ?? 0)
   
-        print(ia4)
+        print(ia6)
         let dato1 = BarChartDataEntry(x: 0.0, y: ia )
         let dato2 = BarChartDataEntry(x: 1.0, y: ia1 )
         let dato3 = BarChartDataEntry(x: 2.0, y: ia2 )
