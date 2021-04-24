@@ -18,10 +18,6 @@ class Web01ViewController: UIViewController, WKNavigationDelegate {
             let url = URL(string: "https://www.pokemongolive.com")!
             self.webView.load(URLRequest(url: url))
             
-            let refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self.webView, action: #selector(webView.reload))
-            self.toolbarItems = [refreshBarButtonItem]
-            self.navigationController?.isToolbarHidden = false
-            
         }
         
         override func loadView() {

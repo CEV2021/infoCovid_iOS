@@ -5,6 +5,9 @@ import CoreLocation
 
 class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
+  
+ 
+    @IBOutlet weak var container: UIView!
     @IBOutlet weak var seeListButton: UIButton!
     @IBOutlet weak var listButton: UIBarButtonItem!
     @IBOutlet weak var lastUpdateLabel: UILabel!
@@ -53,6 +56,11 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var ia : Double = 0.0
     var updateDate = ""
     
+    //variables para el indicador de carga
+    var activityIndicator = UIActivityIndicatorView()
+    var loadingView = UIView()
+    var loadingLabels = UILabel()
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,13 +75,20 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
             addButton.isHidden = false
             showListButton.isEnabled = true
             seeListButton.isHidden = false
+            self.showLoading()
         }
+        
+        seeListButton.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+        self.container.isHidden = false
+        self.setupLoadingViews()//se hace la llamada a la funcion de carga
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(downloadData-1)
+        
         
         
         //Se calculan los nuevos casos
@@ -109,7 +124,11 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         //se comprueba la variable ia para que no salten dos notificaciones cuando tome los datos desde la ubicacion
         if ia != 0{
             conditionImageControl()
+            seeListButton.isHidden = false
+            self.tabBarController?.tabBar.isHidden = false
         }
+        
+        
         
     }
     
@@ -289,6 +308,15 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
                     self.lastUpdateLabel.text = "Última actualización: " +
                         region.data![downData].date
                     
+                    if fromFavoriteLocationList{
+                        seeListButton.isHidden = true
+        
+                    }else{
+                    seeListButton.isHidden = false
+                    }
+                    
+                    self.tabBarController?.tabBar.isHidden = false
+                    hideLoading()
                     //se le da valor a la variable para el cambio de alerta
                     self.ia = ((region.data![downData].incidentRate) ?? 0) - (region.data![downData-6].incidentRate ?? 0)
                     
@@ -306,7 +334,53 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    //configuracion del activity indicator
+    func setupLoadingViews(){
+        self.container.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y + 140, width: self.view.frame.width, height: self.view.frame.height - 140)
+        self.container.backgroundColor = .systemGray5
+        
+        //Loading View
+        self.loadingView.frame = CGRect(x: 0, y: 0, width: 180, height: 180)
+        self.loadingView.center = self.view.center
+        self.loadingView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
+        self.loadingView.clipsToBounds = true
+        self.loadingView.layer.cornerRadius = 10
+        
+        //Activity Indicator View
+        self.activityIndicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        self.activityIndicator.style = .large
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.color = .white
+        self.activityIndicator.startAnimating()
+        
+        //Label
+        self.loadingLabels.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
+        let center = self.activityIndicator.center
+        self.loadingLabels.center = CGPoint(x: center.x, y: center.y + 40)
+        self.loadingLabels.textAlignment = .center
+        self.loadingLabels.text = "Loading..."
+        self.loadingLabels.textColor = .white
+    }
+    
+    //Funcion para mostrar la vista de loading
+    func showLoading(){
+        self.view.addSubview(self.container)
+        self.view.addSubview(self.loadingView)
+        self.view.addSubview(self.activityIndicator)
+        self.view.addSubview(self.loadingLabels)
+    }
+    
+    //funcion para esconder la vista de loading
+    func hideLoading(){
+        self.loadingLabels.removeFromSuperview()
+        self.activityIndicator.removeFromSuperview()
+        self.loadingView.removeFromSuperview()
+        self.container.removeFromSuperview()
+    }
 }
+
+    
+
 
 
 

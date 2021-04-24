@@ -131,7 +131,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     //configuracion del activity indicator
     func setupLoadingViews(){
         self.container.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y + 140, width: self.view.frame.width, height: self.view.frame.height - 140)
-        self.container.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
+        self.container.backgroundColor = .systemGray5
         
         //Loading View
         self.loadingView.frame = CGRect(x: 0, y: 0, width: 180, height: 180)

@@ -191,6 +191,10 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
                                 </variation>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9V-kL-S67">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -229,6 +233,8 @@
                             <constraint firstItem="ybH-Ra-5MF" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.248641" id="Gbi-Qr-qBw">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-15.999775999999997"/>
                             </constraint>
+                            <constraint firstItem="s9V-kL-S67" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Jbl-Bo-htZ"/>
+                            <constraint firstItem="s9V-kL-S67" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Ovt-q1-TFm"/>
                             <constraint firstItem="4nk-gc-dsI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uld-kF-A8R"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QJf-mq-61q" secondAttribute="trailing" constant="31" id="V4g-td-RUa">
                                 <variation key="heightClass=regular-widthClass=compact" constant="31"/>
@@ -239,12 +245,14 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="114"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="115"/>
                             </constraint>
+                            <constraint firstItem="s9V-kL-S67" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cgt-an-Em5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FBD-gJ-xwd" secondAttribute="trailing" constant="31" id="dGW-cY-n6h">
                                 <variation key="heightClass=regular-widthClass=compact" constant="32"/>
                             </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hgx-kf-ZaN" secondAttribute="trailing" constant="31" id="eG9-vf-kft">
                                 <variation key="heightClass=regular-widthClass=compact" constant="32"/>
                             </constraint>
+                            <constraint firstItem="s9V-kL-S67" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="f0Y-cI-XQN"/>
                             <constraint firstItem="ybH-Ra-5MF" firstAttribute="top" secondItem="QLB-5Q-FfD" secondAttribute="bottom" constant="32" id="hrO-Z7-eOd">
                                 <variation key="heightClass=compact-widthClass=compact" constant="-2"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="1"/>
@@ -346,6 +354,7 @@
                         <outlet property="addButton" destination="LFJ-XL-Dge" id="Mcq-Eg-AYJ"/>
                         <outlet property="comunityName" destination="QLB-5Q-FfD" id="VZt-bB-2u4"/>
                         <outlet property="conditionImage" destination="ybH-Ra-5MF" id="ekN-4z-f8t"/>
+                        <outlet property="container" destination="s9V-kL-S67" id="mW7-11-txB"/>
                         <outlet property="deathsLabel" destination="cOI-3e-miK" id="SwI-Qu-39R"/>
                         <outlet property="lastUpdateLabel" destination="4nk-gc-dsI" id="uQZ-fT-w1S"/>
                         <outlet property="listButton" destination="uzl-Ng-6UF" id="BSu-Dl-8E2"/>
@@ -360,7 +369,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="933.33333333333337" y="895.92391304347836"/>
+            <point key="canvasLocation" x="933.33333333333337" y="895.3125"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9Te-Ho-8BR">
@@ -681,7 +690,7 @@
                     <navigationItem key="navigationItem" id="HgG-HO-YkO">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="xfu-fe-eST">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5Sw-df-XaN">
-                                <rect key="frame" x="302" y="7" width="72" height="22"/>
+                                <rect key="frame" x="322" y="11" width="72" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="arrow.clockwise" catalog="system"/>
                                 <connections>
@@ -708,7 +717,7 @@
                     <navigationItem key="navigationItem" id="HbV-Jz-1EX">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="MVL-Gp-GGk">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cBp-bg-D93">
-                                <rect key="frame" x="302" y="7" width="18" height="22"/>
+                                <rect key="frame" x="376" y="11" width="18" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="arrow.clockwise" catalog="system"/>
                                 <connections>
@@ -735,7 +744,7 @@
                     <navigationItem key="navigationItem" id="alM-lM-uLR">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Eyk-WP-bWR">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="trp-Oa-oUA">
-                                <rect key="frame" x="302" y="7" width="72" height="22"/>
+                                <rect key="frame" x="322" y="11" width="72" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="arrow.clockwise" catalog="system"/>
                                 <connections>
@@ -1253,7 +1262,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="aeq-ti-Ctv"/>
-        <segue reference="ZCQ-wa-a9H"/>
+        <segue reference="4cv-X3-n4H"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
