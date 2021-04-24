@@ -30,6 +30,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var tabla : SearchLocationTableViewController?
     var persistencia = Persistencia()
     var fromFavoriteLocationList = false
+    // Variable para almacenar la localización favorita
+    var favoriteLocation = ""
     
     var datos: Region?//prueba recibiendo los datos completos de la seleccion
     
@@ -64,6 +66,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation")!
         updateCityName()
         self.tabBarController?.tabBar.isHidden = false
         self.showLoading()
@@ -83,12 +86,12 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         self.tabBarController?.tabBar.isHidden = true
         self.container.isHidden = false
         self.setupLoadingViews()//se hace la llamada a la funcion de carga
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(downloadData-1)
+       
         
         
         
@@ -110,6 +113,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         notifications = UserDefaults.standard.bool(forKey: kMKeyNotifications)
         
         
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
             if granted {
@@ -127,6 +131,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         if ia != 0{
             conditionImageControl()
             seeListButton.isHidden = false
+            hideLoading()
             self.tabBarController?.tabBar.isHidden = false
         }
         
@@ -214,7 +219,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
             downloadAndSetRegion(name: locationSelected!)
         }
         else {
-            comunityName.text = name
+            comunityName.text = favoriteLocation
+            downloadAndSetRegion(name: comunityName.text!)
         }
     }
     
@@ -287,6 +293,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         if name == "Pais Vasco" {
             self.name = "Pais%20Vasco"
         }
+        // Controlado Cataluña daba error
+        if name == "Cataluña" {
+            self.name = "Catalonia"
+        }
         print(self.name + "Esto es desde el método")
         connection.getRegionByName(withString: self.name) { [self] (region) in
             if let region = region {
@@ -294,6 +304,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
                 print("Tengo region")
                 if region.name == "Andalusia"{
                     region.name = "Andalucia"
+                }
+                // Controlado para mostrar Cataluña
+                if region.name == "Catalonia"{
+                    region.name = "Cataluña"
                 }
                 
                 

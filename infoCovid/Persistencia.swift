@@ -84,6 +84,8 @@ class Persistencia {
             print("Error en el parseo del array")
         }
     }
+    
+    
 
     
     

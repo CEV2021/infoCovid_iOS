@@ -855,6 +855,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Ubicaciones" id="JxW-kW-8O9"/>
+                    <connections>
+                        <outlet property="labelName" destination="ZQe-2y-CNe" id="cAb-H9-vfz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IwX-Cs-fsk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
