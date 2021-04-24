@@ -66,16 +66,17 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         updateCityName()
         self.tabBarController?.tabBar.isHidden = false
+        self.showLoading()
         if fromFavoriteLocationList {
             addButton.isHidden = true
             showListButton.isEnabled = false
             seeListButton.isHidden = true
+           
         }
         else {
             addButton.isHidden = false
             showListButton.isEnabled = true
             seeListButton.isHidden = false
-            self.showLoading()
         }
         
         seeListButton.isHidden = true
@@ -88,6 +89,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(downloadData-1)
+        
         
         
         
@@ -375,7 +377,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         self.loadingLabels.removeFromSuperview()
         self.activityIndicator.removeFromSuperview()
         self.loadingView.removeFromSuperview()
-        self.container.removeFromSuperview()
+        self.container.isHidden = true
     }
 }
 
