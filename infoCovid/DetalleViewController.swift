@@ -66,7 +66,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation")!
+        favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation") ?? "Madrid"
         updateCityName()
         self.showLoading()
         self.tabBarController?.tabBar.isHidden = false
@@ -95,8 +95,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
        
         
         
+        getDateFromString(updateDate: updateDate)
+        print("vengo del load\(updateDate)")
         
-        
+       
         //Se calculan los nuevos casos
         //newCasesNumber = ((datos?.data![downloadData].confirmed) ?? 0) - (datos?.data![downloadData-1].confirmed ?? 0)
         
@@ -109,6 +111,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         recoveredLabel.text = String(recoveredNumber)
         deathsLabel.text = String(deathsNumber)
         totalLabel.text = String(totalNumber)
+        print(updateDate)
         lastUpdateLabel.text = "Última actualización: " +
             updateDate
         notifications = UserDefaults.standard.bool(forKey: kMKeyNotifications)
@@ -314,7 +317,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
                 
                 //se rellena la vista con los datos obtenidos desde la localizacion
                 DispatchQueue.main.async{
+                   
                     var downData = (region.data!.count) - 1
+                    updateDate = region.data![downData].date
+                    getDateFromString(updateDate: updateDate)
                     print(downData)
                     self.comunityName.text = region.name
                     self.deathsLabel.text = String( region.data![downData].deaths!)
@@ -323,7 +329,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
                     self.totalLabel.text = String( region.data![downData].confirmed!)
                     self.totalInfectionsLabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-6].incidentRate ?? 0))
                     self.lastUpdateLabel.text = "Última actualización: " +
-                        region.data![downData].date
+                        updateDate
                     
                     if fromFavoriteLocationList{
                         seeListButton.isHidden = true
@@ -394,6 +400,35 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         self.loadingView.removeFromSuperview()
         self.container.isHidden = true
     }
+    
+    //se pasa la fecha de tipo String a tipo date para poder cambiarle el formato de americano a europeo
+    func getDateFromString(updateDate: String) -> (date: Date?, conversion: Bool){
+        
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let dateComponentArray = updateDate.components(separatedBy: "-")
+        
+        if dateComponentArray.count == 3{
+            var components = DateComponents()
+            components.year = Int(dateComponentArray[0])
+            components.month = Int(dateComponentArray[1])
+            components.day = Int(dateComponentArray[2]
+            )
+            guard let date = calendar.date(from: components) else{
+                return (nil, false)
+            }
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateStyle = .medium
+            
+            print(dateFormatter.string(from: date))
+            self.updateDate = dateFormatter.string(from: date)
+            return (date, true)
+        }else{
+            return (nil, false)
+        }
+    }
+    
+    
 }
 
     

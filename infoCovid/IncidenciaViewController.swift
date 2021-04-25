@@ -27,6 +27,7 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
     var ia5 : Double = 0.0
     var ia6 : Double = 0.0
     var chartNumber = 0.0
+    var updateDate = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +43,10 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         print("Vista aparece")
         
-        
         var downData = ((region?.data!.count)!) - 1
+        updateDate = (region?.data![downData-6].date)!
         
+        getDateFromString(updateDate: updateDate)
         generaGraficoLinea()
         regionNameLabel.text = region?.name
         activeCasesToday.text = String((region?.data![downData].active)!)
@@ -53,7 +55,7 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         activeCasesBefore.text = String((region?.data![downData-6].active)!)
         recoveryBefore.text = String((region?.data![downData-6].recovered)!)
         deathBefore.text = String((region?.data![downData-6].deaths)!)
-        beforeDateLabel.text = String((region?.data![downData-6].date)!)
+        beforeDateLabel.text = updateDate
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
@@ -148,5 +150,32 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         dataSet.drawCircleHoleEnabled = true
         dataSet.circleRadius = 5
         data.setDrawValues(false)
+    }
+    
+    //se pasa la fecha de tipo String a tipo date para poder cambiarle el formato de americano a europeo
+    func getDateFromString(updateDate: String) -> (date: Date?, conversion: Bool){
+        
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let dateComponentArray = updateDate.components(separatedBy: "-")
+        
+        if dateComponentArray.count == 3{
+            var components = DateComponents()
+            components.year = Int(dateComponentArray[0])
+            components.month = Int(dateComponentArray[1])
+            components.day = Int(dateComponentArray[2]
+            )
+            guard let date = calendar.date(from: components) else{
+                return (nil, false)
+            }
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateStyle = .medium
+            
+            print(dateFormatter.string(from: date))
+            self.updateDate = dateFormatter.string(from: date)
+            return (date, true)
+        }else{
+            return (nil, false)
+        }
     }
 }
