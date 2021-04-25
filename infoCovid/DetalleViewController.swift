@@ -3,10 +3,10 @@
 import UIKit
 import CoreLocation
 
-class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
+class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUserNotificationCenterDelegate{
     
-  
- 
+    
+    
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var seeListButton: UIButton!
     @IBOutlet weak var listButton: UIBarButtonItem!
@@ -57,7 +57,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     var downloadData = 0
     var ia : Double = 0.0
     var updateDate = ""
-    var timeToRemember: Double = 10.0
+    var timeToRemember: Double = 3600.0
+    var dateNotification = DateComponents()
     
     //variables para el indicador de carga
     var activityIndicator = UIActivityIndicatorView()
@@ -75,7 +76,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             addButton.isHidden = true
             showListButton.isEnabled = false
             seeListButton.isHidden = true
-           
+            
         }
         else {
             addButton.isHidden = false
@@ -91,26 +92,29 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         settings.setDefaultValues()
         notifications = UserDefaults.standard.bool(forKey: kMKeyNotifications)
         
-        
+        //valores que configuran la hora a la que se muestra la notificacion
+        dateNotification.hour = 12
+        dateNotification.minute = 00
+        UNUserNotificationCenter.current().delegate = self
         //NO HACE FALTA¿?
         /*
-        //calculo de incidencia acumulada tomando los datos de la ultima fecha y 14 dias
-        ia = ((datos?.data![downloadData].incidentRate) ?? 0) - (datos?.data![downloadData-6].incidentRate ?? 0)
-        
-       
-        totalInfectionsLabel.text = String(format:"%.0f", ia)
-        newCasesLabel.text = String(activeCasesNumber)
-        recoveredLabel.text = String(recoveredNumber)
-        deathsLabel.text = String(deathsNumber)
-        totalLabel.text = String(totalNumber)
-        lastUpdateLabel.text = "Última actualización: " +
-            updateDate
-       
-        */
+         //calculo de incidencia acumulada tomando los datos de la ultima fecha y 14 dias
+         ia = ((datos?.data![downloadData].incidentRate) ?? 0) - (datos?.data![downloadData-6].incidentRate ?? 0)
+         
+         
+         totalInfectionsLabel.text = String(format:"%.0f", ia)
+         newCasesLabel.text = String(activeCasesNumber)
+         recoveredLabel.text = String(recoveredNumber)
+         deathsLabel.text = String(deathsNumber)
+         totalLabel.text = String(totalNumber)
+         lastUpdateLabel.text = "Última actualización: " +
+         updateDate
+         
+         */
         
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
@@ -133,8 +137,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             hideLoading()
             self.tabBarController?.tabBar.isHidden = false
         }
-        
-        
         
     }
     
@@ -163,44 +165,66 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         }
     }
     
-   
- 
+    //A traves del centro de notificaciones se le da funcionalidad a los botones de la notificacion
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if response.actionIdentifier == "rememberAction"{
+            dateNotification.hour = 20
+            timeToRemember = 10
+            conditionImageControl()
+        }
+        
+        else if response.actionIdentifier == "deleteAction" {
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["MiNotificacion"])
+        }
+        completionHandler()
+    }
+    
+    //funciojn para mostrar las notificaciones
     func showNotification(text: String, subtitle: String){
         
         if notifications! {
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeToRemember, repeats: false)
-        
-        let content = UNMutableNotificationContent()
+            //trigger para mostrar notificacion a la hora configurada en la variable dateNotification
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateNotification, repeats: false)
+            
+            //trigger para mostrar notificacion en un tiempo determinado
+            //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeToRemember, repeats: false)
+            
+            let content = UNMutableNotificationContent()
             content.title = "Nivel de alerta actual"
             content.subtitle = subtitle
             content.body = "La incidencia es de: \(text) contagios"
             content.sound = UNNotificationSound.default
             
             let rememberAction = UNNotificationAction(identifier: "rememberAction", title: "Recordar más tarde", options: [])
+            //opcion de la notificacion para borrarla
             let deleteAction = UNNotificationAction(identifier: "deleteAction", title: "Eliminar Notificación", options: [])
             let category = UNNotificationCategory(identifier: "alertas", actions: [rememberAction, deleteAction], intentIdentifiers: [], options: [])
+            
             UNUserNotificationCenter.current().setNotificationCategories([category])
             content.categoryIdentifier = "alertas"
-        
-            if let path = Bundle.main.path(forResource: "Madrid", ofType: "jpg"){
-            let url = URL(fileURLWithPath: path)
             
+            //imagen que se muestra con la notificacion
+            if let path = Bundle.main.path(forResource: "Madrid", ofType: "jpg"){
+                let url = URL(fileURLWithPath: path)
+                
                 do{
                     let attachment = try UNNotificationAttachment(identifier: "Madrid", url: url, options: nil)
                     content.attachments = [attachment]
                 } catch {
                     print("no se ha cargado")
                 }
-                }
-                
-        let request = UNNotificationRequest(identifier: "MiNoti", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if let error = error{
-                print(error)
             }
-        }
+            
+            let request = UNNotificationRequest(identifier: "MiNotificacion", content: content, trigger: trigger)
+            
+            //evitamos notificaciones duplicadas
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            UNUserNotificationCenter.current().add(request) { (error) in
+                if let error = error{
+                    print(error)
+                }
+            }
         }
     }
     
@@ -333,7 +357,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                 
                 //se rellena la vista con los datos obtenidos desde la localizacion
                 DispatchQueue.main.async{
-                   
+                    
                     var downData = (region.data!.count) - 1
                     updateDate = region.data![downData].date
                     getDateFromString(updateDate: updateDate)
@@ -349,9 +373,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     
                     if fromFavoriteLocationList{
                         seeListButton.isHidden = true
-        
+                        
                     }else{
-                    seeListButton.isHidden = false
+                        seeListButton.isHidden = false
                     }
                     
                     self.tabBarController?.tabBar.isHidden = false
@@ -443,11 +467,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             return (nil, false)
         }
     }
-    
-    
 }
 
-    
+
 
 
 
