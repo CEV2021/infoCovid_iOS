@@ -3,7 +3,7 @@
 import UIKit
 import CoreLocation
 
-class DetalleViewController: UIViewController, CLLocationManagerDelegate {
+class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
     
   
  
@@ -57,6 +57,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     var downloadData = 0
     var ia : Double = 0.0
     var updateDate = ""
+    var timeToRemember: Double = 10.0
     
     //variables para el indicador de carga
     var activityIndicator = UIActivityIndicatorView()
@@ -70,7 +71,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         updateCityName()
         self.showLoading()
         self.tabBarController?.tabBar.isHidden = false
-        self.showLoading()
         if fromFavoriteLocationList {
             addButton.isHidden = true
             showListButton.isEnabled = false
@@ -91,31 +91,26 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(downloadData-1)
        
+        settings.setDefaultValues()
+        notifications = UserDefaults.standard.bool(forKey: kMKeyNotifications)
         
         
-        getDateFromString(updateDate: updateDate)
-        print("vengo del load\(updateDate)")
-        
-       
-        //Se calculan los nuevos casos
-        //newCasesNumber = ((datos?.data![downloadData].confirmed) ?? 0) - (datos?.data![downloadData-1].confirmed ?? 0)
-        
+        //NO HACE FALTA¿?
+        /*
         //calculo de incidencia acumulada tomando los datos de la ultima fecha y 14 dias
         ia = ((datos?.data![downloadData].incidentRate) ?? 0) - (datos?.data![downloadData-6].incidentRate ?? 0)
         
-        settings.setDefaultValues()
+       
         totalInfectionsLabel.text = String(format:"%.0f", ia)
         newCasesLabel.text = String(activeCasesNumber)
         recoveredLabel.text = String(recoveredNumber)
         deathsLabel.text = String(deathsNumber)
         totalLabel.text = String(totalNumber)
-        print(updateDate)
         lastUpdateLabel.text = "Última actualización: " +
             updateDate
-        notifications = UserDefaults.standard.bool(forKey: kMKeyNotifications)
-        
+       
+        */
         
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
@@ -168,26 +163,47 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    // se crea la funcion para las notificaciones
+   
+ 
     func showNotification(text: String, subtitle: String){
+        
         if notifications! {
-            let content = UNMutableNotificationContent()
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeToRemember, repeats: false)
+        
+        let content = UNMutableNotificationContent()
             content.title = "Nivel de alerta actual"
             content.subtitle = subtitle
             content.body = "La incidencia es de: \(text) contagios"
-            content.sound = .default
-            content.badge = 1
-            //se crea el trigger
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
-            //Creamos la request y añadidos el content del trigger
-            let request = UNNotificationRequest(identifier: "Mi Notificacion", content: content, trigger: trigger)
-            //añadimos la notificacion al centro de notificaciones
-            UNUserNotificationCenter.current().add(request) { (error) in
+            content.sound = UNNotificationSound.default
+            
+            let rememberAction = UNNotificationAction(identifier: "rememberAction", title: "Recordar más tarde", options: [])
+            let deleteAction = UNNotificationAction(identifier: "deleteAction", title: "Eliminar Notificación", options: [])
+            let category = UNNotificationCategory(identifier: "alertas", actions: [rememberAction, deleteAction], intentIdentifiers: [], options: [])
+            UNUserNotificationCenter.current().setNotificationCategories([category])
+            content.categoryIdentifier = "alertas"
+        
+            if let path = Bundle.main.path(forResource: "Madrid", ofType: "jpg"){
+            let url = URL(fileURLWithPath: path)
+            
+                do{
+                    let attachment = try UNNotificationAttachment(identifier: "Madrid", url: url, options: nil)
+                    content.attachments = [attachment]
+                } catch {
+                    print("no se ha cargado")
+                }
+                }
                 
-                print (error.debugDescription)
+        let request = UNNotificationRequest(identifier: "MiNoti", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error{
+                print(error)
             }
         }
+        }
     }
+    
     
     func sendReverseRequest() {
         let location = CLLocation(latitude: actualLocationLatitude, longitude: actualLocationLongitude)
