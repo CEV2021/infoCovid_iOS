@@ -46,7 +46,7 @@ struct My_WidgetEntryView : View {
     var body: some View {
         VStack {
             HStack{
-                Image("coronaVerde")
+                Image("coronavirusVerde")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 60, height: 50, alignment: .center)
