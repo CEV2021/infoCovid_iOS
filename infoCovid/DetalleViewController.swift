@@ -88,6 +88,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         self.tabBarController?.tabBar.isHidden = true
         self.container.isHidden = false
         self.setupLoadingViews()//se hace la llamada a la funcion de carga
+        
+        
     }
     
     override func viewDidLoad() {
@@ -100,6 +102,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         dateNotification.hour = 12
         dateNotification.minute = 00
         UNUserNotificationCenter.current().delegate = self
+        
+       
+        
+        
         //NO HACE FALTA¿?
         /*
          //calculo de incidencia acumulada tomando los datos de la ultima fecha y 14 dias
@@ -137,6 +143,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             hideLoading()
             self.tabBarController?.tabBar.isHidden = false
         }
+        
+       
         
     }
     
@@ -261,11 +269,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         }else if locationIsSelected {
             comunityName.text = locationSelected
             downloadAndSetRegion(name: locationSelected!)
+        
         }
         else {
             comunityName.text = favoriteLocation
             downloadAndSetRegion(name: comunityName.text!)
         }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -286,6 +296,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         
         
         
+    }
+    
+    func saveToWidget(string: String){
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("hello")
+        let data = Data(comunityName.text! .utf8)
+        print("\(string) desde saveToWidget")
+        try! data.write(to: url!)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -370,6 +387,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     self.totalInfectionsLabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-6].incidentRate ?? 0))
                     self.lastUpdateLabel.text = "Última actualización: " +
                         updateDate
+                    saveToWidget(string: comunityName.text!)
                     
                     if fromFavoriteLocationList{
                         seeListButton.isHidden = true

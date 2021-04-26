@@ -84,6 +84,7 @@
 		61E13CC02611C10B0013EDCE /* UbicationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbicationsTableViewController.swift; sourceTree = "<group>"; };
 		61E623A5260BBA7A00638AC0 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		61E65566260AA18C002016BA /* SearchLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewController.swift; sourceTree = "<group>"; };
+		653987C9263739CB0095E523 /* My_WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = My_WidgetExtension.entitlements; sourceTree = "<group>"; };
 		65777F102601785400A3B7EF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		657B39392636D36B00AF2193 /* infoCovid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = infoCovid.entitlements; sourceTree = "<group>"; };
 		657B39402636D8D500AF2193 /* My_WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = My_WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +135,7 @@
 		61CE6AE725FFBE17006DCB9C = {
 			isa = PBXGroup;
 			children = (
+				653987C9263739CB0095E523 /* My_WidgetExtension.entitlements */,
 				61CE6AF225FFBE17006DCB9C /* infoCovid */,
 				657B39452636D8D500AF2193 /* My_Widget */,
 				61CE6AF125FFBE17006DCB9C /* Products */,
@@ -509,7 +511,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = infoCovid/infoCovid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GB6SK42NZ3;
 				INFOPLIST_FILE = infoCovid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -528,6 +530,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = My_WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GB6SK42NZ3;
 				INFOPLIST_FILE = My_Widget/Info.plist;
@@ -550,8 +553,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = My_WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GB6SK42NZ3;
 				INFOPLIST_FILE = My_Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
