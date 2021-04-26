@@ -16,7 +16,7 @@ override func viewWillDisappear(_ animated: Bool) {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("ya estoy")
-        let url = URL(string: "https://www.pokemongolive.com")!
+        let url = URL(string: "http://infocovid.epizy.com/cambio_smartphone.html")!
         self.webView.load(URLRequest(url: url))
         
     }

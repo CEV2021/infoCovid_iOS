@@ -15,7 +15,7 @@ class Web01ViewController: UIViewController, WKNavigationDelegate {
             super.viewDidLoad()
             // Do any additional setup after loading the view.
             print("ya estoy")
-            let url = URL(string: "https://www.pokemongolive.com")!
+            let url = URL(string: "http://infocovid.epizy.com/obtencion_datos.html")!
             self.webView.load(URLRequest(url: url))
             
         }

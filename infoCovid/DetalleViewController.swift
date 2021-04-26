@@ -386,10 +386,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     //se llama a la funcion de cofiguracion de icono de cambio de alerta
                     self.conditionImageControl()
                     
-                    let tableController = self.tabBarController!.viewControllers![1] as! IncidenciaViewController
-                    print(tabBarController?.viewControllers?[1])
+                    let tableController = self.tabBarController?.viewControllers![1] as! IncidenciaViewController
                     tableController.region = datos
-                    print(datos?.name)
                     print("Estamos en el metodo de descarga de datos")
                     
                 }
