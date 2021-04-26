@@ -53,7 +53,7 @@ struct My_WidgetEntryView : View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 60, height: 50, alignment: .center)
-                Text(string.string)
+                Text("Hello")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .foregroundColor(.white)
                     .bold()
@@ -97,15 +97,16 @@ struct My_Widget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
     
-    var string: String = {
-            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("hello")
-            let data = try! Data(contentsOf: url!)
-            let string = String(data: data, encoding: .utf8)!
-            print(string)
-            return string
-        }()
+//    var string: String = {
+//            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("name")
+//            let data = try! Data(contentsOf: url!)
+//            let string = String(data: data, encoding: .utf8)!
+//            print(string)
+//            return string
+//        }()
 }
 
 struct My_Widget_Previews: PreviewProvider {

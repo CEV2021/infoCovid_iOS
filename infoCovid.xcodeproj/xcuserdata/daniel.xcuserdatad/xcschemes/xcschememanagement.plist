@@ -7,21 +7,21 @@
 		<key>My_WidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>PlaygroundChart (Playground) 1.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>PlaygroundChart (Playground) 2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>4</integer>
 		</dict>
 		<key>PlaygroundChart (Playground).xcscheme</key>
 		<dict>
@@ -39,6 +39,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>61CE6AEF25FFBE17006DCB9C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>657B393F2636D8D500AF2193</key>
 		<dict>
 			<key>primary</key>
 			<true/>

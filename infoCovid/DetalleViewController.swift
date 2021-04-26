@@ -103,7 +103,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         dateNotification.minute = 00
         UNUserNotificationCenter.current().delegate = self
         
-       
+        
         
         
         //NO HACE FALTA¿?
@@ -144,7 +144,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             self.tabBarController?.tabBar.isHidden = false
         }
         
-       
+        
         
     }
     
@@ -171,6 +171,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             conditionImage.image = UIImage.init(named: "coronavirusVerde")
             self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "BAJO")
         }
+        saveToWidget(name: comunityName.text!)
     }
     
     //A traves del centro de notificaciones se le da funcionalidad a los botones de la notificacion
@@ -269,7 +270,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         }else if locationIsSelected {
             comunityName.text = locationSelected
             downloadAndSetRegion(name: locationSelected!)
-        
+            
         }
         else {
             comunityName.text = favoriteLocation
@@ -298,11 +299,19 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         
     }
     
-    func saveToWidget(string: String){
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("hello")
-        let data = Data(comunityName.text! .utf8)
-        print("\(string) desde saveToWidget")
-        try! data.write(to: url!)
+    func saveToWidget(name: String){
+        if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("name"){
+            let data = Data(name .utf8)
+            do {
+                try data.write(to: url)
+            }
+            catch {
+                print("Error en método saveToWidget")
+            }
+        }
+        else {
+            print("Erro en url saveToWidget")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -387,7 +396,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     self.totalInfectionsLabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-6].incidentRate ?? 0))
                     self.lastUpdateLabel.text = "Última actualización: " +
                         updateDate
-                    saveToWidget(string: comunityName.text!)
+                    
                     
                     if fromFavoriteLocationList{
                         seeListButton.isHidden = true
