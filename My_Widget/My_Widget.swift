@@ -1,9 +1,4 @@
-//
-//  My_Widget.swift
-//  My_Widget
-//
-//  Created by daniel on 26/04/2021.
-//
+
 
 import WidgetKit
 import SwiftUI
@@ -44,16 +39,35 @@ struct SimpleEntry: TimelineEntry {
 
 struct My_WidgetEntryView : View {
     var entry: Provider.Entry
-    var string = My_Widget()
+    var data = My_Widget()
     
     var body: some View {
         VStack {
             HStack{
-                Image("coronavirusVerde")
+                
+                if Int(data.incidence)! > 150 {
+                    
+                Image("coronavirusRojo")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 60, height: 50, alignment: .center)
-                Text("Hello")
+                    
+                }else if Int(data.incidence)! > 50 {
+
+                    Image("coronavirusAma")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 60, height: 50, alignment: .center)
+                    
+                    }else {
+                        
+                        Image("coronavirusVerde")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 60, height: 50, alignment: .center)
+                        }
+                
+                Text(data.name)
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .foregroundColor(.white)
                     .bold()
@@ -69,14 +83,14 @@ struct My_WidgetEntryView : View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20, height: 20, alignment: .center)
-                Text("10200")
+                Text(data.incidence)
                     .font(.body)
                     .bold()
             }
            
                 .foregroundColor(.white)
             Spacer(minLength: 20)
-            Text("Actual 24/1 17:15")
+            Text(data.date)
                 .font(.footnote)
                 .foregroundColor(.white)
         }
@@ -100,13 +114,28 @@ struct My_Widget: Widget {
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
     
-//    var string: String = {
-//            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("name")
-//            let data = try! Data(contentsOf: url!)
-//            let string = String(data: data, encoding: .utf8)!
-//            print(string)
-//            return string
-//        }()
+   var name: String = {
+            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("name")
+           let data = try! Data(contentsOf: url!)
+           let name = String(data: data, encoding: .utf8)!
+            print(name)
+            return name
+       }()
+    var incidence: String = {
+             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("incidence")
+            let data = try! Data(contentsOf: url!)
+        let incidence = String(data: data, encoding: .utf8)!
+             print(incidence)
+             return incidence
+        }()
+    
+    var date: String = {
+             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("date")
+            let data = try! Data(contentsOf: url!)
+        let date = String(data: data, encoding: .utf8)!
+             print(date)
+             return date
+        }()
 }
 
 struct My_Widget_Previews: PreviewProvider {

@@ -2,6 +2,7 @@
 
 import UIKit
 import CoreLocation
+import WidgetKit
 
 class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUserNotificationCenterDelegate{
     
@@ -171,7 +172,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             conditionImage.image = UIImage.init(named: "coronavirusVerde")
             self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "BAJO")
         }
-        saveToWidget(name: comunityName.text!)
+        saveToWidget(name: comunityName.text!, incidence: totalInfectionsLabel.text!, date: lastUpdateLabel.text!)
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     //A traves del centro de notificaciones se le da funcionalidad a los botones de la notificacion
@@ -299,11 +301,15 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         
     }
     
-    func saveToWidget(name: String){
-        if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("name"){
+    func saveToWidget(name: String, incidence: String, date: String){
+        if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("name"), let url2 = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("incidence"), let url3 = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("date"){
             let data = Data(name .utf8)
+            let data2 = Data(incidence .utf8)
+            let data3 = Data(date .utf8)
             do {
                 try data.write(to: url)
+                try data2.write(to: url2)
+                try data3.write(to: url3)
             }
             catch {
                 print("Error en método saveToWidget")
@@ -313,6 +319,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             print("Erro en url saveToWidget")
         }
     }
+     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addLocation" {
@@ -393,7 +400,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     self.recoveredLabel.text = String( region.data![downData].recovered!)
                     self.newCasesLabel.text = String(region.data![downData].active!)
                     self.totalLabel.text = String( region.data![downData].confirmed!)
-                    self.totalInfectionsLabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-6].incidentRate ?? 0))
+                    self.totalInfectionsLabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0))
                     self.lastUpdateLabel.text = "Última actualización: " +
                         updateDate
                     
