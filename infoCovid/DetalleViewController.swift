@@ -364,7 +364,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Aceptar", style: .destructive, handler: {action in
-         
+            self.viewWillAppear(true)
         }))
         
         present(alert, animated: true, completion: nil)
