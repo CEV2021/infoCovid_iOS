@@ -1,4 +1,3 @@
-//cambio
 
 import UIKit
 import CoreLocation
@@ -6,35 +5,36 @@ import WidgetKit
 
 class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUserNotificationCenterDelegate{
     
-    
-    
+    //OUTLETS
     @IBOutlet weak var container: UIView!
-    @IBOutlet weak var seeListButton: UIButton!
-    @IBOutlet weak var listButton: UIBarButtonItem!
+    @IBOutlet weak var listButton: UIButton!
+    @IBOutlet weak var listButtonItem: UIBarButtonItem!
     @IBOutlet weak var lastUpdateLabel: UILabel!
     @IBOutlet weak var newCasesLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var deathsLabel: UILabel!
     @IBOutlet weak var recoveredLabel: UILabel!
-    @IBOutlet weak var totalInfectionsLabel: UILabel!
-    @IBOutlet weak var sevenDaysView: UIStackView!
+    @IBOutlet weak var IALabel: UILabel!
+    @IBOutlet weak var dataStackView: UIStackView!
     @IBOutlet weak var conditionImage: UIImageView!
     @IBOutlet weak var comunityName: UILabel!
     @IBOutlet weak var showListButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIButton!
     
+    // Constantes para almacenar las clave de UserDefaults
     let kMKeyNotifications = "MY_KEY_NOTIFICATIONS"
     let kMkeyActualLocation = "MY_KEY_ACTUALLOCATION"
+    
     var notifications: Bool?
     var actualLocation: Bool?
     var locationIsSelected: Bool = false
-    var tabla : SearchLocationTableViewController?
-    var persistencia = Persistencia()
+    var table: SearchLocationTableViewController?
+    var persistence = Persistencia()
     var fromFavoriteLocationList = false
     // Variable para almacenar la localización favorita
     var favoriteLocation = ""
     
-    var datos: Region?//prueba recibiendo los datos completos de la seleccion
+    var regionData: Region?
     
     // Constante con la que manejamos los elementos de settings
     let settings = SettingsViewController()
@@ -45,17 +45,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     lazy var geocoder = CLGeocoder()
     var actualLocationLongitude: Double = 0.0
     var actualLocationLatitude: Double = 0.0
-    
-    
-    var infectionsNumber : Double! = 0.0
-    var deathsNumber: Int! = 0
-    var recoveredNumber: Int! = 0
     var locationSelected: String?
-    var totalNumber: Int! = 0
-    var activeCasesNumber: Int! = 0
     var name = ""
     var connection = Connection()
-    var downloadData = 0
     var ia : Double = 0.0
     var updateDate = ""
     var timeToRemember: Double = 3600.0
@@ -70,46 +62,48 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     var reachability: Reachability?
     let hostNames = [nil, "google.com"]
     
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation") ?? "Madrid"//"spain"
         updateCityName()
+        
         self.showLoading()
         self.tabBarController?.tabBar.isHidden = false
+        
         if fromFavoriteLocationList {
+            
             addButton.isHidden = true
             showListButton.isEnabled = false
-            seeListButton.isHidden = true
+            listButton.isHidden = true
             
-        }
-        else {
+        }else{
+            
             addButton.isHidden = false
             showListButton.isEnabled = true
-            seeListButton.isHidden = false
+            listButton.isHidden = false
         }
         
-        seeListButton.isHidden = true
+        listButton.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
         self.container.isHidden = false
         self.setupLoadingViews()//se hace la llamada a la funcion de carga
-        
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        dataStackView.layer.cornerRadius = 20
+        dataStackView.layer.borderWidth = 3
         settings.setDefaultValues()
         notifications = UserDefaults.standard.bool(forKey: kMKeyNotifications)
         
         //valores que configuran la hora a la que se muestra la notificacion
         dateNotification.hour = 12
         dateNotification.minute = 00
+        
         UNUserNotificationCenter.current().delegate = self
-        
         startHost(at: 0) //Se inicia star host a 0 para la comprobacion de la conexion
-        
         
         //NO HACE FALTA¿?
         /*
@@ -127,9 +121,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
          
          */
         
-        
+        //permisos para las notificaciones
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
+            
             if granted {
                 print("Permiso aceptado")
             }else{
@@ -138,26 +133,20 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             }
         }
         
-        sevenDaysView.layer.cornerRadius = 20
-        sevenDaysView.layer.borderWidth = 3
-        
         //se comprueba la variable ia para que no salten dos notificaciones cuando tome los datos desde la ubicacion
         if ia != 0{
             conditionImageControl()
-            seeListButton.isHidden = false
+            listButton.isHidden = false
             hideLoading()
             self.tabBarController?.tabBar.isHidden = false
         }
-        
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         let tableController = self.tabBarController!.viewControllers![1] as! IncidenciaViewController
         print(tabBarController?.viewControllers?[1])
-        tableController.region = datos
-        print(datos?.name)
+        tableController.region = regionData
+        print(regionData?.name)
         print("Vista detalle desaparece")
     }
     
@@ -166,17 +155,17 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         
         if ia > 150{
             conditionImage.image = UIImage.init(named: "coronavirusRojo")
-            self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "ALTO")
+            self.showNotification(text: (self.IALabel.text ?? ""), subtitle: "ALTO")
             
         }else if ia > 50{
             conditionImage.image = UIImage.init(named: "coronavirusAma")
-            self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "MEDIO")
+            self.showNotification(text: (self.IALabel.text ?? ""), subtitle: "MEDIO")
             
         }else{
             conditionImage.image = UIImage.init(named: "coronavirusVerde")
-            self.showNotification(text: (self.totalInfectionsLabel.text ?? ""), subtitle: "BAJO")
+            self.showNotification(text: (self.IALabel.text ?? ""), subtitle: "BAJO")
         }
-        saveToWidget(name: comunityName.text!, incidence: totalInfectionsLabel.text!, date: lastUpdateLabel.text!)
+        saveToWidget(name: comunityName.text!, incidence: IALabel.text!, date: lastUpdateLabel.text!)
         WidgetCenter.shared.reloadAllTimelines()
     }
     
@@ -195,7 +184,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         completionHandler()
     }
     
-    //funciojn para mostrar las notificaciones
+    //funcion para mostrar las notificaciones
     func showNotification(text: String, subtitle: String){
         
         if notifications! {
@@ -208,9 +197,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             let content = UNMutableNotificationContent()
             content.title = "Nivel de alerta actual"
             content.subtitle = subtitle
-            content.body = "La incidencia es de: \(text) contagios"
+            content.body = "La incidencia acumulada es: \(text)"
             content.sound = UNNotificationSound.default
             
+            //opcion de la notificacion para retrasarla
             let rememberAction = UNNotificationAction(identifier: "rememberAction", title: "Recordar más tarde", options: [])
             //opcion de la notificacion para borrarla
             let deleteAction = UNNotificationAction(identifier: "deleteAction", title: "Eliminar Notificación", options: [])
@@ -243,7 +233,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         }
     }
     
-    
+    //Funcion para enviar el ReverseRequest
     func sendReverseRequest() {
         let location = CLLocation(latitude: actualLocationLatitude, longitude: actualLocationLongitude)
         geocoder.reverseGeocodeLocation(location) { (placemarks, error)  in
@@ -255,6 +245,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
      Función para procesar la respuesta del reverse
      */
     func processReverseGeocoder(withPlacemarks placermarks: [CLPlacemark]?, error: Error?){
+        
         if let error = error {
             comunityName.text = "Error en localización"
         }else {
@@ -269,6 +260,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     
     func updateCityName(){
         actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
+        
         if actualLocation! && !(locationIsSelected) {
             locationManager.delegate = self
             locationManager.requestWhenInUseAuthorization()
@@ -323,15 +315,14 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             print("Erro en url saveToWidget")
         }
     }
-     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addLocation" {
             if let destination = segue.destination as? UbicationsTableViewController{
-                var arrayLocations = persistencia.RecoverArray()
+                var arrayLocations = persistence.RecoverArray()
                 for location in arrayLocations {
                     if location == comunityName.text {
-                        mostrarAlert(title: "Ubicación existente", message: "La localización ya se encuentra en la lista de favoritos")
+                        showAddAlert(title: "Ubicación existente", message: "La localización ya se encuentra en la lista de favoritos")
                         return
                     }
                 }
@@ -342,9 +333,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    
     // Función para mostrar alert en la app
-    func mostrarAlert(title: String, message: String) {
+    func showAddAlert(title: String, message: String) {
         
         // Creamos la alerta
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -358,7 +348,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     }
     
     // Función para mostrar alert en la app
-    func mostrarAlert2(title: String, message: String) {
+    func showConnectionAlert(title: String, message: String) {
         
         // Creamos la alerta
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -394,15 +384,14 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         if name == "España" {
             self.name = "Spain"
         }
-        print(self.name + "Esto es desde el método")
+        
         connection.getRegionByName(withString: self.name) { [self] (region) in
             if let region = region {
-                datos = region
-                print("Tengo region")
+                regionData = region
+                
                 if region.name == "Andalusia"{
                     region.name = "Andalucia"
                 }
-                // Controlado para mostrar Cataluña
                 if region.name == "Catalonia"{
                     region.name = "Cataluña"
                 }
@@ -410,29 +399,26 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     region.name = "España"
                 }
                 
-                
                 //se rellena la vista con los datos obtenidos desde la localizacion
                 DispatchQueue.main.async{
                     
                     var downData = (region.data!.count) - 1
                     updateDate = region.data![downData].date
                     getDateFromString(updateDate: updateDate)
-                    print(downData)
                     self.comunityName.text = region.name
                     self.deathsLabel.text = String( region.data![downData].deaths!)
                     self.recoveredLabel.text = String( region.data![downData].recovered!)
                     self.newCasesLabel.text = String(region.data![downData].active!)
                     self.totalLabel.text = String( region.data![downData].confirmed!)
-                    self.totalInfectionsLabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0))
+                    self.IALabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0))
                     self.lastUpdateLabel.text = "Última actualización: " +
                         updateDate
                     
-                    
                     if fromFavoriteLocationList{
-                        seeListButton.isHidden = true
+                        listButton.isHidden = true
                         
                     }else{
-                        seeListButton.isHidden = false
+                        listButton.isHidden = false
                     }
                     
                     self.tabBarController?.tabBar.isHidden = false
@@ -444,9 +430,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     self.conditionImageControl()
                     
                     let tableController = self.tabBarController?.viewControllers![1] as! IncidenciaViewController
-                    tableController.region = datos
-                    print("Estamos en el metodo de descarga de datos")
-                    
+                    tableController.region = regionData
                 }
             }
         }
@@ -503,21 +487,23 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         let dateComponentArray = updateDate.components(separatedBy: "-")
         
         if dateComponentArray.count == 3{
+            
             var components = DateComponents()
             components.year = Int(dateComponentArray[0])
             components.month = Int(dateComponentArray[1])
             components.day = Int(dateComponentArray[2]
             )
+            
             guard let date = calendar.date(from: components) else{
                 return (nil, false)
             }
+            
             let dateFormatter = DateFormatter()
-            
             dateFormatter.dateStyle = .medium
-            
-            print(dateFormatter.string(from: date))
             self.updateDate = dateFormatter.string(from: date)
+            
             return (date, true)
+            
         }else{
             return (nil, false)
         }
@@ -539,14 +525,12 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         }else{
             reachability = try? Reachability()
         }
-        
         reachability?.whenReachable = {
             reachability in
         }
         reachability?.whenUnreachable = {
             reachability in
-            self.mostrarAlert2(title: "Conexión perdida", message: "Vuelve a conectarte y pulsa Aceptar")
-           
+            self.showConnectionAlert(title: "Conexión perdida", message: "Vuelve a conectarte y pulsa Aceptar")
         }
     }
 }

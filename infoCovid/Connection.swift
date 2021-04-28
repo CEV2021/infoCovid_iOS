@@ -1,11 +1,11 @@
 import UIKit
 
 class Connection{
-    let baseURLString2 = "https://limitless-meadow-81250.herokuapp.com/api/regions"
+    let baseURLString = "https://limitless-meadow-81250.herokuapp.com/api/regions"
     
     
     func getRegions(completion: @escaping(_ region: [Region?]?)-> Void){
-        guard let url = URL(string: baseURLString2)else{
+        guard let url = URL(string: baseURLString)else{
             completion(nil)
             return
         }
@@ -24,7 +24,7 @@ class Connection{
     }
     
     func getRegion( completion: @escaping(_ region: [Region?]?)-> Void){
-        guard let url = URL(string: baseURLString2)else{
+        guard let url = URL(string: baseURLString)else{
             completion(nil)
             return
         }
@@ -43,7 +43,7 @@ class Connection{
     }
     
     func getRegionByName(withString name: String, completion: @escaping(_ region: Region?)-> Void){
-        guard let url = URL(string: "\(baseURLString2)/\(name)")else{
+        guard let url = URL(string: "\(baseURLString)/\(name)")else{
             completion(nil)
             print("Error en url")
             return

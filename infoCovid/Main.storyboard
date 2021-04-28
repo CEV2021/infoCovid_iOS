@@ -351,19 +351,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="IALabel" destination="So3-m5-e8M" id="wiF-8R-3Vs"/>
                         <outlet property="addButton" destination="LFJ-XL-Dge" id="Mcq-Eg-AYJ"/>
                         <outlet property="comunityName" destination="QLB-5Q-FfD" id="VZt-bB-2u4"/>
                         <outlet property="conditionImage" destination="ybH-Ra-5MF" id="ekN-4z-f8t"/>
                         <outlet property="container" destination="s9V-kL-S67" id="mW7-11-txB"/>
+                        <outlet property="dataStackView" destination="QJf-mq-61q" id="XbE-NQ-p6F"/>
                         <outlet property="deathsLabel" destination="cOI-3e-miK" id="SwI-Qu-39R"/>
                         <outlet property="lastUpdateLabel" destination="4nk-gc-dsI" id="uQZ-fT-w1S"/>
-                        <outlet property="listButton" destination="uzl-Ng-6UF" id="BSu-Dl-8E2"/>
+                        <outlet property="listButton" destination="TtU-A8-drd" id="zUN-Ja-rJl"/>
+                        <outlet property="listButtonItem" destination="uzl-Ng-6UF" id="BSu-Dl-8E2"/>
                         <outlet property="newCasesLabel" destination="3qo-MH-dc0" id="UYz-nh-v4w"/>
                         <outlet property="recoveredLabel" destination="gPe-pt-Osq" id="qpl-8N-dhf"/>
-                        <outlet property="seeListButton" destination="TtU-A8-drd" id="zUN-Ja-rJl"/>
-                        <outlet property="sevenDaysView" destination="QJf-mq-61q" id="XbE-NQ-p6F"/>
                         <outlet property="showListButton" destination="uzl-Ng-6UF" id="xIJ-Wt-IH0"/>
-                        <outlet property="totalInfectionsLabel" destination="So3-m5-e8M" id="wiF-8R-3Vs"/>
                         <outlet property="totalLabel" destination="Oe9-nB-gJB" id="HJ7-Uc-CGn"/>
                     </connections>
                 </viewController>
@@ -777,7 +777,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFX-fw-sdU">
-                                    <rect key="frame" x="0.0" y="49.999999999999993" width="414" height="76.333333333333314"/>
+                                    <rect key="frame" x="0.0" y="50" width="414" height="76"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Madrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQe-2y-CNe">
@@ -795,7 +795,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mis Ubicaciones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tyv-oh-dta">
-                                    <rect key="frame" x="27" y="156.33333333333334" width="271" height="21"/>
+                                    <rect key="frame" x="27" y="156" width="271" height="21"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -1209,15 +1209,15 @@
                     <connections>
                         <outlet property="activeCasesBefore" destination="AfF-TS-Yo4" id="naj-Dx-4k9"/>
                         <outlet property="activeCasesToday" destination="pJT-HM-ggW" id="4xk-Xb-9Lh"/>
-                        <outlet property="antesStack" destination="sbP-xQ-DVk" id="aYo-Pw-iZK"/>
                         <outlet property="beforeDateLabel" destination="9Nw-NE-AVo" id="gc6-Wt-Bwf"/>
+                        <outlet property="beforeStack" destination="sbP-xQ-DVk" id="aYo-Pw-iZK"/>
+                        <outlet property="chart" destination="Zjc-cS-ukg" id="yKc-Dk-jJv"/>
                         <outlet property="deathBefore" destination="8YX-sE-xS2" id="pjs-WD-9ju"/>
                         <outlet property="deathToday" destination="jNY-f3-eWK" id="TPo-wO-atH"/>
-                        <outlet property="grafica" destination="Zjc-cS-ukg" id="yKc-Dk-jJv"/>
-                        <outlet property="hoyStack" destination="PHI-da-mZj" id="6ac-dM-hev"/>
                         <outlet property="recoveryBefore" destination="eWB-bf-jzx" id="Baa-oz-u7A"/>
                         <outlet property="recoveryToday" destination="Rru-6p-xIg" id="eFM-vx-z6M"/>
                         <outlet property="regionNameLabel" destination="opf-gY-fDf" id="6Td-Cl-YO3"/>
+                        <outlet property="todayStack" destination="PHI-da-mZj" id="6ac-dM-hev"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KwR-ak-2TE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

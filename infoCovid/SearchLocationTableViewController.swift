@@ -4,9 +4,9 @@ import UIKit
 
 class SearchLocationTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     
+    //OUTLETS
     @IBOutlet weak var imageCity: UIImageView!
     @IBOutlet weak var container: UIView!
-    
     
     var regions: [Region?] = []
     var connection = Connection()
@@ -22,24 +22,19 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //se iguala filter data a regions para poder mostrar los resultados en la nusqueda por filtrado
         filteredData = regions
         
-        
-        self.setupLoadingViews()//se hace la llamada a la funcion de carga
+        self.setupLoadingViews()
         self.showLoading()
         
         //Connection para recibir la lista de regiones
         connection.getRegions { (regions) in
             if let regions = regions {
                 self.regions = regions
-
+                
                 DispatchQueue.main.async{
-                    /*
-                    //calculo para llenar la progressBar
-                    self.progressBar.setProgress(Float(regions.capacity + regions.capacity - regions.capacity) / Float(regions.capacity), animated: true)
-                    */
                     
                     if regions.count == 20{
                         self.setupSearch()
@@ -66,7 +61,6 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         searchBar.placeholder = "Introduce ubicación"
     }
     
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -89,26 +83,25 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         if region?.name == "Spain"{
             region?.name = "España"
         }
+        
         cell.textLabel?.text = region?.name ?? ""
         downloadDataNumber = (region?.data!.count)!
             - 1
-      
+        
         return cell
     }
     
-    
     func updateSearchResults(for searchController: UISearchController) {
-       
-            filteredData = regions.filter({ region -> Bool in
-                guard let text = searchController.searchBar.text else { return false }
-                return
-                    region!.name!.lowercased().contains(text.lowercased())
-            }).sorted { $0!.name! < $1!.name! }
+        
+        filteredData = regions.filter({ region -> Bool in
+            guard let text = searchController.searchBar.text else { return false }
+            return
+                region!.name!.lowercased().contains(text.lowercased())
+        }).sorted { $0!.name! < $1!.name! }
         
         tableView.reloadData()
     }
     
-   
     //Funcion para pasar los datos a las vistas
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Variable de tipo ViewController
@@ -118,15 +111,9 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         let indexPath = self.tableView.indexPathForSelectedRow
         let region = filteredData[indexPath!.row]
         
-        nextViewController.infectionsNumber = region?.data?[downloadDataNumber].incidentRate
-        nextViewController.deathsNumber = region?.data?[downloadDataNumber].deaths
-        nextViewController.recoveredNumber = region?.data?[downloadDataNumber].recovered
         nextViewController.locationSelected = region?.name
-        nextViewController.totalNumber = region?.data?[downloadDataNumber].confirmed
         nextViewController.locationIsSelected = true
-        nextViewController.datos = region
-        nextViewController.downloadData = downloadDataNumber
-        nextViewController.activeCasesNumber = region?.data?[downloadDataNumber].active
+        nextViewController.regionData = region
         nextViewController.updateDate = (region?.data?[downloadDataNumber].date)!
         
     }

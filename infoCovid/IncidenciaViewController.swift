@@ -5,6 +5,7 @@ import Charts
 
 class IncidenciaViewController: UIViewController, ChartViewDelegate {
     
+    //Outlets
     @IBOutlet weak var beforeDateLabel: UILabel!
     @IBOutlet weak var deathBefore: UILabel!
     @IBOutlet weak var recoveryBefore: UILabel!
@@ -12,9 +13,9 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var recoveryToday: UILabel!
     @IBOutlet weak var deathToday: UILabel!
     @IBOutlet weak var activeCasesToday: UILabel!
-    @IBOutlet weak var grafica: LineChartView!
-    @IBOutlet weak var hoyStack: UIStackView!
-    @IBOutlet weak var antesStack: UIStackView!
+    @IBOutlet weak var chart: LineChartView!
+    @IBOutlet weak var todayStack: UIStackView!
+    @IBOutlet weak var beforeStack: UIStackView!
     @IBOutlet weak var regionNameLabel: UILabel!
     
     var region: Region?
@@ -31,21 +32,19 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Cargo vista de grafica")
-        hoyStack.layer.cornerRadius = 20
-        antesStack.layer.cornerRadius = 20
-        hoyStack.layer.borderWidth = 3
-        antesStack.layer.borderWidth = 3
         
+        todayStack.layer.cornerRadius = 20
+        beforeStack.layer.cornerRadius = 20
+        todayStack.layer.borderWidth = 3
+        beforeStack.layer.borderWidth = 3
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("Vista aparece")
         
-        var downData = ((region?.data!.count)!) - 1
+        let downData = ((region?.data!.count)!) - 1
+        
         updateDate = (region?.data![downData-6].date)!
-        
         getDateFromString(updateDate: updateDate)
         generaGraficoLinea()
         regionNameLabel.text = region?.name
@@ -64,26 +63,6 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
     
     func generaGraficoLinea () {
         
-        /*
-         Datos de la gráfica siguen el index de los arrays
-         
-         Incidencia (Y):
-         0 = 0
-         1 = 200
-         2 = 300
-         3 = 400
-         ...
-         por lo tanto si el dato de la incidencia es 300 para mostrarlo en la gráfica
-         deberemos hacer let dato = BarChartDataEntry(x: (mes), y Double(300/100)
-         
-         Meses (X)
-         Enero = 0
-         Febrero = 1
-         ...
-         
-         */
-        
-       
         var downData = ((region?.data!.count)!) - 1
         
         ia = ((region?.data![downData-6].incidentRate) ?? 0) - (region?.data![downData-12].incidentRate ?? 0)
@@ -94,8 +73,7 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         ia4 = ((region?.data![downData-2].incidentRate) ?? 0) - (region?.data![downData-8].incidentRate ?? 0)
         ia5 = ((region?.data![downData-1].incidentRate) ?? 0) - (region?.data![downData-7].incidentRate ?? 0)
         ia6 = ((region?.data![downData].incidentRate) ?? 0) - (region?.data![downData-6].incidentRate ?? 0)
-  
-        print(ia6)
+        
         let dato1 = BarChartDataEntry(x: 0.0, y: ia )
         let dato2 = BarChartDataEntry(x: 1.0, y: ia1 )
         let dato3 = BarChartDataEntry(x: 2.0, y: ia2 )
@@ -107,35 +85,33 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         let dataSet = LineChartDataSet(entries: [dato1, dato2, dato3, dato4, dato5, dato6, dato7], label: "Incidencia")
         let data = LineChartData(dataSets: [dataSet])
         
-        grafica.data = data
-        //grafica.backgroundColor = .black
-        grafica.notifyDataSetChanged()
-       
+        chart.data = data
+        chart.notifyDataSetChanged()
+        
         // Configuración del eje Y (Vertical)
-        grafica.rightAxis.enabled = false
-        grafica.leftAxis.labelFont = .boldSystemFont(ofSize: 12)
+        chart.rightAxis.enabled = false
+        chart.leftAxis.labelFont = .boldSystemFont(ofSize: 12)
         //grafica.leftAxis.setLabelCount(10, force: true)
-        grafica.leftAxis.labelTextColor = .red
+        chart.leftAxis.labelTextColor = .red
         //grafica.leftAxis.labelPosition = .outsideChart
-        //let incidence = ["0","100", "200", "300", "350", "400", "500","600","700","900"]
-       // grafica.leftAxis.valueFormatter = IndexAxisValueFormatter(values: incidence)
+        // grafica.leftAxis.valueFormatter = IndexAxisValueFormatter(values: incidence)
         //grafica.leftAxis.granularity = 1
         //grafica.leftAxis.drawGridLinesEnabled = false
         //grafica.leftAxis.drawAxisLineEnabled = false
         
         // Configuración del eje X (Horizontal)
-        grafica.xAxis.labelPosition = .bottom
-        grafica.xAxis.labelFont = .boldSystemFont(ofSize: 6)
-        grafica.xAxis.setLabelCount(7, force: false)
+        chart.xAxis.labelPosition = .bottom
+        chart.xAxis.labelFont = .boldSystemFont(ofSize: 6)
+        chart.xAxis.setLabelCount(7, force: false)
         let months = [region!.data![downData-6].date
                       , region!.data![downData-5].date, region!.data![downData-4].date, region!.data![downData-3].date, region!.data![downData-2].date, region!.data![downData-1].date, "Hoy"]
-        grafica.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
-        grafica.xAxis.granularity = 1
-        grafica.xAxis.drawGridLinesEnabled = false
-        grafica.xAxis.drawAxisLineEnabled = false
+        chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
+        chart.xAxis.granularity = 1
+        chart.xAxis.drawGridLinesEnabled = false
+        chart.xAxis.drawAxisLineEnabled = false
         
         // Configuración de la línea de la gráfica
-        grafica.animate(xAxisDuration: 1)
+        chart.animate(xAxisDuration: 1)
         dataSet.drawCirclesEnabled = true
         dataSet.mode = .cubicBezier
         dataSet.lineWidth = 3
@@ -171,9 +147,9 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
             
             dateFormatter.dateStyle = .medium
             
-            print(dateFormatter.string(from: date))
             self.updateDate = dateFormatter.string(from: date)
             return (date, true)
+            
         }else{
             return (nil, false)
         }

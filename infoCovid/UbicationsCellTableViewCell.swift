@@ -1,9 +1,3 @@
-//
-//  UbicationsCellTableViewCell.swift
-//  infoCovid
-//
-//  Created by daniel on 21/04/2021.
-//
 
 import UIKit
 
@@ -11,12 +5,10 @@ class UbicationsCellTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var heartButton: UIButton!
+    
     var heartFill = false
     var arrView:[UIButton] = []
     var ubicationsTable = UbicationsTableViewController()
-
-    
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,9 +24,6 @@ class UbicationsCellTableViewCell: UITableViewCell {
     
     @IBAction func favoriteButton(_ sender: UIButton) {
     }
-    
-   
-    
 }
 
 

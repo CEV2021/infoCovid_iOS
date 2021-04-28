@@ -174,11 +174,11 @@
 				611AFA32263944DE0099E7F4 /* Reachability.swift */,
 				61E13CC02611C10B0013EDCE /* UbicationsTableViewController.swift */,
 				65C5825B2630B12600B48C57 /* UbicationsCellTableViewCell.swift */,
+				65ADCBBA2631E3D0007EEBC3 /* Persistencia.swift */,
 				611F017E2630793F00E3C194 /* Main.storyboard */,
 				61CE6AFC25FFBE17006DCB9C /* Assets.xcassets */,
 				61CE6AFE25FFBE17006DCB9C /* LaunchScreen.storyboard */,
 				61CE6B0125FFBE17006DCB9C /* Info.plist */,
-				65ADCBBA2631E3D0007EEBC3 /* Persistencia.swift */,
 			);
 			path = infoCovid;
 			sourceTree = "<group>";
