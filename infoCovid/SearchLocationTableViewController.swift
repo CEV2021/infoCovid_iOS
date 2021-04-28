@@ -41,7 +41,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
                     self.progressBar.setProgress(Float(regions.capacity + regions.capacity - regions.capacity) / Float(regions.capacity), animated: true)
                     */
                     
-                    if regions.count == 19{
+                    if regions.count == 20{
                         self.setupSearch()
                         self.hideLoading()
                         self.imageCity.isHidden = false
@@ -85,6 +85,9 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         }
         if region?.name == "Catalonia"{
             region?.name = "Cataluña"
+        }
+        if region?.name == "Spain"{
+            region?.name = "España"
         }
         cell.textLabel?.text = region?.name ?? ""
         downloadDataNumber = (region?.data!.count)!

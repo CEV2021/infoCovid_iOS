@@ -66,10 +66,14 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     var loadingView = UIView()
     var loadingLabels = UILabel()
     
+    //variable reachability para la comprobacion de conexion a internet
+    var reachability: Reachability?
+    let hostNames = [nil, "google.com"]
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
-        favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation") ?? "Madrid"
+        favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation") ?? "Madrid"//"spain"
         updateCityName()
         self.showLoading()
         self.tabBarController?.tabBar.isHidden = false
@@ -104,7 +108,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         dateNotification.minute = 00
         UNUserNotificationCenter.current().delegate = self
         
-        
+        startHost(at: 0) //Se inicia star host a 0 para la comprobacion de la conexion
         
         
         //NO HACE FALTA¿?
@@ -353,6 +357,19 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         present(alert, animated: true, completion: nil)
     }
     
+    // Función para mostrar alert en la app
+    func mostrarAlert2(title: String, message: String) {
+        
+        // Creamos la alerta
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Aceptar", style: .destructive, handler: {action in
+         
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     func downloadAndSetRegion(name: String) {
         self.name = name
         if name == "Castilla - La Mancha" {
@@ -374,6 +391,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         if name == "Cataluña" {
             self.name = "Catalonia"
         }
+        if name == "España" {
+            self.name = "Spain"
+        }
         print(self.name + "Esto es desde el método")
         connection.getRegionByName(withString: self.name) { [self] (region) in
             if let region = region {
@@ -385,6 +405,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                 // Controlado para mostrar Cataluña
                 if region.name == "Catalonia"{
                     region.name = "Cataluña"
+                }
+                if region.name == "Spain"{
+                    region.name = "España"
                 }
                 
                 
@@ -497,6 +520,33 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             return (date, true)
         }else{
             return (nil, false)
+        }
+    }
+    
+    //CONFIGURACION DEL REACHABILITY PARA COMPROBAR LA CONEXION A INTERNET DEL DISPOSITIVO
+    func startHost(at index: Int){
+        reachability?.stopNotifier()
+        setupReachability(hostNames[index])
+        try? reachability?.startNotifier()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.startHost(at: (index+1)%2)
+        }
+    }
+    
+    func setupReachability(_ hostName: String?){
+        if let hostName = hostName{
+            reachability = try? Reachability(hostname: hostName)
+        }else{
+            reachability = try? Reachability()
+        }
+        
+        reachability?.whenReachable = {
+            reachability in
+        }
+        reachability?.whenUnreachable = {
+            reachability in
+            self.mostrarAlert2(title: "Conexión perdida", message: "Vuelve a conectarte y pulsa Aceptar")
+           
         }
     }
 }
