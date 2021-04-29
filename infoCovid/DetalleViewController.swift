@@ -64,6 +64,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     
 
     override func viewWillAppear(_ animated: Bool) {
+     
         favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation") ?? "Madrid"//"spain"
         updateCityName()
         
@@ -165,7 +166,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             conditionImage.image = UIImage.init(named: "coronavirusVerde")
             self.showNotification(text: (self.IALabel.text ?? ""), subtitle: "BAJO")
         }
-        saveToWidget(name: comunityName.text!, incidence: IALabel.text!, date: lastUpdateLabel.text!)
+        saveToWidget(name: comunityName.text ?? "Sin datos", incidence: IALabel.text ?? "0", date: lastUpdateLabel.text ?? "Sin datos")
         WidgetCenter.shared.reloadAllTimelines()
     }
     
@@ -265,14 +266,15 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             locationManager.delegate = self
             locationManager.requestWhenInUseAuthorization()
             locationManager.requestLocation()
+            dame()
         }else if locationIsSelected {
             comunityName.text = locationSelected
-            downloadAndSetRegion(name: locationSelected!)
+            downloadAndSetRegion(name: locationSelected ?? "Madrid")
             
         }
         else {
             comunityName.text = favoriteLocation
-            downloadAndSetRegion(name: comunityName.text!)
+            downloadAndSetRegion(name: comunityName.text ?? "Madrid")
         }
         
     }
@@ -289,6 +291,47 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error: \(error)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
+        
+        // initialise a pop up for using later
+           let alertController = UIAlertController(title: "TITLE", message: "Please go to Settings and turn on the permissions", preferredStyle: .alert)
+
+           let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                   return
+               }
+               if UIApplication.shared.canOpenURL(settingsUrl) {
+                   UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+                }
+           }
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {action in
+            self.downloadAndSetRegion(name: self.favoriteLocation)
+            self.actualLocation = false
+            UserDefaults.standard.set(self.actualLocation, forKey: self.kMkeyActualLocation)
+            UserDefaults.standard.synchronize()
+            self.actualLocation = UserDefaults.standard.bool(forKey: self.kMkeyActualLocation)
+        })
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+
+    
+        if status == .authorizedWhenInUse{
+            print("estoy autorizado")
+            
+        }
+        
+        if status == .denied{
+            print("no estoy autorizado")
+            actualLocation = false
+            UserDefaults.standard.set(actualLocation, forKey: kMkeyActualLocation)
+            UserDefaults.standard.synchronize()
+            actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
@@ -533,7 +576,58 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             self.showConnectionAlert(title: "Conexión perdida", message: "Vuelve a conectarte y pulsa Aceptar")
         }
     }
-}
+    
+    func dame(){
+        
+        // initialise a pop up for using later
+           let alertController = UIAlertController(title: "TITLE", message: "Please go to Settings and turn on the permissions", preferredStyle: .alert)
+
+           let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                   return
+               }
+               if UIApplication.shared.canOpenURL(settingsUrl) {
+                   UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+                }
+           }
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {action in
+            self.downloadAndSetRegion(name: self.favoriteLocation)
+            self.actualLocation = false
+            UserDefaults.standard.set(self.actualLocation, forKey: self.kMkeyActualLocation)
+            UserDefaults.standard.synchronize()
+            self.actualLocation = UserDefaults.standard.bool(forKey: self.kMkeyActualLocation)
+        })
+
+           alertController.addAction(cancelAction)
+           alertController.addAction(settingsAction)
+
+           // check the permission status
+        let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
+           switch status {
+           case .authorizedAlways:
+                   print("Authorize.")
+            
+                
+           case .authorizedWhenInUse:
+           print("authorize in use")
+           
+           case .restricted:
+            print("restricted")
+            self.present(alertController, animated: true, completion: nil)
+           case .denied:
+           print("denied")
+            self.present(alertController, animated: true, completion: nil)
+           case   .notDetermined:
+                   // redirect the users to settings
+                print("not")
+                 // self.present(alertController, animated: true, completion: nil)
+                
+           }
+        
+       }
+    }
+    
+
 
 
 

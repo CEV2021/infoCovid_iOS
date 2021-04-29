@@ -27,6 +27,7 @@ class SettingsViewController: UIViewController{
         actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
         notificationsSwitch.setOn(notifications!, animated: true)
         actualLocationSwitch.setOn(actualLocation!, animated: true)
+        print(actualLocation)
         
     }
     

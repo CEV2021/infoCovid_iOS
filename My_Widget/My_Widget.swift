@@ -141,6 +141,6 @@ struct My_Widget: Widget {
 struct My_Widget_Previews: PreviewProvider {
     static var previews: some View {
         My_WidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
