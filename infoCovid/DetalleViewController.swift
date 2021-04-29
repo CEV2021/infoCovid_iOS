@@ -296,9 +296,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
         
         // initialise a pop up for using later
-           let alertController = UIAlertController(title: "TITLE", message: "Please go to Settings and turn on the permissions", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Sin permisos de localización", message: "Por favor, revise los ajustes si desa utilizar su localización como ubicación principal", preferredStyle: .alert)
 
-           let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+           let settingsAction = UIAlertAction(title: "Ajustes", style: .default) { (_) -> Void in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                    return
                }
@@ -307,7 +307,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                 self.downloadAndSetRegion(name: self.favoriteLocation)
                 }
            }
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {action in
+        let cancelAction = UIAlertAction(title: "Seguir sin permisos", style: .default, handler: {action in
             self.downloadAndSetRegion(name: self.favoriteLocation)
             self.actualLocation = false
             UserDefaults.standard.set(self.actualLocation, forKey: self.kMkeyActualLocation)
@@ -581,9 +581,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     func dame(){
         
         // initialise a pop up for using later
-           let alertController = UIAlertController(title: "TITLE", message: "Please go to Settings and turn on the permissions", preferredStyle: .alert)
+           let alertController = UIAlertController(title: "Sin permisos de localización", message: "Por favor, revise los ajustes si desa utilizar su localización como ubicación", preferredStyle: .alert)
 
-           let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+           let settingsAction = UIAlertAction(title: "Ajustes", style: .default) { (_) -> Void in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString)
             else {
                    return
@@ -592,7 +592,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
                 }
            }
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {action in
+        let cancelAction = UIAlertAction(title: "Seguir sin permisos", style: .default, handler: {action in
             self.downloadAndSetRegion(name: self.favoriteLocation)
             self.actualLocation = false
             UserDefaults.standard.set(self.actualLocation, forKey: self.kMkeyActualLocation)
