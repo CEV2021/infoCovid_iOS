@@ -304,6 +304,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                }
                if UIApplication.shared.canOpenURL(settingsUrl) {
                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+                self.downloadAndSetRegion(name: self.favoriteLocation)
                 }
            }
         let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {action in
@@ -583,7 +584,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
            let alertController = UIAlertController(title: "TITLE", message: "Please go to Settings and turn on the permissions", preferredStyle: .alert)
 
            let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString)
+            else {
                    return
                }
                if UIApplication.shared.canOpenURL(settingsUrl) {
@@ -606,11 +608,17 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
            switch status {
            case .authorizedAlways:
                    print("Authorize.")
-            
+            actualLocation = true
+            UserDefaults.standard.set(actualLocation, forKey: kMkeyActualLocation)
+            UserDefaults.standard.synchronize()
+            actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
                 
            case .authorizedWhenInUse:
            print("authorize in use")
-           
+            actualLocation = true
+            UserDefaults.standard.set(actualLocation, forKey: kMkeyActualLocation)
+            UserDefaults.standard.synchronize()
+            actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
            case .restricted:
             print("restricted")
             self.present(alertController, animated: true, completion: nil)
