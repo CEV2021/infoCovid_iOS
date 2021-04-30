@@ -266,7 +266,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             locationManager.delegate = self
             locationManager.requestWhenInUseAuthorization()
             locationManager.requestLocation()
-            dame()
+            CheckStatus()
         }else if locationIsSelected {
             comunityName.text = locationSelected
             downloadAndSetRegion(name: locationSelected ?? "Madrid")
@@ -293,10 +293,11 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         print("Error: \(error)")
     }
     
+    //funcion del locationManager que revisa si hay cambios en la autorizacion de permisos
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
         
         // initialise a pop up for using later
-        let alertController = UIAlertController(title: "Sin permisos de localización", message: "Por favor, revise los ajustes si desa utilizar su localización como ubicación principal", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "SIN PERMISOS DE LOCALIZACIÓN", message: "Por favor, revise los ajustes si desa utilizar su localización como ubicación principal", preferredStyle: .alert)
 
            let settingsAction = UIAlertAction(title: "Ajustes", style: .default) { (_) -> Void in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
@@ -578,20 +579,24 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         }
     }
     
-    func dame(){
+    //funcion que comprueba el status del request de la peticion de localizacion
+    func CheckStatus(){
         
-        // initialise a pop up for using later
-           let alertController = UIAlertController(title: "Sin permisos de localización", message: "Por favor, revise los ajustes si desa utilizar su localización como ubicación", preferredStyle: .alert)
-
-           let settingsAction = UIAlertAction(title: "Ajustes", style: .default) { (_) -> Void in
+        // configuracion de alert
+        let alertController = UIAlertController(title: "SIN PERMISOS DE LOCALIZACIÓN", message: "Por favor, revise los ajustes si desa utilizar su localización como ubicación", preferredStyle: .alert)
+        
+        //opcion del alert que se ocupa de redirigir al settings del dispositivo
+        let settingsAction = UIAlertAction(title: "Ajustes", style: .default) { (_) -> Void in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString)
             else {
-                   return
-               }
-               if UIApplication.shared.canOpenURL(settingsUrl) {
-                   UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
-                }
-           }
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+            }
+        }
+        
+        //opcion del alert para continuar con la app sin permisos
         let cancelAction = UIAlertAction(title: "Seguir sin permisos", style: .default, handler: {action in
             self.downloadAndSetRegion(name: self.favoriteLocation)
             self.actualLocation = false
@@ -599,42 +604,37 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             UserDefaults.standard.synchronize()
             self.actualLocation = UserDefaults.standard.bool(forKey: self.kMkeyActualLocation)
         })
-
-           alertController.addAction(cancelAction)
-           alertController.addAction(settingsAction)
-
-           // check the permission status
-        let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
-           switch status {
-           case .authorizedAlways:
-                   print("Authorize.")
-            actualLocation = true
-            UserDefaults.standard.set(actualLocation, forKey: kMkeyActualLocation)
-            UserDefaults.standard.synchronize()
-            actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
-                
-           case .authorizedWhenInUse:
-           print("authorize in use")
-            actualLocation = true
-            UserDefaults.standard.set(actualLocation, forKey: kMkeyActualLocation)
-            UserDefaults.standard.synchronize()
-            actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
-           case .restricted:
-            print("restricted")
-            self.present(alertController, animated: true, completion: nil)
-           case .denied:
-           print("denied")
-            self.present(alertController, animated: true, completion: nil)
-           case   .notDetermined:
-                   // redirect the users to settings
-                print("not")
-                 // self.present(alertController, animated: true, completion: nil)
-                
-           }
         
-       }
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        
+        // check the permission status
+        let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
+        switch status {
+        
+        case .authorizedWhenInUse, .authorizedAlways:
+            print("Authorize.")
+            actualLocation = true
+            UserDefaults.standard.set(actualLocation, forKey: kMkeyActualLocation)
+            UserDefaults.standard.synchronize()
+            actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
+            
+        case .restricted, .denied:
+            print("restricted")
+            actualLocation = false
+            UserDefaults.standard.set(actualLocation, forKey: kMkeyActualLocation)
+            UserDefaults.standard.synchronize()
+            actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
+            self.present(alertController, animated: true, completion: nil)
+            
+        case .notDetermined:
+            print("not")
+        // self.present(alertController, animated: true, completion: nil)
+        
+        }
     }
-    
+}
+
 
 
 

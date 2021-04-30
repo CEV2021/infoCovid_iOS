@@ -83,6 +83,14 @@ class UbicationsTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
             
+            if locationList.count == 0{
+                labelName.text = "Madrid"
+                // Guardamos tanto el nombre del favorito como el index en el almacenamiento interno
+                UserDefaults.standard.set(labelName.text, forKey: "favoriteLocation")
+                UserDefaults.standard.synchronize()
+                
+            }
+            
         } else if editingStyle == .insert {
         }
     }
