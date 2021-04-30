@@ -101,10 +101,10 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         
         // Configuración del eje X (Horizontal)
         chart.xAxis.labelPosition = .bottom
-        chart.xAxis.labelFont = .boldSystemFont(ofSize: 6)
+        chart.xAxis.labelFont = .boldSystemFont(ofSize: 5)
         chart.xAxis.setLabelCount(7, force: false)
         let months = [region!.data![downData-6].date
-                      , region!.data![downData-5].date, region!.data![downData-4].date, region!.data![downData-3].date, region!.data![downData-2].date, region!.data![downData-1].date, "Hoy"]
+                      , region!.data![downData-5].date, region!.data![downData-4].date, region!.data![downData-3].date, region!.data![downData-2].date, region!.data![downData-1].date, "Ultima"]
         chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
         chart.xAxis.granularity = 1
         chart.xAxis.drawGridLinesEnabled = false

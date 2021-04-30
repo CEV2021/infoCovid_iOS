@@ -455,7 +455,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     self.recoveredLabel.text = String( region.data![downData].recovered!)
                     self.newCasesLabel.text = String(region.data![downData].active!)
                     self.totalLabel.text = String( region.data![downData].confirmed!)
-                    self.IALabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-7].incidentRate ?? 0))
+                    self.IALabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-6].incidentRate ?? 0))
                     self.lastUpdateLabel.text = "Última actualización: " +
                         updateDate
                     
