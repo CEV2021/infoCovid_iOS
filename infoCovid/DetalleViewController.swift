@@ -65,7 +65,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
 
     override func viewWillAppear(_ animated: Bool) {
      
-        favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation") ?? "Madrid"//"spain"
+        favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation") ?? "spain"
         updateCityName()
         
         self.showLoading()
@@ -269,12 +269,12 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             CheckStatus()
         }else if locationIsSelected {
             comunityName.text = locationSelected
-            downloadAndSetRegion(name: locationSelected ?? "Madrid")
+            downloadAndSetRegion(name: locationSelected ?? "spain")
             
         }
         else {
             comunityName.text = favoriteLocation
-            downloadAndSetRegion(name: comunityName.text ?? "Madrid")
+            downloadAndSetRegion(name: comunityName.text ?? "spain")
         }
         
     }

@@ -84,7 +84,7 @@ class UbicationsTableViewController: UITableViewController {
             tableView.reloadData()
             
             if locationList.count == 0{
-                labelName.text = "Madrid"
+                labelName.text = "España"
                 // Guardamos tanto el nombre del favorito como el index en el almacenamiento interno
                 UserDefaults.standard.set(labelName.text, forKey: "favoriteLocation")
                 UserDefaults.standard.synchronize()
