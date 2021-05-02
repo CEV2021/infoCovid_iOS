@@ -75,7 +75,7 @@ struct My_WidgetEntryView : View {
             }
             //.background(Color(.red))
             .padding(.top, 20)
-            Text("Casos activos")
+            Text("Incidencia Acumulada")
                 .font(.body)
                 .foregroundColor(.white)
             HStack{

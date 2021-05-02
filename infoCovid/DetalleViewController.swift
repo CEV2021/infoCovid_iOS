@@ -367,7 +367,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                 var arrayLocations = persistence.RecoverArray()
                 for location in arrayLocations {
                     if location == comunityName.text {
-                        showAddAlert(title: "Ubicación existente", message: "La localización ya se encuentra en la lista de favoritos")
+                        showAddAlert(title: "Ubicación existente", message: "La localización ya se encuentra en la lista")
                         return
                     }
                 }

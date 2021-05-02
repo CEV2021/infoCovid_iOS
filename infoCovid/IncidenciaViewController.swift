@@ -6,6 +6,7 @@ import Charts
 class IncidenciaViewController: UIViewController, ChartViewDelegate {
     
     //Outlets
+    @IBOutlet weak var todayDateLabel: UILabel!
     @IBOutlet weak var beforeDateLabel: UILabel!
     @IBOutlet weak var deathBefore: UILabel!
     @IBOutlet weak var recoveryBefore: UILabel!
@@ -29,6 +30,7 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
     var ia6 : Double = 0.0
     var chartNumber = 0.0
     var updateDate = ""
+    var updateDate2 = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +47,9 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         let downData = ((region?.data!.count)!) - 1
         
         updateDate = (region?.data![downData-6].date)!
+        updateDate2 = (region?.data![downData].date)!
         getDateFromString(updateDate: updateDate)
+        getDateFromString2(updateDate: updateDate2)
         generaGraficoLinea()
         regionNameLabel.text = region?.name
         activeCasesToday.text = String((region?.data![downData].active)!)
@@ -54,6 +58,7 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         activeCasesBefore.text = String((region?.data![downData-6].active)!)
         recoveryBefore.text = String((region?.data![downData-6].recovered)!)
         deathBefore.text = String((region?.data![downData-6].deaths)!)
+        todayDateLabel.text = updateDate2
         beforeDateLabel.text = updateDate
     }
     
@@ -101,10 +106,10 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         
         // Configuración del eje X (Horizontal)
         chart.xAxis.labelPosition = .bottom
-        chart.xAxis.labelFont = .boldSystemFont(ofSize: 5)
+        chart.xAxis.labelFont = .boldSystemFont(ofSize: 7)
         chart.xAxis.setLabelCount(7, force: false)
-        let months = [region!.data![downData-6].date
-                      , region!.data![downData-5].date, region!.data![downData-4].date, region!.data![downData-3].date, region!.data![downData-2].date, region!.data![downData-1].date, "Ultima"]
+        let months = [updateDate
+                      , "", "", "", "", "", updateDate2]
         chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
         chart.xAxis.granularity = 1
         chart.xAxis.drawGridLinesEnabled = false
@@ -145,9 +150,36 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
             }
             let dateFormatter = DateFormatter()
             
-            dateFormatter.dateStyle = .medium
+            dateFormatter.dateStyle = .short
             
             self.updateDate = dateFormatter.string(from: date)
+            return (date, true)
+            
+        }else{
+            return (nil, false)
+        }
+    }
+    
+    //se pasa la fecha de tipo String a tipo date para poder cambiarle el formato de americano a europeo
+    func getDateFromString2(updateDate: String) -> (date: Date?, conversion: Bool){
+        
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let dateComponentArray = updateDate.components(separatedBy: "-")
+        
+        if dateComponentArray.count == 3{
+            var components = DateComponents()
+            components.year = Int(dateComponentArray[0])
+            components.month = Int(dateComponentArray[1])
+            components.day = Int(dateComponentArray[2]
+            )
+            guard let date = calendar.date(from: components) else{
+                return (nil, false)
+            }
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateStyle = .short
+            
+            self.updateDate2 = dateFormatter.string(from: date)
             return (date, true)
             
         }else{
