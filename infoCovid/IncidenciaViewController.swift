@@ -31,6 +31,7 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
     var chartNumber = 0.0
     var updateDate = ""
     var updateDate2 = ""
+    var updateDate3 = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,8 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         updateDate2 = (region?.data![downData].date)!
         getDateFromString(updateDate: updateDate)
         getDateFromString2(updateDate: updateDate2)
+        updateDate3 = (region?.data![downData-3].date)!
+        getDateFromString3(updateDate: updateDate3)
         generaGraficoLinea()
         regionNameLabel.text = region?.name
         activeCasesToday.text = String((region?.data![downData].active)!)
@@ -67,7 +70,7 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
     }
     
     func generaGraficoLinea () {
-        
+        var gradientColors = [UIColor.red.cgColor, UIColor.lightGray.cgColor] as CFArray
         var downData = ((region?.data!.count)!) - 1
         
         ia = ((region?.data![downData-6].incidentRate) ?? 0) - (region?.data![downData-12].incidentRate ?? 0)
@@ -78,6 +81,14 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         ia4 = ((region?.data![downData-2].incidentRate) ?? 0) - (region?.data![downData-8].incidentRate ?? 0)
         ia5 = ((region?.data![downData-1].incidentRate) ?? 0) - (region?.data![downData-7].incidentRate ?? 0)
         ia6 = ((region?.data![downData].incidentRate) ?? 0) - (region?.data![downData-6].incidentRate ?? 0)
+        
+        if ia > 150{
+            gradientColors = [UIColor.red.cgColor, UIColor.lightGray.cgColor] as CFArray
+        }else if ia > 50{
+            gradientColors = [UIColor.yellow.cgColor, UIColor.lightGray.cgColor] as CFArray
+        }else{
+            gradientColors = [UIColor.green.cgColor, UIColor.lightGray.cgColor] as CFArray
+        }
         
         let dato1 = BarChartDataEntry(x: 0.0, y: ia )
         let dato2 = BarChartDataEntry(x: 1.0, y: ia1 )
@@ -97,7 +108,7 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         chart.rightAxis.enabled = false
         chart.leftAxis.labelFont = .boldSystemFont(ofSize: 12)
         //grafica.leftAxis.setLabelCount(10, force: true)
-        chart.leftAxis.labelTextColor = .red
+        chart.leftAxis.labelTextColor = .black
         //grafica.leftAxis.labelPosition = .outsideChart
         // grafica.leftAxis.valueFormatter = IndexAxisValueFormatter(values: incidence)
         //grafica.leftAxis.granularity = 1
@@ -109,7 +120,7 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         chart.xAxis.labelFont = .boldSystemFont(ofSize: 7)
         chart.xAxis.setLabelCount(7, force: false)
         let months = [updateDate
-                      , "", "", "", "", "", updateDate2]
+                      , "", "", updateDate3, "", "", updateDate2]
         chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
         chart.xAxis.granularity = 1
         chart.xAxis.drawGridLinesEnabled = false
@@ -120,14 +131,14 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         dataSet.drawCirclesEnabled = true
         dataSet.mode = .cubicBezier
         dataSet.lineWidth = 3
-        dataSet.setColor(.red)
-        let gradientColors = [UIColor.red.cgColor, UIColor.lightGray.cgColor] as CFArray // Colors of the gradient
+        dataSet.setColor(.black)
+        
         let colorLocations:[CGFloat] = [1.0, 0.0] // Positioning of the gradient
         let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations)
         dataSet.fill = LinearGradientFill(gradient: gradient!, angle: 90)
         dataSet.drawFilledEnabled = true
         dataSet.circleHoleColor = .white
-        dataSet.setCircleColor(.red)
+        dataSet.setCircleColor(.blue)
         dataSet.drawCircleHoleEnabled = true
         dataSet.circleRadius = 5
         data.setDrawValues(false)
@@ -180,6 +191,34 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
             dateFormatter.dateStyle = .short
             
             self.updateDate2 = dateFormatter.string(from: date)
+            return (date, true)
+            
+        }else{
+            return (nil, false)
+        }
+    }
+    
+    
+    //se pasa la fecha de tipo String a tipo date para poder cambiarle el formato de americano a europeo
+    func getDateFromString3(updateDate: String) -> (date: Date?, conversion: Bool){
+        
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let dateComponentArray = updateDate.components(separatedBy: "-")
+        
+        if dateComponentArray.count == 3{
+            var components = DateComponents()
+            components.year = Int(dateComponentArray[0])
+            components.month = Int(dateComponentArray[1])
+            components.day = Int(dateComponentArray[2]
+            )
+            guard let date = calendar.date(from: components) else{
+                return (nil, false)
+            }
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateStyle = .short
+            
+            self.updateDate3 = dateFormatter.string(from: date)
             return (date, true)
             
         }else{

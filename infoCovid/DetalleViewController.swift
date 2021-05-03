@@ -455,7 +455,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     self.recoveredLabel.text = String( region.data![downData].recovered!)
                     self.newCasesLabel.text = String(region.data![downData].active!)
                     self.totalLabel.text = String( region.data![downData].confirmed!)
-                    self.IALabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-6].incidentRate ?? 0))
+                    self.IALabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-13].incidentRate ?? 0))
                     self.lastUpdateLabel.text = "Última actualización: " +
                         updateDate
                     
@@ -469,7 +469,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     self.tabBarController?.tabBar.isHidden = false
                     hideLoading()
                     //se le da valor a la variable para el cambio de alerta
-                    self.ia = ((region.data![downData].incidentRate) ?? 0) - (region.data![downData-6].incidentRate ?? 0)
+                    self.ia = ((region.data![downData].incidentRate) ?? 0) - (region.data![downData-13].incidentRate ?? 0)
                     
                     //se llama a la funcion de cofiguracion de icono de cambio de alerta
                     self.conditionImageControl()
