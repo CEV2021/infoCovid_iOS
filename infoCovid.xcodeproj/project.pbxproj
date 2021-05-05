@@ -21,7 +21,6 @@
 		61CE6AFD25FFBE17006DCB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61CE6AFC25FFBE17006DCB9C /* Assets.xcassets */; };
 		61CE6B0025FFBE17006DCB9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61CE6AFE25FFBE17006DCB9C /* LaunchScreen.storyboard */; };
 		61D13DE42630662B0066597B /* Madrid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61D13DE32630662B0066597B /* Madrid.jpg */; };
-		61D13DE7263066310066597B /* Sevilla.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61D13DE6263066310066597B /* Sevilla.jpg */; };
 		61D9CECD262F1595004711DA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D9CECC262F1595004711DA /* Data.swift */; };
 		61E13CC12611C10B0013EDCE /* UbicationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E13CC02611C10B0013EDCE /* UbicationsTableViewController.swift */; };
 		61E623A6260BBA7A00638AC0 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E623A5260BBA7A00638AC0 /* Connection.swift */; };
@@ -81,7 +80,6 @@
 		61CE6AFF25FFBE17006DCB9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61CE6B0125FFBE17006DCB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61D13DE32630662B0066597B /* Madrid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Madrid.jpg; sourceTree = "<group>"; };
-		61D13DE6263066310066597B /* Sevilla.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sevilla.jpg; sourceTree = "<group>"; };
 		61D9CECC262F1595004711DA /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		61E13CC02611C10B0013EDCE /* UbicationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbicationsTableViewController.swift; sourceTree = "<group>"; };
 		61E623A5260BBA7A00638AC0 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
@@ -128,8 +126,8 @@
 			children = (
 				61498EC726321F990097AC0C /* Web01ViewController.swift */,
 				61498ECA26321FCA0097AC0C /* Web02ViewController.swift */,
-				61498ED026321FFC0097AC0C /* Web04ViewController.swift */,
 				61498ECD26321FE50097AC0C /* Web03ViewController.swift */,
+				61498ED026321FFC0097AC0C /* Web04ViewController.swift */,
 			);
 			path = WebsControllers;
 			sourceTree = "<group>";
@@ -158,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				657B39392636D36B00AF2193 /* infoCovid.entitlements */,
-				61D13DE6263066310066597B /* Sevilla.jpg */,
 				61D13DE32630662B0066597B /* Madrid.jpg */,
 				61498ED32632200B0097AC0C /* WebsControllers */,
 				61CE6AF325FFBE17006DCB9C /* AppDelegate.swift */,
@@ -293,7 +290,6 @@
 				61CE6B0025FFBE17006DCB9C /* LaunchScreen.storyboard in Resources */,
 				611F017F2630793F00E3C194 /* Main.storyboard in Resources */,
 				61CE6AFD25FFBE17006DCB9C /* Assets.xcassets in Resources */,
-				61D13DE7263066310066597B /* Sevilla.jpg in Resources */,
 				61D13DE42630662B0066597B /* Madrid.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

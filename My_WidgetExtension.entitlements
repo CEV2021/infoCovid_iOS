@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.infoCovid01</string>
+		<string>group.infoCovidCev</string>
 	</array>
 </dict>
 </plist>
