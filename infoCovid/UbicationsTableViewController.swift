@@ -56,6 +56,7 @@ class UbicationsTableViewController: UITableViewController {
         cell.heartButton.addTarget(self, action: #selector(changeButton), for: .touchUpInside)
         // Si el indexpath de la celda coincide con el index guardado en UserDefaults quiere decir que ese es el último que se seleccionó
         // por lo que lo seteamos con la imagen del corazón relleno
+        cell.textLabel?.font = UIFont.systemFont(ofSize: cell.bounds.height * 0.3)
         if indexPath.row == index {
             cell.heartButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: configuration), for: .normal)
         }
