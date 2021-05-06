@@ -83,7 +83,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             showListButton.isEnabled = true
             listButton.isHidden = false
         }
-        
+
         listButton.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
         self.container.isHidden = false
@@ -515,6 +515,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         self.view.addSubview(self.loadingView)
         self.view.addSubview(self.activityIndicator)
         self.view.addSubview(self.loadingLabels)
+        navigationItem.hidesBackButton = true
     }
     
     //funcion para esconder la vista de loading
@@ -523,6 +524,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         self.activityIndicator.removeFromSuperview()
         self.loadingView.removeFromSuperview()
         self.container.isHidden = true
+        navigationItem.hidesBackButton = false
     }
     
     //se pasa la fecha de tipo String a tipo date para poder cambiarle el formato de americano a europeo

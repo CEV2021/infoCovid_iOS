@@ -31,6 +31,12 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
     var updateDate2 = ""
     var updateDate3 = ""
     
+    var dateFormatter = DateFormatter()
+    var date = Date()
+    var date2 = Date()
+    var date3 = Date()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,12 +51,18 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         
         let downData = ((region?.data!.count)!) - 1
         
-        updateDate = (region?.data![downData-7].date)!
-        updateDate2 = (region?.data![downData].date)!
-        getDateFromString(updateDate: updateDate)
-        getDateFromString2(updateDate: updateDate2)
+        
+        updateDate = (region?.data![downData].date)!
+        updateDate2 = (region?.data![downData-7].date)!
         updateDate3 = (region?.data![downData-14].date)!
-        getDateFromString3(updateDate: updateDate3)
+        
+       
+        date = getDateFromString(updateDate: updateDate).date!
+        date2 = getDateFromString(updateDate: updateDate2).date!
+        date3 = getDateFromString(updateDate: updateDate3).date!
+        dateFormatter.dateFormat = "d/M/yy"
+        
+        
         generaGraficoLinea()
         regionNameLabel.text = region?.name
         activeCasesToday.text = String((region?.data![downData].active)!)
@@ -59,8 +71,11 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         activeCasesBefore.text = String((region?.data![downData-14].active)!)
         recoveryBefore.text = String((region?.data![downData-14].recovered)!)
         deathBefore.text = String((region?.data![downData-14].deaths)!)
-        todayDateLabel.text = updateDate2
-        beforeDateLabel.text = updateDate3
+        todayDateLabel.text = dateFormatter.string(from: date)
+        beforeDateLabel.text = dateFormatter.string(from: date3)
+        
+        
+        print (dateFormatter)
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
@@ -114,8 +129,10 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         chart.xAxis.labelPosition = .bottom
         chart.xAxis.labelFont = .boldSystemFont(ofSize: 7)
         chart.xAxis.setLabelCount(3, force: false)
-        let months = [updateDate3
-                      , updateDate, updateDate2]
+        
+        let months = [dateFormatter.string(from: date3)
+                      , dateFormatter.string(from: date2), dateFormatter.string(from: date)]
+        
         chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
         chart.xAxis.granularity = 1
         chart.xAxis.drawGridLinesEnabled = false
@@ -159,61 +176,6 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
             dateFormatter.dateStyle = .short
             
             self.updateDate = dateFormatter.string(from: date)
-            return (date, true)
-            
-        }else{
-            return (nil, false)
-        }
-    }
-    
-    //se pasa la fecha de tipo String a tipo date para poder cambiarle el formato de americano a europeo
-    func getDateFromString2(updateDate: String) -> (date: Date?, conversion: Bool){
-        
-        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        let dateComponentArray = updateDate.components(separatedBy: "-")
-        
-        if dateComponentArray.count == 3{
-            var components = DateComponents()
-            components.year = Int(dateComponentArray[0])
-            components.month = Int(dateComponentArray[1])
-            components.day = Int(dateComponentArray[2]
-            )
-            guard let date = calendar.date(from: components) else{
-                return (nil, false)
-            }
-            let dateFormatter = DateFormatter()
-            
-            dateFormatter.dateStyle = .short
-            
-            self.updateDate2 = dateFormatter.string(from: date)
-            return (date, true)
-            
-        }else{
-            return (nil, false)
-        }
-    }
-    
-    
-    //se pasa la fecha de tipo String a tipo date para poder cambiarle el formato de americano a europeo
-    func getDateFromString3(updateDate: String) -> (date: Date?, conversion: Bool){
-        
-        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        let dateComponentArray = updateDate.components(separatedBy: "-")
-        
-        if dateComponentArray.count == 3{
-            var components = DateComponents()
-            components.year = Int(dateComponentArray[0])
-            components.month = Int(dateComponentArray[1])
-            components.day = Int(dateComponentArray[2]
-            )
-            guard let date = calendar.date(from: components) else{
-                return (nil, false)
-            }
-            let dateFormatter = DateFormatter()
-            
-            dateFormatter.dateStyle = .short
-            
-            self.updateDate3 = dateFormatter.string(from: date)
             return (date, true)
             
         }else{
