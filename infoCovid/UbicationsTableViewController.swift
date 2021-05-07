@@ -12,11 +12,12 @@ class UbicationsTableViewController: UITableViewController {
     var arrayButton: [UIButton] = []
     let configuration = UIImage.SymbolConfiguration(scale: .large)
     let index = UserDefaults.standard.integer(forKey: "index")
+    var numero = 0
     
     
     override func viewWillDisappear(_ animated: Bool) {
         persistance.SaveArray(array: locationList)
-        
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -26,8 +27,8 @@ class UbicationsTableViewController: UITableViewController {
         locationList = persistance.RecoverArray()
         if let name = comunityName {
             locationList.append(name)
-            tableView.reloadData()
-            print(locationList.count)
+           // tableView.reloadData()
+
         }
         // Si los datos del almacenamiento interno no son nulos, seteamos el nombre del label con ellos
         if let location = UserDefaults.standard.string(forKey: "favoriteLocation"){
@@ -56,7 +57,7 @@ class UbicationsTableViewController: UITableViewController {
         cell.heartButton.addTarget(self, action: #selector(changeButton), for: .touchUpInside)
         // Si el indexpath de la celda coincide con el index guardado en UserDefaults quiere decir que ese es el último que se seleccionó
         // por lo que lo seteamos con la imagen del corazón relleno
-        cell.textLabel?.font = UIFont.systemFont(ofSize: cell.bounds.height * 0.3)
+ 
         if indexPath.row == index {
             cell.heartButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: configuration), for: .normal)
         }
@@ -81,8 +82,10 @@ class UbicationsTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             locationList.remove(at: indexPath.row)
+            arrayButton.remove(at: indexPath.row)
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.reloadData()
+            //tableView.reloadData()
             
             if locationList.count == 0{
                 labelName.text = "España"
@@ -100,10 +103,13 @@ class UbicationsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         
         let locationMove = locationList[fromIndexPath.row]
+        let arrayButtonMove = arrayButton[fromIndexPath.row]
         locationList.remove(at: fromIndexPath.row)
+        arrayButton.remove(at: fromIndexPath.row)
         
         locationList.insert(locationMove, at: to.row)
-        tableView.reloadData()
+        arrayButton.insert(arrayButtonMove, at: to.row)
+   
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -130,6 +136,8 @@ class UbicationsTableViewController: UITableViewController {
         
         // Variable index a partir de la posición del sender en el array
         let index = arrayButton.firstIndex(of: sender)
+        numero = 1
+        print(arrayButton.firstIndex(of: sender))
         // Seteamos el label con la localización que corresponda a la variable index que hemos creado
         labelName.text = locationList[index!]
         // Guardamos tanto el nombre del favorito como el index en el almacenamiento interno

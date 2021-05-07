@@ -30,11 +30,13 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
     var updateDate = ""
     var updateDate2 = ""
     var updateDate3 = ""
+    var updateDate4 = ""
     
     var dateFormatter = DateFormatter()
     var date = Date()
     var date2 = Date()
     var date3 = Date()
+    var date4 = Date()
     
     
     override func viewDidLoad() {
@@ -55,11 +57,13 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         updateDate = (region?.data![downData].date)!
         updateDate2 = (region?.data![downData-7].date)!
         updateDate3 = (region?.data![downData-14].date)!
+        updateDate4 = (region?.data![downData-21].date)!
         
        
         date = getDateFromString(updateDate: updateDate).date!
         date2 = getDateFromString(updateDate: updateDate2).date!
         date3 = getDateFromString(updateDate: updateDate3).date!
+        date4 = getDateFromString(updateDate: updateDate4).date!
         dateFormatter.dateFormat = "d/M/yy"
         
         
@@ -72,10 +76,8 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         recoveryBefore.text = String((region?.data![downData-14].recovered)!)
         deathBefore.text = String((region?.data![downData-14].deaths)!)
         todayDateLabel.text = dateFormatter.string(from: date)
-        beforeDateLabel.text = dateFormatter.string(from: date3)
-        
-        
-        print (dateFormatter)
+        beforeDateLabel.text = dateFormatter.string(from: date4)
+
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
@@ -88,6 +90,7 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         
         ia = ((region?.data![downData].incidentRate) ?? 0) - (region?.data![downData-13].incidentRate ?? 0)
         
+        ia3 = ((region?.data![downData-21].incidentRate) ?? 0) - (region?.data![downData-27].incidentRate ?? 0)
         ia4 = ((region?.data![downData-14].incidentRate) ?? 0) - (region?.data![downData-20].incidentRate ?? 0)
         ia5 = ((region?.data![downData-7].incidentRate) ?? 0) - (region?.data![downData-13].incidentRate ?? 0)
         ia6 = ((region?.data![downData].incidentRate) ?? 0) - (region?.data![downData-6].incidentRate ?? 0)
@@ -100,15 +103,15 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
             gradientColors = [UIColor.green.cgColor, UIColor.lightGray.cgColor] as CFArray
         }
         
-        let dato1 = BarChartDataEntry(x: 0.0, y: ia4 )
-        let dato2 = BarChartDataEntry(x: 1.0, y: ia5 )
-        let dato3 = BarChartDataEntry(x: 2.0, y: ia6 )
-        //let dato4 = BarChartDataEntry(x: 3.0, y: ia3 )
+        let dato1 = BarChartDataEntry(x: 0.0, y: ia3 )
+        let dato2 = BarChartDataEntry(x: 1.0, y: ia4 )
+        let dato3 = BarChartDataEntry(x: 2.0, y: ia5 )
+        let dato4 = BarChartDataEntry(x: 3.0, y: ia6 )
         //let dato5 = BarChartDataEntry(x: 4.0, y: ia4 )
         //let dato6 = BarChartDataEntry(x: 5.0, y: ia5 )
         //let dato7 = BarChartDataEntry(x: 6.0, y: ia6 )
         
-        let dataSet = LineChartDataSet(entries: [dato1, dato2, dato3], label: "Incidencia")
+        let dataSet = LineChartDataSet(entries: [dato1, dato2, dato3, dato4], label: "Incidencia")
         let data = LineChartData(dataSets: [dataSet])
         
         chart.data = data
@@ -128,9 +131,9 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         // Configuración del eje X (Horizontal)
         chart.xAxis.labelPosition = .bottom
         chart.xAxis.labelFont = .boldSystemFont(ofSize: 7)
-        chart.xAxis.setLabelCount(3, force: false)
+        chart.xAxis.setLabelCount(4, force: false)
         
-        let months = [dateFormatter.string(from: date3)
+        let months = [dateFormatter.string(from: date4), dateFormatter.string(from: date3)
                       , dateFormatter.string(from: date2), dateFormatter.string(from: date)]
         
         chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
