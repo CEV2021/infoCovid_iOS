@@ -464,11 +464,16 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     
     func downloadAndSetRegion(name: String) {
         self.name = name
+        
+        // Controlamos errores de Url
         if name == "Castilla - La Mancha" {
             self.name = "Castilla%20-%20La%20Mancha"
         }
         if name == "Castilla y Leon" {
             self.name = "Castilla%20y%20Leon"
+        }
+        if name == "La Rioja" {
+            self.name = "La%20Rioja"
         }
         if name == "Comunidad Valenciana" || name == "C. Valenciana" {
             self.name = "C.%20Valenciana"
@@ -479,7 +484,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         if name == "Pais Vasco" {
             self.name = "Pais%20Vasco"
         }
-        // Controlado Cataluña daba error
         if name == "Cataluña" {
             self.name = "Catalonia"
         }

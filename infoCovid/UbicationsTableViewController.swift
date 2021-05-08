@@ -84,10 +84,14 @@ class UbicationsTableViewController: UITableViewController {
             locationList.remove(at: indexPath.row)
             arrayButton.remove(at: indexPath.row)
         
-            
+            // Si la celda en la que pulsamos es igual al index con el corazón relleno y favoriteTouch es true
             if indexPath.row == index, favoriteTouch{
+                print("Borramos la favorita")
+                //Hemos borrado la ubicación favorita por lo que favoriteTouch es = false
                 favoriteTouch = false
+                // Seteamos el label con la ubicación de España por defecto
                 labelName.text = "España"
+                // Guardamos tanto el label como el favoriteTouch
                 UserDefaults.standard.set(labelName.text, forKey: "favoriteLocation")
                 UserDefaults.standard.set(favoriteTouch, forKey: "favoriteTouch")
             }
@@ -119,7 +123,13 @@ class UbicationsTableViewController: UITableViewController {
         
         locationList.insert(locationMove, at: to.row)
         arrayButton.insert(arrayButtonMove, at: to.row)
-   
+        
+        // Manejamos si movemos la favorita
+        if fromIndexPath.row == index {
+            print("Estamos moviendo la favorita")
+            index = to.row
+            UserDefaults.standard.set(index, forKey: "index")
+        }
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
