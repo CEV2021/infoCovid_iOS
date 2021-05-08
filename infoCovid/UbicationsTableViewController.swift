@@ -11,8 +11,8 @@ class UbicationsTableViewController: UITableViewController {
     var comunityName: String?
     var arrayButton: [UIButton] = []
     let configuration = UIImage.SymbolConfiguration(scale: .large)
-    let index = UserDefaults.standard.integer(forKey: "index")
-    var numero = 0
+    var index = UserDefaults.standard.integer(forKey: "index")
+    var favoriteTouch = UserDefaults.standard.bool(forKey: "favoriteTouch")
     
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,7 +58,7 @@ class UbicationsTableViewController: UITableViewController {
         // Si el indexpath de la celda coincide con el index guardado en UserDefaults quiere decir que ese es el último que se seleccionó
         // por lo que lo seteamos con la imagen del corazón relleno
  
-        if indexPath.row == index {
+        if indexPath.row == index, favoriteTouch {
             cell.heartButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: configuration), for: .normal)
         }
         return cell
@@ -83,12 +83,22 @@ class UbicationsTableViewController: UITableViewController {
             // Delete the row from the data source
             locationList.remove(at: indexPath.row)
             arrayButton.remove(at: indexPath.row)
+        
+            
+            if indexPath.row == index, favoriteTouch{
+                favoriteTouch = false
+                labelName.text = "España"
+                UserDefaults.standard.set(labelName.text, forKey: "favoriteLocation")
+                UserDefaults.standard.set(favoriteTouch, forKey: "favoriteTouch")
+            }
             
             tableView.deleteRows(at: [indexPath], with: .fade)
             //tableView.reloadData()
             
             if locationList.count == 0{
                 labelName.text = "España"
+                favoriteTouch = false
+                UserDefaults.standard.set(favoriteTouch, forKey: "favoriteTouch")
                 // Guardamos tanto el nombre del favorito como el index en el almacenamiento interno
                 UserDefaults.standard.set(labelName.text, forKey: "favoriteLocation")
                 UserDefaults.standard.synchronize()
@@ -135,14 +145,15 @@ class UbicationsTableViewController: UITableViewController {
         sender.setImage(UIImage(systemName: "heart.fill", withConfiguration: configuration), for: .normal)
         
         // Variable index a partir de la posición del sender en el array
-        let index = arrayButton.firstIndex(of: sender)
-        numero = 1
-        print(arrayButton.firstIndex(of: sender))
+         index = arrayButton.firstIndex(of: sender)!
+        UserDefaults.standard.set(index, forKey: "index")
+        favoriteTouch = true
+       
         // Seteamos el label con la localización que corresponda a la variable index que hemos creado
-        labelName.text = locationList[index!]
+        labelName.text = locationList[index]
         // Guardamos tanto el nombre del favorito como el index en el almacenamiento interno
         UserDefaults.standard.set(labelName.text, forKey: "favoriteLocation")
+        UserDefaults.standard.set(favoriteTouch, forKey: "favoriteTouch")
         UserDefaults.standard.synchronize()
-        UserDefaults.standard.set(index, forKey: "index")
     }
 }
