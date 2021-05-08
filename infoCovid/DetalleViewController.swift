@@ -23,6 +23,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     @IBOutlet weak var viewConstraint: NSLayoutConstraint!
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var sideView: UIView!
+    @IBOutlet weak var regionNameSlide: UILabel!
     
     // Constantes para almacenar las clave de UserDefaults
     let kMKeyNotifications = "MY_KEY_NOTIFICATIONS"
@@ -114,7 +115,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         sideView.layer.shadowOpacity = 1
         sideView.layer.shadowOffset = CGSize(width: 5, height: 0)
         
-        viewConstraint.constant = -175
+        viewConstraint.constant = -170
         
         //NO HACE FALTA¿?
         /*
@@ -168,17 +169,17 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             
             if translation > 0 { // swipe rigth
                 
-                if viewConstraint.constant < 20{
+                if viewConstraint.constant < 10{
                     UIView.animate(withDuration: 0.2, animations: {
                                     self.viewConstraint.constant += translation / 10
                                    self.view.layoutIfNeeded()
-                                   
+                        print(self.viewConstraint.constant)
                 } )
                 }
                 
             }else{
                 
-                if viewConstraint.constant < -175{
+                if viewConstraint.constant < 30{
                     UIView.animate(withDuration: 0.2, animations: {
                                     self.viewConstraint.constant += translation / 10
                                    self.view.layoutIfNeeded()
@@ -192,7 +193,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             
             if viewConstraint.constant < -100 {
                 UIView.animate(withDuration: 0.2, animations: {
-                                self.viewConstraint.constant = -175
+                                self.viewConstraint.constant = -170
                                self.view.layoutIfNeeded()
                                
             } )
@@ -326,12 +327,15 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             CheckStatus()
         }else if locationIsSelected {
             comunityName.text = locationSelected
+            regionNameSlide.text = locationSelected
             downloadAndSetRegion(name: locationSelected ?? "spain")
             
         }
         else {
             comunityName.text = favoriteLocation
+            regionNameSlide.text = favoriteLocation
             downloadAndSetRegion(name: comunityName.text ?? "spain")
+            downloadAndSetRegion(name: regionNameSlide.text ?? "spain")
         }
         
     }
@@ -512,6 +516,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     updateDate = region.data![downData].date
                     getDateFromString(updateDate: updateDate)
                     self.comunityName.text = region.name
+                    self.regionNameSlide.text = region.name
                     self.deathsLabel.text = String( region.data![downData].deaths!)
                     self.recoveredLabel.text = String( region.data![downData].recovered!)
                     self.newCasesLabel.text = String(region.data![downData].active!)
