@@ -80,6 +80,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             addButton.isHidden = true
             showListButton.isEnabled = false
             listButton.isHidden = true
+            sideView.isHidden = true
             
         }else{
             
@@ -159,6 +160,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         print(tabBarController?.viewControllers?[1])
         tableController.region = regionData
         print(regionData?.name)
+        viewConstraint.constant = -230
         print("Vista detalle desaparece")
     }
     @IBAction func panPerformed(_ sender: UIPanGestureRecognizer) {
