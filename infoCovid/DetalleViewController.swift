@@ -115,7 +115,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         sideView.layer.shadowOpacity = 1
         sideView.layer.shadowOffset = CGSize(width: 5, height: 0)
         
-        viewConstraint.constant = -170
+        viewConstraint.constant = -230
         
         //NO HACE FALTA¿?
         /*
@@ -193,7 +193,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             
             if viewConstraint.constant < -100 {
                 UIView.animate(withDuration: 0.2, animations: {
-                                self.viewConstraint.constant = -170
+                                self.viewConstraint.constant = -230
                                self.view.layoutIfNeeded()
                                
             } )
