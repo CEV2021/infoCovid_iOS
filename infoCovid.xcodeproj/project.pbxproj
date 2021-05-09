@@ -38,6 +38,7 @@
 		65C5825C2630B12600B48C57 /* UbicationsCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C5825B2630B12600B48C57 /* UbicationsCellTableViewCell.swift */; };
 		65FB46D22603F6BB0041C062 /* IncidenciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FB46D12603F6BB0041C062 /* IncidenciaViewController.swift */; };
 		CFCB4A292647E35100633491 /* Web05ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCB4A282647E35100633491 /* Web05ViewController.swift */; };
+		CFF1B66A26488D5A009F135C /* Web06ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF1B66926488D5A009F135C /* Web06ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		65C5825B2630B12600B48C57 /* UbicationsCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbicationsCellTableViewCell.swift; sourceTree = "<group>"; };
 		65FB46D12603F6BB0041C062 /* IncidenciaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidenciaViewController.swift; sourceTree = "<group>"; };
 		CFCB4A282647E35100633491 /* Web05ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web05ViewController.swift; sourceTree = "<group>"; };
+		CFF1B66926488D5A009F135C /* Web06ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web06ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				61498ECD26321FE50097AC0C /* Web03ViewController.swift */,
 				61498ED026321FFC0097AC0C /* Web04ViewController.swift */,
 				CFCB4A282647E35100633491 /* Web05ViewController.swift */,
+				CFF1B66926488D5A009F135C /* Web06ViewController.swift */,
 			);
 			path = WebsControllers;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			files = (
 				65ADCBBB2631E3D0007EEBC3 /* Persistencia.swift in Sources */,
 				65FB46D22603F6BB0041C062 /* IncidenciaViewController.swift in Sources */,
+				CFF1B66A26488D5A009F135C /* Web06ViewController.swift in Sources */,
 				611AFA33263944DE0099E7F4 /* Reachability.swift in Sources */,
 				61E65567260AA18C002016BA /* SearchLocationTableViewController.swift in Sources */,
 				61C4D9F8260B890C00D40147 /* Mappable.swift in Sources */,

@@ -24,6 +24,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var sideView: UIView!
     @IBOutlet weak var regionNameSlide: UILabel!
+    @IBOutlet weak var advertisingPopUp: UIView!
+    @IBOutlet weak var popUpView: UIView!
     
     // Constantes para almacenar las clave de UserDefaults
     let kMKeyNotifications = "MY_KEY_NOTIFICATIONS"
@@ -56,6 +58,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     var updateDate = ""
     var timeToRemember: Double = 3600.0
     var dateNotification = DateComponents()
+    var advertisingCount = UserDefaults.standard.integer(forKey: "advertising")
     
     //variables para el indicador de carga
     var activityIndicator = UIActivityIndicatorView()
@@ -68,7 +71,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     
 
     override func viewWillAppear(_ animated: Bool) {
-     
+      
         favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation") ?? "spain"
         updateCityName()
         
@@ -99,6 +102,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        advertisingCountFunc()
+        
+        print("esto es\(advertisingCount)")
+        
         dataStackView.layer.cornerRadius = 20
         dataStackView.layer.borderWidth = 3
         settings.setDefaultValues()
@@ -117,6 +124,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         sideView.layer.shadowOffset = CGSize(width: 5, height: 0)
         
         viewConstraint.constant = -230
+        
+        
+        popUpView.layer.cornerRadius = 15
+        popUpView.layer.shadowColor = UIColor.black.cgColor
+        popUpView.layer.shadowOpacity = 1
+        popUpView.layer.shadowOffset = CGSize(width: 5, height: 0)
+        popUpView.layer.borderWidth = 4
         
         //NO HACE FALTA¿?
         /*
@@ -534,7 +548,18 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                         listButton.isHidden = false
                     }
                     
+                    //si el contador llega a 5 se muestra el anuncio ocultando las navegaciones 
+                    if advertisingCount == 5{
+                        advertisingPopUp.isHidden = false
+                        self.tabBarController?.tabBar.isHidden = true
+                        listButton.isHidden = true
+                        UserDefaults.standard.synchronize()
+                        hideLoading()
+                        
+                    }else{
                     self.tabBarController?.tabBar.isHidden = false
+                    }
+                    
                     hideLoading()
                     //se le da valor a la variable para el cambio de alerta
                     self.ia = ((region.data![downData].incidentRate) ?? 0) - (region.data![downData-13].incidentRate ?? 0)
@@ -703,6 +728,29 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         
         }
     }
+    
+    //Boton que se ocupa de cerrar el popUp del anuncio
+    @IBAction func advirsementButton(_ sender: Any) {
+        
+        advertisingPopUp.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
+        listButton.isHidden = false
+       
+    }
+    
+    
+    //Funcion que se encarga de darle valor al contador para la aparicion del popUp con el anuncio
+    func advertisingCountFunc(){
+        
+        if advertisingCount >= 0, advertisingCount < 5{
+            advertisingCount += 1
+            UserDefaults.standard.set(advertisingCount, forKey: "advertising")
+        }else if advertisingCount >= 5{
+            advertisingCount = 0
+            UserDefaults.standard.set(advertisingCount, forKey: "advertising")
+        }
+    }
+    
 }
 
 
