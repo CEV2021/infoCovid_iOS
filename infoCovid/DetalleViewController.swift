@@ -145,6 +145,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         let tableController = self.tabBarController!.viewControllers![1] as! IncidenciaViewController
         tableController.region = regionData
         viewConstraint.constant = -230
+        sideView.isHidden = true
         
     }
     
@@ -539,7 +540,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     }
                     
                     //si el contador llega a 5 se muestra el anuncio ocultando las navegaciones 
-                    if advertismentCount == 5{
+                    if advertismentCount == 7{
                         advertismentPopUp.isHidden = false
                         self.tabBarController?.tabBar.isHidden = true
                         listButton.isHidden = true
