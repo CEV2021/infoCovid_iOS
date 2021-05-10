@@ -725,6 +725,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         advertismentPopUp.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
         listButton.isHidden = false
+        advertismentCount = 0
+        UserDefaults.standard.set(advertismentCount, forKey: "advertisment")
         
     }
     
