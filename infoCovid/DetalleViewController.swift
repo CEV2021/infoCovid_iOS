@@ -69,9 +69,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     var reachability: Reachability?
     let hostNames = [nil, "google.com"]
     
-
+    
     override func viewWillAppear(_ animated: Bool) {
-      
+        
         favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation") ?? "spain"
         updateCityName()
         
@@ -91,7 +91,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             showListButton.isEnabled = true
             listButton.isHidden = false
         }
-
+        
         listButton.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
         self.container.isHidden = false
@@ -102,12 +102,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UserDefaults.standard.synchronize()
         advertisingCountFunc()
         
         print("esto es\(advertisingCount)")
         
-        dataStackView.layer.cornerRadius = 20
-        dataStackView.layer.borderWidth = 3
+        viewConfigs()
+        
         settings.setDefaultValues()
         notifications = UserDefaults.standard.bool(forKey: kMKeyNotifications)
         
@@ -117,36 +118,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         
         UNUserNotificationCenter.current().delegate = self
         startHost(at: 0) //Se inicia star host a 0 para la comprobacion de la conexion
-        
-        blurView.layer.cornerRadius = 15
-        sideView.layer.shadowColor = UIColor.black.cgColor
-        sideView.layer.shadowOpacity = 1
-        sideView.layer.shadowOffset = CGSize(width: 5, height: 0)
-        
-        viewConstraint.constant = -230
-        
-        
-        popUpView.layer.cornerRadius = 15
-        popUpView.layer.shadowColor = UIColor.black.cgColor
-        popUpView.layer.shadowOpacity = 1
-        popUpView.layer.shadowOffset = CGSize(width: 5, height: 0)
-        popUpView.layer.borderWidth = 4
-        
-        //NO HACE FALTA¿?
-        /*
-         //calculo de incidencia acumulada tomando los datos de la ultima fecha y 14 dias
-         ia = ((datos?.data![downloadData].incidentRate) ?? 0) - (datos?.data![downloadData-6].incidentRate ?? 0)
-         
-         
-         totalInfectionsLabel.text = String(format:"%.0f", ia)
-         newCasesLabel.text = String(activeCasesNumber)
-         recoveredLabel.text = String(recoveredNumber)
-         deathsLabel.text = String(deathsNumber)
-         totalLabel.text = String(totalNumber)
-         lastUpdateLabel.text = "Última actualización: " +
-         updateDate
-         
-         */
         
         //permisos para las notificaciones
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
@@ -170,13 +141,14 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         let tableController = self.tabBarController!.viewControllers![1] as! IncidenciaViewController
-        print(tabBarController?.viewControllers?[1])
         tableController.region = regionData
-        print(regionData?.name)
         viewConstraint.constant = -230
-        print("Vista detalle desaparece")
+        
     }
+    
+    //action que se ocupa del gesto para arrastrar el silder
     @IBAction func panPerformed(_ sender: UIPanGestureRecognizer) {
         
         if sender.state == .began || sender.state == .changed{
@@ -187,42 +159,60 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                 
                 if viewConstraint.constant < 10{
                     UIView.animate(withDuration: 0.2, animations: {
-                                    self.viewConstraint.constant += translation / 10
-                                   self.view.layoutIfNeeded()
+                        self.viewConstraint.constant += translation / 10
+                        self.view.layoutIfNeeded()
                         print(self.viewConstraint.constant)
-                } )
+                    })
                 }
                 
             }else{
                 
                 if viewConstraint.constant < 30{
                     UIView.animate(withDuration: 0.2, animations: {
-                                    self.viewConstraint.constant += translation / 10
-                                   self.view.layoutIfNeeded()
-                                   
-                } )
+                        self.viewConstraint.constant += translation / 10
+                        self.view.layoutIfNeeded()
+                        
+                    })
                 }
-                
             }
             
         }else if sender.state == .ended{
             
             if viewConstraint.constant < -100 {
                 UIView.animate(withDuration: 0.2, animations: {
-                                self.viewConstraint.constant = -230
-                               self.view.layoutIfNeeded()
-                               
-            } )
+                    self.viewConstraint.constant = -230
+                    self.view.layoutIfNeeded()
+                    
+                } )
             } else{
                 UIView.animate(withDuration: 0.2, animations: {
-                                self.viewConstraint.constant = 0
-                               self.view.layoutIfNeeded()
-                               
-            } )
-                
+                    self.viewConstraint.constant = 0
+                    self.view.layoutIfNeeded()
+                    
+                } )
             }
-            
         }
+    }
+    
+    //se configuran las vistas
+    func viewConfigs(){
+        
+        dataStackView.layer.cornerRadius = 20
+        dataStackView.layer.borderWidth = 3
+        
+        blurView.layer.cornerRadius = 15
+        sideView.layer.shadowColor = UIColor.black.cgColor
+        sideView.layer.shadowOpacity = 1
+        sideView.layer.shadowOffset = CGSize(width: 5, height: 0)
+        
+        viewConstraint.constant = -230
+        
+        popUpView.layer.cornerRadius = 15
+        popUpView.layer.shadowColor = UIColor.black.cgColor
+        popUpView.layer.shadowOpacity = 1
+        popUpView.layer.shadowOffset = CGSize(width: 8, height: 0)
+        popUpView.layer.borderWidth = 4
+        
     }
     
     //Funcion que se ocupa del formato de la imagen de cambio de nivel de alarma
@@ -375,16 +365,16 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         
         // initialise a pop up for using later
         let alertController = UIAlertController(title: "SIN PERMISOS DE LOCALIZACIÓN", message: "Por favor, revise los ajustes si desa utilizar su localización como ubicación principal", preferredStyle: .alert)
-
-           let settingsAction = UIAlertAction(title: "Ajustes", style: .default) { (_) -> Void in
+        
+        let settingsAction = UIAlertAction(title: "Ajustes", style: .default) { (_) -> Void in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                   return
-               }
-               if UIApplication.shared.canOpenURL(settingsUrl) {
-                   UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
                 self.downloadAndSetRegion(name: self.favoriteLocation)
-                }
-           }
+            }
+        }
         let cancelAction = UIAlertAction(title: "Seguir sin permisos", style: .default, handler: {action in
             self.downloadAndSetRegion(name: self.favoriteLocation)
             self.actualLocation = false
@@ -392,11 +382,11 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             UserDefaults.standard.synchronize()
             self.actualLocation = UserDefaults.standard.bool(forKey: self.kMkeyActualLocation)
         })
-
+        
         alertController.addAction(cancelAction)
         alertController.addAction(settingsAction)
-
-    
+        
+        
         if status == .authorizedWhenInUse{
             print("estoy autorizado")
             
@@ -557,7 +547,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                         hideLoading()
                         
                     }else{
-                    self.tabBarController?.tabBar.isHidden = false
+                        self.tabBarController?.tabBar.isHidden = false
                     }
                     
                     hideLoading()
@@ -735,7 +725,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         advertisingPopUp.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
         listButton.isHidden = false
-       
+        
     }
     
     
