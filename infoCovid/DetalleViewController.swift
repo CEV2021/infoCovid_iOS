@@ -24,7 +24,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var sideView: UIView!
     @IBOutlet weak var regionNameSlide: UILabel!
-    @IBOutlet weak var advertisingPopUp: UIView!
+    @IBOutlet weak var advertismentPopUp: UIView!
     @IBOutlet weak var popUpView: UIView!
     
     // Constantes para almacenar las clave de UserDefaults
@@ -58,7 +58,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     var updateDate = ""
     var timeToRemember: Double = 3600.0
     var dateNotification = DateComponents()
-    var advertisingCount = UserDefaults.standard.integer(forKey: "advertising")
+    var advertismentCount = UserDefaults.standard.integer(forKey: "advertisment")
     
     //variables para el indicador de carga
     var activityIndicator = UIActivityIndicatorView()
@@ -103,9 +103,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         super.viewDidLoad()
         
         UserDefaults.standard.synchronize()
-        advertisingCountFunc()
+        advertismentCountFunc()
         
-        print("esto es\(advertisingCount)")
+        print("esto es\(advertismentCount)")
         
         viewConfigs()
         
@@ -183,13 +183,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     self.viewConstraint.constant = -230
                     self.view.layoutIfNeeded()
                     
-                } )
+                })
             } else{
                 UIView.animate(withDuration: 0.2, animations: {
                     self.viewConstraint.constant = 0
                     self.view.layoutIfNeeded()
                     
-                } )
+                })
             }
         }
     }
@@ -539,8 +539,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     }
                     
                     //si el contador llega a 5 se muestra el anuncio ocultando las navegaciones 
-                    if advertisingCount == 5{
-                        advertisingPopUp.isHidden = false
+                    if advertismentCount == 5{
+                        advertismentPopUp.isHidden = false
                         self.tabBarController?.tabBar.isHidden = true
                         listButton.isHidden = true
                         UserDefaults.standard.synchronize()
@@ -722,7 +722,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     //Boton que se ocupa de cerrar el popUp del anuncio
     @IBAction func advirsementButton(_ sender: Any) {
         
-        advertisingPopUp.isHidden = true
+        advertismentPopUp.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
         listButton.isHidden = false
         
@@ -730,17 +730,16 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     
     
     //Funcion que se encarga de darle valor al contador para la aparicion del popUp con el anuncio
-    func advertisingCountFunc(){
+    func advertismentCountFunc(){
         
-        if advertisingCount >= 0, advertisingCount < 5{
-            advertisingCount += 1
-            UserDefaults.standard.set(advertisingCount, forKey: "advertising")
-        }else if advertisingCount >= 5{
-            advertisingCount = 0
-            UserDefaults.standard.set(advertisingCount, forKey: "advertising")
+        if advertismentCount >= 0, advertismentCount < 5{
+            advertismentCount += 1
+            UserDefaults.standard.set(advertismentCount, forKey: "advertisment")
+        }else if advertismentCount >= 5{
+            advertismentCount = 0
+            UserDefaults.standard.set(advertismentCount, forKey: "advertisment")
         }
     }
-    
 }
 
 

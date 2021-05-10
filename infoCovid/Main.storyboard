@@ -540,7 +540,7 @@
                     <connections>
                         <outlet property="IALabel" destination="So3-m5-e8M" id="wiF-8R-3Vs"/>
                         <outlet property="addButton" destination="LFJ-XL-Dge" id="Mcq-Eg-AYJ"/>
-                        <outlet property="advertisingPopUp" destination="7aX-5e-pBs" id="bpK-NR-zdk"/>
+                        <outlet property="advertismentPopUp" destination="7aX-5e-pBs" id="bpK-NR-zdk"/>
                         <outlet property="blurView" destination="43x-DP-rGM" id="pxk-4h-ExI"/>
                         <outlet property="comunityName" destination="QLB-5Q-FfD" id="VZt-bB-2u4"/>
                         <outlet property="conditionImage" destination="ybH-Ra-5MF" id="ekN-4z-f8t"/>
