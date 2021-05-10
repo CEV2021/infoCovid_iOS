@@ -531,7 +531,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     self.IALabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-13].incidentRate ?? 0))
                     self.lastUpdateLabel.text = "Última actualización: " +
                         updateDate
-                    
+                    sideView.isHidden = false
                     if fromFavoriteLocationList{
                         listButton.isHidden = true
                         
@@ -735,13 +735,19 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     //Funcion que se encarga de darle valor al contador para la aparicion del popUp con el anuncio
     func advertismentCountFunc(){
         
-        if advertismentCount >= 0, advertismentCount < 5{
+        if advertismentCount >= 0, advertismentCount < 7{
             advertismentCount += 1
             UserDefaults.standard.set(advertismentCount, forKey: "advertisment")
-        }else if advertismentCount >= 5{
+        }else if advertismentCount >= 7{
             advertismentCount = 0
             UserDefaults.standard.set(advertismentCount, forKey: "advertisment")
         }
+    }
+    
+    @IBAction func popUpWebBotom(_ sender: Any) {
+        advertismentPopUp.isHidden = true
+        advertismentCount = 0
+        UserDefaults.standard.set(advertismentCount, forKey: "advertisment")
     }
 }
 
