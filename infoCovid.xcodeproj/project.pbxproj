@@ -37,6 +37,7 @@
 		65ADCBBB2631E3D0007EEBC3 /* Persistencia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ADCBBA2631E3D0007EEBC3 /* Persistencia.swift */; };
 		65C5825C2630B12600B48C57 /* UbicationsCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C5825B2630B12600B48C57 /* UbicationsCellTableViewCell.swift */; };
 		65FB46D22603F6BB0041C062 /* IncidenciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FB46D12603F6BB0041C062 /* IncidenciaViewController.swift */; };
+		CFC59384264A8E0C00816DFD /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC59383264A8E0C00816DFD /* CustomTabBar.swift */; };
 		CFCB4A292647E35100633491 /* Web05ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCB4A282647E35100633491 /* Web05ViewController.swift */; };
 		CFF1B66A26488D5A009F135C /* Web06ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF1B66926488D5A009F135C /* Web06ViewController.swift */; };
 /* End PBXBuildFile section */
@@ -100,6 +101,7 @@
 		65ADCBBA2631E3D0007EEBC3 /* Persistencia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistencia.swift; sourceTree = "<group>"; };
 		65C5825B2630B12600B48C57 /* UbicationsCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbicationsCellTableViewCell.swift; sourceTree = "<group>"; };
 		65FB46D12603F6BB0041C062 /* IncidenciaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidenciaViewController.swift; sourceTree = "<group>"; };
+		CFC59383264A8E0C00816DFD /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		CFCB4A282647E35100633491 /* Web05ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web05ViewController.swift; sourceTree = "<group>"; };
 		CFF1B66926488D5A009F135C /* Web06ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web06ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +175,7 @@
 				6112D236262EE2D8007F3925 /* Region.swift */,
 				61E623A5260BBA7A00638AC0 /* Connection.swift */,
 				65FB46D12603F6BB0041C062 /* IncidenciaViewController.swift */,
+				CFC59383264A8E0C00816DFD /* CustomTabBar.swift */,
 				61C4D9F7260B890C00D40147 /* Mappable.swift */,
 				611AFA32263944DE0099E7F4 /* Reachability.swift */,
 				61E13CC02611C10B0013EDCE /* UbicationsTableViewController.swift */,
@@ -329,6 +332,7 @@
 				61D9CECD262F1595004711DA /* Data.swift in Sources */,
 				6112D237262EE2D8007F3925 /* Region.swift in Sources */,
 				65C5825C2630B12600B48C57 /* UbicationsCellTableViewCell.swift in Sources */,
+				CFC59384264A8E0C00816DFD /* CustomTabBar.swift in Sources */,
 				657B394D2636D8D600AF2193 /* My_Widget.intentdefinition in Sources */,
 				61CE6AF625FFBE17006DCB9C /* SceneDelegate.swift in Sources */,
 				65777F112601785400A3B7EF /* SettingsViewController.swift in Sources */,
