@@ -447,6 +447,12 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                 print("Desde vista \(destination.locationList.count)")
             }
         }
+        
+        if segue.identifier == "settings"{
+            let destination2: SettingsViewController = segue.destination as! SettingsViewController
+                destination2.fromDetail = true
+            }
+        
         self.tabBarController?.tabBar.isHidden = true
     }
     

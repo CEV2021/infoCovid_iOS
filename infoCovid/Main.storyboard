@@ -212,7 +212,7 @@
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" scale="large"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="hDy-1K-TOn" kind="show" id="pCh-G5-ggr"/>
+                                                        <segue destination="hDy-1K-TOn" kind="show" identifier="settings" id="pCh-G5-ggr"/>
                                                     </connections>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="17v-A2-H02">
@@ -921,7 +921,18 @@
                         <viewLayoutGuide key="safeArea" id="YbT-0J-D3n"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7TW-oy-8QZ"/>
+                    <navigationItem key="navigationItem" id="7TW-oy-8QZ">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="W8o-3d-l7B">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BYW-gS-N8q">
+                                <rect key="frame" x="322" y="11" width="72" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="arrow.clockwise" catalog="system"/>
+                                <connections>
+                                    <action selector="reloadButton:" destination="q3E-P8-VVf" eventType="touchUpInside" id="vM6-Bz-VLL"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmA-Ly-q7P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -937,7 +948,18 @@
                         <viewLayoutGuide key="safeArea" id="Ppi-Aw-HBK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="TCU-dw-9UT"/>
+                    <navigationItem key="navigationItem" id="TCU-dw-9UT">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="hHN-AM-L4A">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="w2X-cl-sEW">
+                                <rect key="frame" x="376" y="11" width="18" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="arrow.clockwise" catalog="system"/>
+                                <connections>
+                                    <action selector="reloadButton:" destination="Rza-JC-Uej" eventType="touchUpInside" id="K5A-7d-cxq"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGl-Ol-UtL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1571,7 +1593,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="aeq-ti-Ctv"/>
         <segue reference="YtF-la-SCv"/>
-        <segue reference="QCF-kN-grJ"/>
+        <segue reference="pCh-G5-ggr"/>
         <segue reference="ZCQ-wa-a9H"/>
     </inferredMetricsTieBreakers>
     <resources>
