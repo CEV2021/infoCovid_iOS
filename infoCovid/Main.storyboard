@@ -195,9 +195,9 @@
                                 <rect key="frame" x="0.0" y="100" width="230" height="668"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43x-DP-rGM">
-                                        <rect key="frame" x="-10" y="-17" width="250" height="698"/>
+                                        <rect key="frame" x="-10" y="8" width="250" height="673"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TH7-iY-RrK">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="698"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="673"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="v7o-Po-PuY">
@@ -275,7 +275,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="43x-DP-rGM" firstAttribute="centerY" secondItem="ffW-gB-cK1" secondAttribute="centerY" constant="-2" id="BOG-Lj-XWQ"/>
+                                    <constraint firstItem="43x-DP-rGM" firstAttribute="centerY" secondItem="ffW-gB-cK1" secondAttribute="centerY" constant="10.5" id="BOG-Lj-XWQ"/>
                                     <constraint firstAttribute="width" constant="230" id="J5B-IG-YyF"/>
                                     <constraint firstItem="43x-DP-rGM" firstAttribute="width" secondItem="ffW-gB-cK1" secondAttribute="width" multiplier="1.37143" constant="-65" id="sBN-wc-f9f"/>
                                     <constraint firstItem="43x-DP-rGM" firstAttribute="centerX" secondItem="ffW-gB-cK1" secondAttribute="centerX" id="xXr-9K-TpJ"/>
@@ -407,7 +407,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="-15.999775999999997"/>
                             </constraint>
                             <constraint firstItem="s9V-kL-S67" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Jbl-Bo-htZ"/>
-                            <constraint firstItem="43x-DP-rGM" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.751116" constant="25.000063999999952" id="N9B-np-tYT"/>
+                            <constraint firstItem="43x-DP-rGM" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.751116" constant="6.3999999952102371e-05" id="N9B-np-tYT"/>
                             <constraint firstItem="s9V-kL-S67" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Ovt-q1-TFm"/>
                             <constraint firstItem="7aX-5e-pBs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Shr-Ma-VYL"/>
                             <constraint firstItem="4nk-gc-dsI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="6" id="Uld-kF-A8R"/>
@@ -569,17 +569,17 @@
             </objects>
             <point key="canvasLocation" x="930.43478260869574" y="891.29464285714278"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="9Te-Ho-8BR">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="XwM-MT-ccp" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="XwM-MT-ccp" customClass="TabBarViewController" customModule="infoCovid" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="FMB-Q7-JQh"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wcw-6i-g0B" customClass="CustomTabBar" customModule="infoCovid" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.15337336900000001" green="0.1953937479" blue="0.24343435299999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="selectedImageTintColor" systemColor="systemYellowColor"/>
+                        <color key="selectedImageTintColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="JMm-0p-uhb" kind="relationship" relationship="viewControllers" id="Gaw-nN-uTi"/>
@@ -828,7 +828,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MUT-4W-Ie9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2800" y="79.6875"/>
+            <point key="canvasLocation" x="2841" y="79"/>
         </scene>
         <!--Web01 View Controller-->
         <scene sceneID="8Do-im-SS2">
@@ -855,7 +855,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ae-TP-F0K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4110.144927536232" y="-483.48214285714283"/>
+            <point key="canvasLocation" x="3671" y="-655"/>
         </scene>
         <!--Web02 View Controller-->
         <scene sceneID="lEq-3k-sJN">
@@ -882,7 +882,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00S-52-kvT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5055.072463768116" y="-318.08035714285711"/>
+            <point key="canvasLocation" x="4350" y="-317"/>
         </scene>
         <!--Web04 View Controller-->
         <scene sceneID="C1e-5g-XCM">
@@ -909,7 +909,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czy-SJ-flA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4805.7971014492759" y="432.58928571428572"/>
+            <point key="canvasLocation" x="3669" y="479"/>
         </scene>
         <!--Web06 View Controller-->
         <scene sceneID="462-bE-MV2">
@@ -925,7 +925,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmA-Ly-q7P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4909" y="1570"/>
+            <point key="canvasLocation" x="1894" y="1705"/>
         </scene>
         <!--Web05 View Controller-->
         <scene sceneID="ldU-uY-aeH">
@@ -941,7 +941,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGl-Ol-UtL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5807" y="946"/>
+            <point key="canvasLocation" x="2841" y="1705"/>
         </scene>
         <!--Web03 View Controller-->
         <scene sceneID="7EJ-DP-5K0">
@@ -968,7 +968,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uqt-3D-TiW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5821.739130434783" y="99.776785714285708"/>
+            <point key="canvasLocation" x="5042" y="88"/>
         </scene>
         <!--Ubicaciones-->
         <scene sceneID="drf-kS-OEx">
@@ -1100,8 +1100,8 @@
         <scene sceneID="7fX-LN-zUb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JMm-0p-uhb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="home25" id="Naw-Zk-Va8">
-                        <imageReference key="selectedImage" image="home" symbolScale="large"/>
+                    <tabBarItem key="tabBarItem" title="" image="home1" id="Naw-Zk-Va8">
+                        <imageReference key="selectedImage" image="home2" symbolScale="large"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ezm-tf-9St"/>
@@ -1116,7 +1116,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6z-z8-eht" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19" y="899"/>
+            <point key="canvasLocation" x="19" y="898"/>
         </scene>
         <!--Buscar-->
         <scene sceneID="uTf-Kb-18m">
@@ -1476,10 +1476,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="FaS-vR-NLb"/>
-                                <exclude reference="xOL-gd-fLl"/>
                                 <exclude reference="9Sb-VR-R25"/>
                                 <exclude reference="lXI-Bm-miX"/>
+                                <exclude reference="FaS-vR-NLb"/>
+                                <exclude reference="xOL-gd-fLl"/>
                                 <exclude reference="ASE-tC-WA5"/>
                                 <exclude reference="Ger-4K-BdU"/>
                                 <exclude reference="flB-5a-VaL"/>
@@ -1488,23 +1488,23 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="xOL-gd-fLl"/>
                                 <include reference="lXI-Bm-miX"/>
+                                <include reference="xOL-gd-fLl"/>
                                 <include reference="ASE-tC-WA5"/>
                                 <include reference="flB-5a-VaL"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
-                                <include reference="FaS-vR-NLb"/>
                                 <include reference="9Sb-VR-R25"/>
+                                <include reference="FaS-vR-NLb"/>
                                 <include reference="Ger-4K-BdU"/>
                                 <include reference="iHk-r3-oMT"/>
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="graphic-progression" id="34R-Zy-HKg">
-                        <imageReference key="selectedImage" image="graphic-progression25" symbolScale="large" renderingMode="template"/>
+                    <tabBarItem key="tabBarItem" title="" image="analytics" id="34R-Zy-HKg">
+                        <imageReference key="selectedImage" image="analytics2" symbolScale="large" renderingMode="template"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="activeCasesBefore" destination="AfF-TS-Yo4" id="naj-Dx-4k9"/>
@@ -1529,8 +1529,8 @@
         <scene sceneID="etT-ii-sQg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2KG-eO-d47" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="magnifying-glass25" id="bO2-hL-5fj">
-                        <imageReference key="selectedImage" image="magnifying-glass" symbolScale="large"/>
+                    <tabBarItem key="tabBarItem" title="" image="magnifying-glass1" id="bO2-hL-5fj">
+                        <imageReference key="selectedImage" image="magnifying-glass2" symbolScale="large"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GEK-vF-zO6">
@@ -1550,8 +1550,8 @@
         <scene sceneID="rbp-AN-xOG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hs7-jg-vXV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="settings25" id="a1r-TT-6cF">
-                        <imageReference key="selectedImage" image="settings" symbolScale="large"/>
+                    <tabBarItem key="tabBarItem" title="" image="settings1" id="a1r-TT-6cF">
+                        <imageReference key="selectedImage" image="settings2" symbolScale="large"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cSL-1h-XQb">
@@ -1571,10 +1571,12 @@
     <inferredMetricsTieBreakers>
         <segue reference="aeq-ti-Ctv"/>
         <segue reference="dlZ-Pk-wRM"/>
-        <segue reference="pCh-G5-ggr"/>
+        <segue reference="QCF-kN-grJ"/>
         <segue reference="ZCQ-wa-a9H"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="analytics" width="31" height="31"/>
+        <image name="analytics2" width="44" height="44"/>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="cev-escuela-universidad-1931989" width="2362" height="945"/>
         <image name="cev2" width="342" height="147"/>
@@ -1582,12 +1584,10 @@
         <image name="cruz" width="170.66667175292969" height="170.66667175292969"/>
         <image name="curados" width="170.66667175292969" height="170.66667175292969"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
-        <image name="graphic-progression" width="34.5" height="34.5"/>
-        <image name="graphic-progression25" width="49" height="49"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="home" width="35" height="35"/>
-        <image name="home25" width="25" height="25"/>
+        <image name="home1" width="29" height="29"/>
+        <image name="home2" width="39" height="39"/>
         <image name="imageView:s6s-vy-sno:image" width="358" height="770">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
@@ -2701,13 +2701,13 @@ AQAgAAEAKAAAAAAAAAQBAAAAAAAAAMUAAAAAAAAAAAAAAAAAAQArA
         </image>
         <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="logo2" width="226" height="102"/>
-        <image name="magnifying-glass" width="44" height="44"/>
-        <image name="magnifying-glass25" width="31.333333969116211" height="31.333333969116211"/>
+        <image name="magnifying-glass1" width="30.666666030883789" height="30.666666030883789"/>
+        <image name="magnifying-glass2" width="44" height="44"/>
         <image name="paciente" width="170.66667175292969" height="170.66667175292969"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="portada2" width="358" height="770"/>
-        <image name="settings" width="47" height="47"/>
-        <image name="settings25" width="33" height="33"/>
+        <image name="settings1" width="33" height="33"/>
+        <image name="settings2" width="47" height="47"/>
         <image name="virus" width="512" height="512"/>
         <image name="x.circle" catalog="system" width="128" height="121"/>
         <systemColor name="linkColor">
@@ -2718,9 +2718,6 @@ AQAgAAEAKAAAAAAAAAQBAAAAAAAAAMUAAAAAAAAAAAAAAAAAAQArA
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

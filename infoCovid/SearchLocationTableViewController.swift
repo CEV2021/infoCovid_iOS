@@ -142,7 +142,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         let center = self.activityIndicator.center
         self.loadingLabels.center = CGPoint(x: center.x, y: center.y + 40)
         self.loadingLabels.textAlignment = .center
-        self.loadingLabels.text = "Loading..."
+        self.loadingLabels.text = "Cargando..."
         self.loadingLabels.textColor = .white
     }
     

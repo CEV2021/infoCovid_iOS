@@ -76,7 +76,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         updateCityName()
         
         self.showLoading()
-        self.tabBarController?.tabBar.isHidden = false
+        //self.tabBarController?.tabBar.isHidden = false
         
         if fromFavoriteLocationList {
             
@@ -93,7 +93,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         }
         
         listButton.isHidden = true
-        self.tabBarController?.tabBar.isHidden = true
+        //self.tabBarController?.tabBar.isHidden = true
         self.container.isHidden = false
         self.setupLoadingViews()//se hace la llamada a la funcion de carga
         
@@ -101,7 +101,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tabBarController?.tabBar.isHidden = true
         UserDefaults.standard.synchronize()
         advertismentCountFunc()
         
@@ -589,7 +589,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         let center = self.activityIndicator.center
         self.loadingLabels.center = CGPoint(x: center.x, y: center.y + 40)
         self.loadingLabels.textAlignment = .center
-        self.loadingLabels.text = "Loading..."
+        self.loadingLabels.text = "Cargando..."
         self.loadingLabels.textColor = .white
     }
     
