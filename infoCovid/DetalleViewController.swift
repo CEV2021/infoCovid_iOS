@@ -239,7 +239,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         if response.actionIdentifier == "rememberAction"{
-            dateNotification.hour = 20
+            
+            if dateNotification.hour == 12{
+                dateNotification.hour = 20
+            } else if dateNotification.hour == 20{
+                dateNotification.hour = 12
+            }
+            
             timeToRemember = 10
             conditionImageControl()
         }
@@ -344,7 +350,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             downloadAndSetRegion(name: comunityName.text ?? "spain")
             downloadAndSetRegion(name: regionNameSlide.text ?? "spain")
         }
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -401,7 +406,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
             self.present(alertController, animated: true, completion: nil)
         }
-        
     }
     
     @IBAction func addButtonAction(_ sender: Any) {

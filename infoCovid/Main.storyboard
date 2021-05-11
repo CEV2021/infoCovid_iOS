@@ -1476,10 +1476,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="9Sb-VR-R25"/>
-                                <exclude reference="lXI-Bm-miX"/>
                                 <exclude reference="FaS-vR-NLb"/>
                                 <exclude reference="xOL-gd-fLl"/>
+                                <exclude reference="9Sb-VR-R25"/>
+                                <exclude reference="lXI-Bm-miX"/>
                                 <exclude reference="ASE-tC-WA5"/>
                                 <exclude reference="Ger-4K-BdU"/>
                                 <exclude reference="flB-5a-VaL"/>
@@ -1488,16 +1488,16 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="lXI-Bm-miX"/>
                                 <include reference="xOL-gd-fLl"/>
+                                <include reference="lXI-Bm-miX"/>
                                 <include reference="ASE-tC-WA5"/>
                                 <include reference="flB-5a-VaL"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
-                                <include reference="9Sb-VR-R25"/>
                                 <include reference="FaS-vR-NLb"/>
+                                <include reference="9Sb-VR-R25"/>
                                 <include reference="Ger-4K-BdU"/>
                                 <include reference="iHk-r3-oMT"/>
                             </mask>
@@ -1570,7 +1570,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="aeq-ti-Ctv"/>
-        <segue reference="dlZ-Pk-wRM"/>
+        <segue reference="YtF-la-SCv"/>
         <segue reference="QCF-kN-grJ"/>
         <segue reference="ZCQ-wa-a9H"/>
     </inferredMetricsTieBreakers>
