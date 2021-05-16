@@ -393,9 +393,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         alertController.addAction(settingsAction)
         
         
+        
         if status == .authorizedWhenInUse{
             print("estoy autorizado")
-            
+            actualLocation = true
+            UserDefaults.standard.set(actualLocation, forKey: kMkeyActualLocation)
+            UserDefaults.standard.synchronize()
+            actualLocation = UserDefaults.standard.bool(forKey: kMkeyActualLocation)
         }
         
         if status == .denied{
