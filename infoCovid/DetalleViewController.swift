@@ -84,12 +84,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             showListButton.isEnabled = false
             listButton.isHidden = true
             sideView.isHidden = true
-            
+            self.tabBarController?.tabBar.items![2].isEnabled = false
         }else{
             
             addButton.isHidden = false
             showListButton.isEnabled = true
             listButton.isHidden = false
+            self.tabBarController?.tabBar.items![2].isEnabled = true
         }
         
         listButton.isHidden = true

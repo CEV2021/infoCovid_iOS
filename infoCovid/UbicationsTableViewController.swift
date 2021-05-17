@@ -22,7 +22,7 @@ class UbicationsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tabBarController?.tabBar.isHidden = true
         navigationItem.rightBarButtonItem = editButtonItem
         locationList = persistance.RecoverArray()
         if let name = comunityName {
@@ -34,6 +34,10 @@ class UbicationsTableViewController: UITableViewController {
         if let location = UserDefaults.standard.string(forKey: "favoriteLocation"){
             labelName.text = location
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
