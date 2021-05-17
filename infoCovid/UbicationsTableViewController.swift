@@ -80,10 +80,6 @@ class UbicationsTableViewController: UITableViewController {
     //Funcion para borrar las ubicaciones de la tabla, ya sea desde el modo edicion o arrastrando a la izquierda
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            locationList.remove(at: indexPath.row)
-            arrayButton.remove(at: indexPath.row)
-        
             // Si la celda en la que pulsamos es igual al index con el corazón relleno y favoriteTouch es true
             if indexPath.row == index, favoriteTouch{
                 print("Borramos la favorita")
@@ -95,6 +91,15 @@ class UbicationsTableViewController: UITableViewController {
                 UserDefaults.standard.set(labelName.text, forKey: "favoriteLocation")
                 UserDefaults.standard.set(favoriteTouch, forKey: "favoriteTouch")
             }
+            // Delete the row from the data source
+            locationList.remove(at: indexPath.row)
+            arrayButton.remove(at: indexPath.row)
+            if indexPath.row < index, index > 0{
+                index -= 1
+                print("Resto")
+                UserDefaults.standard.set(index, forKey: "index")
+            }
+            print("Esto es el index \(index)")
             
             tableView.deleteRows(at: [indexPath], with: .fade)
             //tableView.reloadData()

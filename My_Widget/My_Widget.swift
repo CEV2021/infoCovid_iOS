@@ -36,6 +36,7 @@ struct SimpleEntry: TimelineEntry {
 
 struct My_WidgetEntryView : View {
     var entry: Provider.Entry
+    // Variable con la que pasamos los datos de la app al widget
     var data = My_Widget()
     @Environment(\.widgetFamily) var family
     
@@ -246,6 +247,7 @@ struct My_Widget: Widget {
         .description("This is an example widget.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
+    // Variable para obtener el nombre de la localización del Home de la app
     var name: String = {
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("name")
         let data = try! Data(contentsOf: url!)
@@ -253,6 +255,7 @@ struct My_Widget: Widget {
         print(name)
         return name
     }()
+    // Variable para obtener la IA del Home de la app
     var incidence: String = {
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("incidence")
         let data = try! Data(contentsOf: url!)
@@ -260,7 +263,7 @@ struct My_Widget: Widget {
         print(incidence)
         return incidence
     }()
-    
+    // Variable para obtener la fecha de actualización del Home de la app
     var date: String = {
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.jorge.infoCovid")?.appendingPathComponent("date")
         let data = try! Data(contentsOf: url!)
