@@ -126,9 +126,11 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         //Loading View
         self.loadingView.frame = CGRect(x: 0, y: 0, width: 180, height: 180)
         self.loadingView.center = self.view.center
-        self.loadingView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
+        self.loadingView.backgroundColor = #colorLiteral(red: 0.2250583768, green: 0.3118225634, blue: 0.387561202, alpha: 1)
         self.loadingView.clipsToBounds = true
         self.loadingView.layer.cornerRadius = 10
+        self.loadingView.layer.borderColor = #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1)
+        self.loadingView.layer.borderWidth = 4
         
         //Activity Indicator View
         self.activityIndicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)

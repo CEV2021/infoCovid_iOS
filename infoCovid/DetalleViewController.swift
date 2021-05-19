@@ -59,6 +59,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     var timeToRemember: Double = 3600.0
     var dateNotification = DateComponents()
     var advertismentCount = UserDefaults.standard.integer(forKey: "advertisment")
+    var oldUbicationString = ""
     
     //variables para el indicador de carga
     var activityIndicator = UIActivityIndicatorView()
@@ -75,7 +76,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation") ?? "spain"
         updateCityName()
         
-        self.showLoading()
+        showLoading()
         //self.tabBarController?.tabBar.isHidden = false
         
         if fromFavoriteLocationList {
@@ -85,6 +86,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             listButton.isHidden = true
             sideView.isHidden = true
             self.tabBarController?.tabBar.items![2].isEnabled = false
+            
         }else{
             
             addButton.isHidden = false
@@ -98,10 +100,31 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         self.container.isHidden = false
         self.setupLoadingViews()//se hace la llamada a la funcion de carga
         
+        //se comprueba la variable ia para que no salten dos notificaciones cuando tome los datos desde la ubicacion
+        if ia != 0{
+            conditionImageControl()
+            //listButton.isHidden = false
+            self.tabBarController?.tabBar.isHidden = false
+            sideView.isHidden = false
+        }
+        
+
+        /*
+         oldUbicationString = favoriteLocation
+         
+        //Se comprueba el nombre de la ubicacion y si cambia respecto a la que estaba salta la pantalla de carga. La funcionalidad es que si no cambia al cambiar entre pantallas nos ahorremos pantallas de carga
+        if oldUbicationString != favoriteLocation{
+            showLoading()
+            listButton.isHidden = true
+        }else{
+            hideLoading()
+        }
+ */
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.tabBarController?.tabBar.isHidden = true
         UserDefaults.standard.synchronize()
         advertismentCountFunc()
@@ -130,14 +153,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                 print("Sin permiso")
                 print(error.debugDescription)
             }
-        }
-        
-        //se comprueba la variable ia para que no salten dos notificaciones cuando tome los datos desde la ubicacion
-        if ia != 0{
-            conditionImageControl()
-            listButton.isHidden = false
-            hideLoading()
-            self.tabBarController?.tabBar.isHidden = false
         }
     }
     
@@ -533,7 +548,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                 
                 //se rellena la vista con los datos obtenidos desde la localizacion
                 DispatchQueue.main.async{
-                    
                     var downData = (region.data!.count) - 1
                     updateDate = region.data![downData].date
                     getDateFromString(updateDate: updateDate)
@@ -546,7 +560,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                     self.IALabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-13].incidentRate ?? 0))
                     self.lastUpdateLabel.text = "Última actualización: " +
                         updateDate
+                    
                     sideView.isHidden = false
+                    
                     if fromFavoriteLocationList{
                         listButton.isHidden = true
                         
@@ -554,7 +570,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                         listButton.isHidden = false
                     }
                     
-                    //si el contador llega a 5 se muestra el anuncio ocultando las navegaciones 
+                    //si el contador llega a 7 se muestra el anuncio ocultando las navegaciones
                     if advertismentCount == 7{
                         advertismentPopUp.isHidden = false
                         self.tabBarController?.tabBar.isHidden = true
@@ -588,9 +604,11 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         //Loading View
         self.loadingView.frame = CGRect(x: 0, y: 0, width: 180, height: 180)
         self.loadingView.center = self.view.center
-        self.loadingView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
+        self.loadingView.backgroundColor = #colorLiteral(red: 0.2250583768, green: 0.3118225634, blue: 0.387561202, alpha: 1)
         self.loadingView.clipsToBounds = true
         self.loadingView.layer.cornerRadius = 10
+        self.loadingView.layer.borderColor = #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1)
+        self.loadingView.layer.borderWidth = 4
         
         //Activity Indicator View
         self.activityIndicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)

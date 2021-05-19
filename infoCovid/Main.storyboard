@@ -275,6 +275,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="43x-DP-rGM" firstAttribute="top" secondItem="ffW-gB-cK1" secondAttribute="topMargin" id="6np-AY-50Q"/>
                                     <constraint firstItem="43x-DP-rGM" firstAttribute="centerY" secondItem="ffW-gB-cK1" secondAttribute="centerY" constant="10.5" id="BOG-Lj-XWQ"/>
                                     <constraint firstAttribute="width" constant="230" id="J5B-IG-YyF"/>
                                     <constraint firstItem="43x-DP-rGM" firstAttribute="width" secondItem="ffW-gB-cK1" secondAttribute="width" multiplier="1.37143" constant="-65" id="sBN-wc-f9f"/>
@@ -387,7 +388,6 @@
                             <constraint firstItem="QJf-mq-61q" firstAttribute="top" secondItem="FBD-gJ-xwd" secondAttribute="bottom" constant="99.5" id="5dr-He-8f9">
                                 <variation key="heightClass=regular-widthClass=regular" constant="97"/>
                             </constraint>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ffW-gB-cK1" secondAttribute="bottom" constant="45" id="8zE-I1-y1L"/>
                             <constraint firstItem="QJf-mq-61q" firstAttribute="top" secondItem="FBD-gJ-xwd" secondAttribute="bottom" constant="60.000000000000028" id="9FH-fa-BeR">
                                 <variation key="heightClass=compact-widthClass=regular" constant="36"/>
                             </constraint>
@@ -1591,8 +1591,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aeq-ti-Ctv"/>
-        <segue reference="YtF-la-SCv"/>
+        <segue reference="C9Y-hE-bLQ"/>
+        <segue reference="dlZ-Pk-wRM"/>
         <segue reference="pCh-G5-ggr"/>
         <segue reference="ZCQ-wa-a9H"/>
     </inferredMetricsTieBreakers>
