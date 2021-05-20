@@ -70,8 +70,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     var reachability: Reachability?
     let hostNames = [nil, "google.com"]
     
-    
     override func viewWillAppear(_ animated: Bool) {
+        
+        //comentado para pruebas
+        //oldUbicationString = favoriteLocation
         
         favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation") ?? "spain"
         updateCityName()
@@ -103,15 +105,15 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         //se comprueba la variable ia para que no salten dos notificaciones cuando tome los datos desde la ubicacion
         if ia != 0{
             conditionImageControl()
-            //listButton.isHidden = false
+            //listButton.isHidden = false COMENTADO PARA PRUEBAS
             self.tabBarController?.tabBar.isHidden = false
             sideView.isHidden = false
         }
         
 
-        /*
-         oldUbicationString = favoriteLocation
-         
+        
+        
+         /*comentado para pruebas
         //Se comprueba el nombre de la ubicacion y si cambia respecto a la que estaba salta la pantalla de carga. La funcionalidad es que si no cambia al cambiar entre pantallas nos ahorremos pantallas de carga
         if oldUbicationString != favoriteLocation{
             showLoading()
@@ -121,7 +123,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         }
  */
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
