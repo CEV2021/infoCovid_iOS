@@ -97,7 +97,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
             guard let text = searchController.searchBar.text else { return false }
             return
                 region!.name!.lowercased().contains(text.lowercased())
-        }).sorted { $0!.name! < $1!.name! }
+        })//.sorted { $0!.name! < $1!.name! }
         
         tableView.reloadData()
     }

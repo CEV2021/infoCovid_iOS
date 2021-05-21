@@ -105,7 +105,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         //se comprueba la variable ia para que no salten dos notificaciones cuando tome los datos desde la ubicacion
         if ia != 0{
             conditionImageControl()
-            //listButton.isHidden = false COMENTADO PARA PRUEBAS
+            //listButton.isHidden = false
             self.tabBarController?.tabBar.isHidden = false
             sideView.isHidden = false
         }
