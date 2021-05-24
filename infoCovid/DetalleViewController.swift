@@ -31,6 +31,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     let kMKeyNotifications = "MY_KEY_NOTIFICATIONS"
     let kMkeyActualLocation = "MY_KEY_ACTUALLOCATION"
     
+    var notificationSettings: Bool?
     var notifications: Bool?
     var actualLocation: Bool?
     var locationIsSelected: Bool = false
@@ -72,12 +73,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     
     override func viewWillAppear(_ animated: Bool) {
         
+        UserDefaults.standard.synchronize()
         //comentado para pruebas
         //oldUbicationString = favoriteLocation
         
         favoriteLocation = UserDefaults.standard.string(forKey: "favoriteLocation") ?? "spain"
+        notifications = UserDefaults.standard.bool(forKey: kMKeyNotifications)
         updateCityName()
-        
         showLoading()
         //self.tabBarController?.tabBar.isHidden = false
         
@@ -128,19 +130,15 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.isHidden = true
-        UserDefaults.standard.synchronize()
+       
         advertismentCountFunc()
-        
         print("esto es\(advertismentCount)")
-        
         viewConfigs()
-        
         settings.setDefaultValues()
-        notifications = UserDefaults.standard.bool(forKey: kMKeyNotifications)
         
         //valores que configuran la hora a la que se muestra la notificacion
-        dateNotification.hour = 12
-        dateNotification.minute = 00
+        dateNotification.hour = 23
+        dateNotification.minute = 27
         
         UNUserNotificationCenter.current().delegate = self
         startHost(at: 0) //Se inicia star host a 0 para la comprobacion de la conexion
@@ -151,8 +149,21 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             
             if granted {
                 print("Permiso aceptado")
+                self.notifications = true
+                self.notificationSettings = true
+                UserDefaults.standard.set(self.notificationSettings, forKey: "notificationSettings")
+                UserDefaults.standard.set(self.notifications, forKey: self.kMKeyNotifications)
+                
+                self.notifications = UserDefaults.standard.bool(forKey: self.kMKeyNotifications)
+                //Si no se dan permisos de notificaciones se ponen las variables a false y se guardan en memoria para la vista de settings
             }else{
                 print("Sin permiso")
+                self.notifications = false
+                self.notificationSettings = false
+                UserDefaults.standard.set(self.notificationSettings, forKey: "notificationSettings")
+                UserDefaults.standard.set(self.notifications, forKey: self.kMKeyNotifications)
+               
+                self.notifications = UserDefaults.standard.bool(forKey: self.kMKeyNotifications)
                 print(error.debugDescription)
             }
         }
@@ -270,6 +281,12 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         
         else if response.actionIdentifier == "deleteAction" {
             UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["MiNotificacion"])
+            
+        }else if response.actionIdentifier == "disableAction" {
+            notifications = false
+            UserDefaults.standard.set(self.notifications, forKey: self.kMKeyNotifications)
+            UserDefaults.standard.synchronize()
+            self.notifications = UserDefaults.standard.bool(forKey: self.kMKeyNotifications)
         }
         completionHandler()
     }
@@ -294,7 +311,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             let rememberAction = UNNotificationAction(identifier: "rememberAction", title: "Recordar más tarde", options: [])
             //opcion de la notificacion para borrarla
             let deleteAction = UNNotificationAction(identifier: "deleteAction", title: "Eliminar Notificación", options: [])
-            let category = UNNotificationCategory(identifier: "alertas", actions: [rememberAction, deleteAction], intentIdentifiers: [], options: [])
+            //opcion de la notificacion para desactivarla
+            let disableAction = UNNotificationAction(identifier: "disableAction", title: "Desactivar notificaciones", options: [])
+            
+            let category = UNNotificationCategory(identifier: "alertas", actions: [rememberAction, deleteAction, disableAction], intentIdentifiers: [], options: [])
             
             UNUserNotificationCenter.current().setNotificationCategories([category])
             content.categoryIdentifier = "alertas"
@@ -410,7 +430,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         alertController.addAction(cancelAction)
         alertController.addAction(settingsAction)
         
-        
+        let sub = (alertController.view.subviews.first?.subviews.first!)! as UIView
+        sub.layer.cornerRadius = 15
+        sub.layer.shadowColor = UIColor.black.cgColor
+        sub.layer.shadowOpacity = 1
+        sub.layer.shadowOffset = CGSize(width: 8, height: 0)
+        sub.layer.borderWidth = 4
+        sub.layer.borderColor = #colorLiteral(red: 0.2235294118, green: 0.3137254902, blue: 0.3764705882, alpha: 1)
         
         if status == .authorizedWhenInUse{
             print("estoy autorizado")
@@ -489,6 +515,14 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         let ok = UIAlertAction(title: "Ok", style: .default)
         alert.addAction(ok)
         
+        let sub = (alert.view.subviews.first?.subviews.first!)! as UIView
+        sub.layer.cornerRadius = 15
+        sub.layer.shadowColor = UIColor.black.cgColor
+        sub.layer.shadowOpacity = 1
+        sub.layer.shadowOffset = CGSize(width: 8, height: 0)
+        sub.layer.borderWidth = 4
+        sub.layer.borderColor = #colorLiteral(red: 0.2235294118, green: 0.3137254902, blue: 0.3764705882, alpha: 1)
+        
         present(alert, animated: true, completion: nil)
     }
     
@@ -501,6 +535,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         alert.addAction(UIAlertAction(title: "Aceptar", style: .destructive, handler: {action in
             self.viewWillAppear(true)
         }))
+        let sub = (alert.view.subviews.first?.subviews.first!)! as UIView
+        sub.layer.cornerRadius = 15
+        sub.layer.shadowColor = UIColor.black.cgColor
+        sub.layer.shadowOpacity = 1
+        sub.layer.shadowOffset = CGSize(width: 8, height: 0)
+        sub.layer.borderWidth = 4
+        sub.layer.borderColor = #colorLiteral(red: 0.2235294118, green: 0.3137254902, blue: 0.3764705882, alpha: 1)
         
         present(alert, animated: true, completion: nil)
     }
@@ -728,6 +769,14 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         
         alertController.addAction(cancelAction)
         alertController.addAction(settingsAction)
+        
+        let sub = (alertController.view.subviews.first?.subviews.first!)! as UIView
+        sub.layer.cornerRadius = 15
+        sub.layer.shadowColor = UIColor.black.cgColor
+        sub.layer.shadowOpacity = 1
+        sub.layer.shadowOffset = CGSize(width: 8, height: 0)
+        sub.layer.borderWidth = 4
+        sub.layer.borderColor = #colorLiteral(red: 0.2235294118, green: 0.3137254902, blue: 0.3764705882, alpha: 1)
         
         // check the permission status
         let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
