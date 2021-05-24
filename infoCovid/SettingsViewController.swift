@@ -11,12 +11,12 @@ class SettingsViewController: UIViewController{
     var actualLocation: Bool?
     var settings: SettingsViewController!
     var fromDetail = false
-    
     // Constantes para almacenar las clave de UserDefaults
     let kMyKeyNotifications = "MY_KEY_NOTIFICATIONS"
     let kMkeyActualLocation = "MY_KEY_ACTUALLOCATION"
     
     override func viewWillAppear(_ animated: Bool) {
+        UserDefaults.standard.synchronize()
         self.tabBarController?.tabBar.isHidden = false
         setDefaultValues()
         // Obtenemos el estado de las notificaciones y de la localización actual del almacenamiento interno
@@ -77,8 +77,8 @@ class SettingsViewController: UIViewController{
         
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-       
+    override func viewWillDisappear(_ animated: Bool) {
+        UserDefaults.standard.synchronize()
     }
 }
 
