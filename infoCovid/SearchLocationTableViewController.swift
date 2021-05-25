@@ -75,10 +75,19 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         let region = filteredData[indexPath.row]
         if region?.name == "Andalusia"{
-            region?.name = "Andalucia"
+            region?.name = "Andalucía"
+        }
+        if region?.name == "Aragon"{
+            region?.name = "Aragón"
         }
         if region?.name == "Catalonia"{
             region?.name = "Cataluña"
+        }
+        if region?.name == "Pais Vasco"{
+            region?.name = "País Vasco"
+        }
+        if region?.name == "Castilla y Leon"{
+            region?.name = "Castilla y León"
         }
         if region?.name == "Spain"{
             region?.name = "España"

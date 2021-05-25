@@ -554,7 +554,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         if name == "Castilla - La Mancha" {
             self.name = "Castilla%20-%20La%20Mancha"
         }
-        if name == "Castilla y Leon" {
+        if name == "Castilla y León" {
             self.name = "Castilla%20y%20Leon"
         }
         if name == "La Rioja" {
@@ -563,10 +563,13 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         if name == "Comunidad Valenciana" || name == "C. Valenciana" {
             self.name = "C.%20Valenciana"
         }
-        if name == "Andalucia" {
+        if name == "Andalucía" {
             self.name = "Andalusia"
         }
-        if name == "Pais Vasco" {
+        if name == "Aragón" {
+            self.name = "Aragon"
+        }
+        if name == "País Vasco" {
             self.name = "Pais%20Vasco"
         }
         if name == "Cataluña" {
@@ -581,10 +584,19 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
                 regionData = region
                 
                 if region.name == "Andalusia"{
-                    region.name = "Andalucia"
+                    region.name = "Andalucía"
+                }
+                if region.name == "Aragon"{
+                    region.name = "Aragón"
                 }
                 if region.name == "Catalonia"{
                     region.name = "Cataluña"
+                }
+                if region.name == "Pais Vasco"{
+                    region.name = "País Vasco"
+                }
+                if region.name == "Castilla y Leon"{
+                    region.name = "Castilla y León"
                 }
                 if region.name == "Spain"{
                     region.name = "España"
