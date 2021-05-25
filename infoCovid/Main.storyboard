@@ -1149,7 +1149,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="nHk-ED-tB0">
-                            <rect key="frame" x="0.0" y="92.500000346790671" width="414" height="573"/>
+                            <rect key="frame" x="0.0" y="165.00000034679067" width="414" height="573"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="portada2" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-vy-sno">
@@ -1170,14 +1170,53 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="lDc-bm-B4r">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="116" id="lDc-bm-B4r" customClass="SearchTableViewCell" customModule="infoCovid" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="116"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lDc-bm-B4r" id="MP8-0r-p4c">
-                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJ2-zj-cfL">
+                                            <rect key="frame" x="9" y="0.0" width="396" height="111"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdO-31-Amd">
+                                                    <rect key="frame" x="134" y="38" width="254" height="32"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="24"/>
+                                                    <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="10l-tE-95C">
+                                                    <rect key="frame" x="4" y="0.0" width="122" height="111"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="111" id="EKk-Id-EUG"/>
+                                                        <constraint firstAttribute="width" constant="122" id="KdT-1T-Usa"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.2274509804" green="0.31372549020000001" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstItem="NdO-31-Amd" firstAttribute="leading" secondItem="10l-tE-95C" secondAttribute="trailing" constant="8" id="1WX-J7-LQq"/>
+                                                <constraint firstAttribute="trailing" secondItem="NdO-31-Amd" secondAttribute="trailing" constant="8" id="Apf-dE-GjY"/>
+                                                <constraint firstItem="10l-tE-95C" firstAttribute="leading" secondItem="fJ2-zj-cfL" secondAttribute="leading" constant="4" id="GK7-XG-930"/>
+                                                <constraint firstItem="10l-tE-95C" firstAttribute="top" secondItem="fJ2-zj-cfL" secondAttribute="top" id="Vhe-9E-Ima"/>
+                                                <constraint firstItem="NdO-31-Amd" firstAttribute="top" secondItem="fJ2-zj-cfL" secondAttribute="top" constant="38" id="cBf-2V-6zz"/>
+                                                <constraint firstAttribute="bottom" secondItem="10l-tE-95C" secondAttribute="bottom" id="isN-0t-ZDC"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="fJ2-zj-cfL" firstAttribute="leading" secondItem="MP8-0r-p4c" secondAttribute="leading" constant="9" id="98N-jM-Mwy"/>
+                                        <constraint firstItem="fJ2-zj-cfL" firstAttribute="top" secondItem="MP8-0r-p4c" secondAttribute="top" id="FP3-rp-Em0"/>
+                                        <constraint firstAttribute="bottom" secondItem="fJ2-zj-cfL" secondAttribute="bottom" constant="5" id="PPr-hH-be8"/>
+                                        <constraint firstAttribute="trailing" secondItem="fJ2-zj-cfL" secondAttribute="trailing" constant="9" id="qyE-3y-FNm"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <connections>
+                                    <outlet property="container" destination="fJ2-zj-cfL" id="M7R-gz-jCk"/>
+                                    <outlet property="regionImage" destination="10l-tE-95C" id="MZo-AL-WZs"/>
+                                    <outlet property="regionNameLabel" destination="NdO-31-Amd" id="k90-AE-BnP"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="4cv-X3-n4H"/>
                                 </connections>
                             </tableViewCell>
@@ -1195,7 +1234,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsQ-hu-P4i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="920.625" y="1703.75"/>
+            <point key="canvasLocation" x="920.28985507246387" y="1703.5714285714284"/>
         </scene>
         <!--Incidencia View Controller-->
         <scene sceneID="SfD-UW-7C6">
@@ -1594,7 +1633,7 @@
         <segue reference="C9Y-hE-bLQ"/>
         <segue reference="dlZ-Pk-wRM"/>
         <segue reference="pCh-G5-ggr"/>
-        <segue reference="ZCQ-wa-a9H"/>
+        <segue reference="4cv-X3-n4H"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="analytics" width="31" height="31"/>

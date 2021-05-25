@@ -72,7 +72,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SearchTableViewCell
         let region = filteredData[indexPath.row]
         if region?.name == "Andalusia"{
             region?.name = "Andalucía"
@@ -93,9 +93,81 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
             region?.name = "España"
         }
         
-        cell.textLabel?.text = region?.name ?? ""
+        cell.regionNameLabel.text = region?.name ?? ""
         downloadDataNumber = (region?.data!.count)!
             - 1
+        
+        //Condiciones para setear las imagenes segun su región correspondiente
+        switch cell.regionNameLabel.text  {
+        
+        case "Madrid":
+            cell.regionImage.image = #imageLiteral(resourceName: "C.Madrid")
+            
+        case "Andalucía":
+            cell.regionImage.image = #imageLiteral(resourceName: "andalucia")
+            
+        case "Galicia":
+            cell.regionImage.image = #imageLiteral(resourceName: "galicia")
+            
+        case "C. Valenciana":
+            cell.regionImage.image = #imageLiteral(resourceName: "valenciana")
+            
+        case "Aragón":
+            cell.regionImage.image = #imageLiteral(resourceName: "aragon")
+            
+        case "Castilla y León":
+            cell.regionImage.image = #imageLiteral(resourceName: "c.leon")
+            
+        case "Castilla - La Mancha":
+            cell.regionImage.image = #imageLiteral(resourceName: "cm")
+            
+        case "Asturias":
+            cell.regionImage.image = #imageLiteral(resourceName: "asturias")
+            
+        case "Canarias":
+            cell.regionImage.image = #imageLiteral(resourceName: "canarias")
+            
+        case "Cantabria":
+            cell.regionImage.image = #imageLiteral(resourceName: "cantabria")
+            
+        case "Baleares":
+            cell.regionImage.image = #imageLiteral(resourceName: "baleares")
+            
+        case "Ceuta":
+            cell.regionImage.image = #imageLiteral(resourceName: "ceuta")
+            
+        case "Melilla":
+            cell.regionImage.image = #imageLiteral(resourceName: "melilla")
+            
+        case "Extremadura":
+            cell.regionImage.image = #imageLiteral(resourceName: "extremadura")
+            
+        case "País Vasco":
+            cell.regionImage.image = #imageLiteral(resourceName: "pais vasco")
+            
+        case "La Rioja":
+            cell.regionImage.image = #imageLiteral(resourceName: "rioja")
+            
+        case "Murcia":
+            cell.regionImage.image = #imageLiteral(resourceName: "murcia")
+            
+        case "Cataluña":
+            cell.regionImage.image = #imageLiteral(resourceName: "cat")
+            
+        case "Navarra":
+            cell.regionImage.image = #imageLiteral(resourceName: "navarra")
+            
+        case "España":
+            cell.regionImage.image = #imageLiteral(resourceName: "españa")
+            
+        default:
+            print("sin regiones")
+        }
+        
+        cell.regionImage.layer.cornerRadius = 40
+        cell.container.layer.cornerRadius = 40
+        cell.container.layer.borderWidth = 4
+        cell.container.layer.borderColor = #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1)
         
         return cell
     }

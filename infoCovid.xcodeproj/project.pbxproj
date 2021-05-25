@@ -40,6 +40,8 @@
 		CF024794264AEF4000E6E7C6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF024793264AEF4000E6E7C6 /* TabBarViewController.swift */; };
 		CFC59384264A8E0C00816DFD /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC59383264A8E0C00816DFD /* CustomTabBar.swift */; };
 		CFCB4A292647E35100633491 /* Web05ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCB4A282647E35100633491 /* Web05ViewController.swift */; };
+		CFCED46B265D3F7900488EAB /* C.Madrid.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCED46A265D3F7900488EAB /* C.Madrid.png */; };
+		CFCED46D265D401E00488EAB /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED46C265D401E00488EAB /* SearchTableViewCell.swift */; };
 		CFF1B66A26488D5A009F135C /* Web06ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF1B66926488D5A009F135C /* Web06ViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +107,8 @@
 		CF024793264AEF4000E6E7C6 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CFC59383264A8E0C00816DFD /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		CFCB4A282647E35100633491 /* Web05ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web05ViewController.swift; sourceTree = "<group>"; };
+		CFCED46A265D3F7900488EAB /* C.Madrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C.Madrid.png; sourceTree = "<group>"; };
+		CFCED46C265D401E00488EAB /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		CFF1B66926488D5A009F135C /* Web06ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web06ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				657B39392636D36B00AF2193 /* infoCovid.entitlements */,
+				CFCED46A265D3F7900488EAB /* C.Madrid.png */,
 				61D13DE32630662B0066597B /* Madrid.jpg */,
 				61498ED32632200B0097AC0C /* WebsControllers */,
 				61CE6AF325FFBE17006DCB9C /* AppDelegate.swift */,
@@ -184,6 +189,7 @@
 				61E13CC02611C10B0013EDCE /* UbicationsTableViewController.swift */,
 				65C5825B2630B12600B48C57 /* UbicationsCellTableViewCell.swift */,
 				65ADCBBA2631E3D0007EEBC3 /* Persistencia.swift */,
+				CFCED46C265D401E00488EAB /* SearchTableViewCell.swift */,
 				611F017E2630793F00E3C194 /* Main.storyboard */,
 				61CE6AFC25FFBE17006DCB9C /* Assets.xcassets */,
 				61CE6AFE25FFBE17006DCB9C /* LaunchScreen.storyboard */,
@@ -300,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61CE6B0025FFBE17006DCB9C /* LaunchScreen.storyboard in Resources */,
+				CFCED46B265D3F7900488EAB /* C.Madrid.png in Resources */,
 				611F017F2630793F00E3C194 /* Main.storyboard in Resources */,
 				61CE6AFD25FFBE17006DCB9C /* Assets.xcassets in Resources */,
 				61D13DE42630662B0066597B /* Madrid.jpg in Resources */,
@@ -342,6 +349,7 @@
 				65777F112601785400A3B7EF /* SettingsViewController.swift in Sources */,
 				61498ECB26321FCA0097AC0C /* Web02ViewController.swift in Sources */,
 				61498EC826321F990097AC0C /* Web01ViewController.swift in Sources */,
+				CFCED46D265D401E00488EAB /* SearchTableViewCell.swift in Sources */,
 				CFCB4A292647E35100633491 /* Web05ViewController.swift in Sources */,
 				61E13CC12611C10B0013EDCE /* UbicationsTableViewController.swift in Sources */,
 			);
