@@ -2,6 +2,7 @@
 import UIKit
 import CoreLocation
 import WidgetKit
+import UserNotifications
 
 class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUserNotificationCenterDelegate{
     
@@ -40,7 +41,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     var fromFavoriteLocationList = false
     // Variable para almacenar la localización favorita
     var favoriteLocation = ""
-    
     var regionData: Region?
     
     // Constante con la que manejamos los elementos de settings
@@ -48,7 +48,6 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     
     // Constante para el manager del location
     let locationManager = CLLocationManager()
-    
     lazy var geocoder = CLGeocoder()
     var actualLocationLongitude: Double = 0.0
     var actualLocationLatitude: Double = 0.0
@@ -111,6 +110,8 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             self.tabBarController?.tabBar.isHidden = false
             sideView.isHidden = false
         }
+        
+       detectNotificationPermission()
         
 
         
@@ -832,6 +833,33 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         advertismentPopUp.isHidden = true
         advertismentCount = 0
         UserDefaults.standard.set(advertismentCount, forKey: "advertisment")
+    }
+    
+    //detectar el cambio en los permisos de notificaciones desde ajustes del dispositivo
+    func detectNotificationPermission(){
+        
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { (settings) in
+            if (settings.authorizationStatus == .authorized){
+                
+                print("Permiso aceptado")
+                self.notifications = true
+                self.notificationSettings = true
+                UserDefaults.standard.set(self.notificationSettings, forKey: "notificationSettings")
+                UserDefaults.standard.set(self.notifications, forKey: self.kMKeyNotifications)
+                
+                self.notifications = UserDefaults.standard.bool(forKey: self.kMKeyNotifications)
+                
+            }else{
+                print("Sin permiso")
+                self.notifications = false
+                self.notificationSettings = false
+                UserDefaults.standard.set(self.notificationSettings, forKey: "notificationSettings")
+                UserDefaults.standard.set(self.notifications, forKey: self.kMKeyNotifications)
+               
+                self.notifications = UserDefaults.standard.bool(forKey: self.kMKeyNotifications)
+            }
+        }
     }
 }
 

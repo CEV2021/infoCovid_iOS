@@ -1,5 +1,6 @@
 
 import UIKit
+import UserNotifications
 
 class SettingsViewController: UIViewController{
     
@@ -17,6 +18,7 @@ class SettingsViewController: UIViewController{
     let kMkeyActualLocation = "MY_KEY_ACTUALLOCATION"
     
     override func viewWillAppear(_ animated: Bool) {
+        
         UserDefaults.standard.synchronize()
         self.tabBarController?.tabBar.isHidden = false
         setDefaultValues()
@@ -32,6 +34,9 @@ class SettingsViewController: UIViewController{
             
             self.tabBarController?.tabBar.isHidden = true
         }
+        
+        detectNotificationPermission()
+       
     }
     
     override func viewDidLoad() {
@@ -53,7 +58,7 @@ class SettingsViewController: UIViewController{
         UserDefaults.standard.set(notifications, forKey: kMyKeyNotifications)
         UserDefaults.standard.synchronize()
         notifications = UserDefaults.standard.bool(forKey: kMyKeyNotifications)
-        
+        viewWillAppear(true)
     }
     
     @IBAction func actualLocationAction(_ sender: UISwitch) {
@@ -125,6 +130,33 @@ class SettingsViewController: UIViewController{
         sub.layer.borderColor = #colorLiteral(red: 0.2235294118, green: 0.3137254902, blue: 0.3764705882, alpha: 1)
         present(alert, animated: true, completion: nil)
         
+    }
+    
+    //detectar el cambio en los permisos de notificaciones desde ajustes del dispositivo
+    func detectNotificationPermission(){
+    
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { (settings) in
+            if (settings.authorizationStatus == .authorized){
+                
+                print("Permiso aceptado")
+                self.notifications = true
+                self.notificationSettings = true
+                UserDefaults.standard.set(self.notificationSettings, forKey: "notificationSettings")
+                UserDefaults.standard.set(self.notifications, forKey: self.kMyKeyNotifications)
+                
+                self.notifications = UserDefaults.standard.bool(forKey: self.kMyKeyNotifications)
+                
+            }else{
+                print("Sin permiso")
+                self.notifications = false
+                self.notificationSettings = false
+                UserDefaults.standard.set(self.notificationSettings, forKey: "notificationSettings")
+                UserDefaults.standard.set(self.notifications, forKey: self.kMyKeyNotifications)
+               
+                self.notifications = UserDefaults.standard.bool(forKey: self.kMyKeyNotifications)
+            }
+        }
     }
 }
 
