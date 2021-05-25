@@ -196,6 +196,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchBarDeleg
         nextViewController.locationIsSelected = true
         nextViewController.regionData = region
         nextViewController.updateDate = (region?.data?[downloadDataNumber].date)!
+        nextViewController.fromSeach = true
         
     }
     

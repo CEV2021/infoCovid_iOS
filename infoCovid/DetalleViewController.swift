@@ -39,6 +39,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     var table: SearchLocationTableViewController?
     var persistence = Persistencia()
     var fromFavoriteLocationList = false
+    var fromSeach = false
     // Variable para almacenar la localización favorita
     var favoriteLocation = ""
     var regionData: Region?
@@ -113,7 +114,7 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         
        detectNotificationPermission()
         
-
+print("no vengo \(fromFavoriteLocationList)")
         
         
          /*comentado para pruebas
@@ -261,8 +262,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
             conditionImage.image = UIImage.init(named: "coronavirusVerde")
             self.showNotification(text: (self.IALabel.text ?? ""), subtitle: "BAJO")
         }
+        if fromSeach == false, fromFavoriteLocationList == false {
         saveToWidget(name: comunityName.text ?? "Sin datos", incidence: IALabel.text ?? "0", date: lastUpdateLabel.text ?? "Sin datos")
         WidgetCenter.shared.reloadAllTimelines()
+        }
     }
     
     //A traves del centro de notificaciones se le da funcionalidad a los botones de la notificacion

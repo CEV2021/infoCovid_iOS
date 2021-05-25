@@ -1212,7 +1212,7 @@
                                         <constraint firstAttribute="trailing" secondItem="fJ2-zj-cfL" secondAttribute="trailing" constant="9" id="qyE-3y-FNm"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
                                 <connections>
                                     <outlet property="container" destination="fJ2-zj-cfL" id="M7R-gz-jCk"/>
                                     <outlet property="regionImage" destination="10l-tE-95C" id="MZo-AL-WZs"/>
@@ -2776,6 +2776,9 @@ AQAgAAEAKAAAAAAAAAQBAAAAAAAAAMUAAAAAAAAAAAAAAAAAAQArA
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
