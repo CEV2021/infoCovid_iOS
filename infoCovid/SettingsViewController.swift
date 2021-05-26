@@ -106,7 +106,6 @@ class SettingsViewController: UIViewController{
         // Creamos la alerta
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        
         // Botones del alert para ejecutar acciones tras su pulsación
         let ok = UIAlertAction(title: "Seguir sin permisos", style: .default)
         let settingsAction = UIAlertAction(title: "Ajustes", style: .default) { (_) -> Void in
@@ -118,6 +117,7 @@ class SettingsViewController: UIViewController{
                 self.notificationSettings = true
             }
         }
+        
         alert.addAction(ok)
         alert.addAction(settingsAction)
         
@@ -144,7 +144,6 @@ class SettingsViewController: UIViewController{
                 self.notificationSettings = true
                 UserDefaults.standard.set(self.notificationSettings, forKey: "notificationSettings")
                 UserDefaults.standard.set(self.notifications, forKey: self.kMyKeyNotifications)
-                
                 self.notifications = UserDefaults.standard.bool(forKey: self.kMyKeyNotifications)
                 
             }else{
@@ -153,7 +152,6 @@ class SettingsViewController: UIViewController{
                 self.notificationSettings = false
                 UserDefaults.standard.set(self.notificationSettings, forKey: "notificationSettings")
                 UserDefaults.standard.set(self.notifications, forKey: self.kMyKeyNotifications)
-               
                 self.notifications = UserDefaults.standard.bool(forKey: self.kMyKeyNotifications)
             }
         }

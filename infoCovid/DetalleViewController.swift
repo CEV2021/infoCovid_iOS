@@ -139,8 +139,8 @@ print("no vengo \(fromFavoriteLocationList)")
         settings.setDefaultValues()
         
         //valores que configuran la hora a la que se muestra la notificacion
-        dateNotification.hour = 23
-        dateNotification.minute = 27
+        dateNotification.hour = 12
+        dateNotification.minute = 00
         
         UNUserNotificationCenter.current().delegate = self
         startHost(at: 0) //Se inicia star host a 0 para la comprobacion de la conexion

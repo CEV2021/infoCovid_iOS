@@ -1149,7 +1149,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="nHk-ED-tB0">
-                            <rect key="frame" x="0.0" y="165.00000034679067" width="414" height="573"/>
+                            <rect key="frame" x="0.0" y="139.00000034679067" width="414" height="573"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="portada2" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-vy-sno">
@@ -1170,29 +1170,29 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="116" id="lDc-bm-B4r" customClass="SearchTableViewCell" customModule="infoCovid" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="116"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="90" id="lDc-bm-B4r" customClass="SearchTableViewCell" customModule="infoCovid" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lDc-bm-B4r" id="MP8-0r-p4c">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJ2-zj-cfL">
-                                            <rect key="frame" x="9" y="0.0" width="396" height="111"/>
+                                            <rect key="frame" x="9" y="0.0" width="396" height="85"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdO-31-Amd">
-                                                    <rect key="frame" x="134" y="38" width="254" height="32"/>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="24"/>
-                                                    <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="10l-tE-95C">
-                                                    <rect key="frame" x="4" y="0.0" width="122" height="111"/>
+                                                    <rect key="frame" x="4" y="0.0" width="122" height="85"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="111" id="EKk-Id-EUG"/>
                                                         <constraint firstAttribute="width" constant="122" id="KdT-1T-Usa"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdO-31-Amd">
+                                                    <rect key="frame" x="134" y="8" width="254" height="69"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="24"/>
+                                                    <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.2274509804" green="0.31372549020000001" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
@@ -1200,7 +1200,8 @@
                                                 <constraint firstAttribute="trailing" secondItem="NdO-31-Amd" secondAttribute="trailing" constant="8" id="Apf-dE-GjY"/>
                                                 <constraint firstItem="10l-tE-95C" firstAttribute="leading" secondItem="fJ2-zj-cfL" secondAttribute="leading" constant="4" id="GK7-XG-930"/>
                                                 <constraint firstItem="10l-tE-95C" firstAttribute="top" secondItem="fJ2-zj-cfL" secondAttribute="top" id="Vhe-9E-Ima"/>
-                                                <constraint firstItem="NdO-31-Amd" firstAttribute="top" secondItem="fJ2-zj-cfL" secondAttribute="top" constant="38" id="cBf-2V-6zz"/>
+                                                <constraint firstAttribute="bottom" secondItem="NdO-31-Amd" secondAttribute="bottom" constant="8" id="YU9-Zv-k3j"/>
+                                                <constraint firstItem="NdO-31-Amd" firstAttribute="top" secondItem="fJ2-zj-cfL" secondAttribute="top" constant="8" id="cBf-2V-6zz"/>
                                                 <constraint firstAttribute="bottom" secondItem="10l-tE-95C" secondAttribute="bottom" id="isN-0t-ZDC"/>
                                             </constraints>
                                         </view>
