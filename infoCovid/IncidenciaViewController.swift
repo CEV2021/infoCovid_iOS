@@ -72,9 +72,9 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         activeCasesToday.text = String((region?.data![downData].active)!)
         recoveryToday.text = String((region?.data![downData].recovered)! )
         deathToday.text = String((region?.data![downData].deaths)!)
-        activeCasesBefore.text = String((region?.data![downData-14].active)!)
-        recoveryBefore.text = String((region?.data![downData-14].recovered)!)
-        deathBefore.text = String((region?.data![downData-14].deaths)!)
+        activeCasesBefore.text = String((region?.data![downData-21].active)!)
+        recoveryBefore.text = String((region?.data![downData-21].recovered)!)
+        deathBefore.text = String((region?.data![downData-21].deaths)!)
         todayDateLabel.text = dateFormatter.string(from: date)
         beforeDateLabel.text = dateFormatter.string(from: date4)
 
