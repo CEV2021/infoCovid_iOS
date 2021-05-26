@@ -7,9 +7,9 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var todayDateLabel: UILabel!
     @IBOutlet weak var beforeDateLabel: UILabel!
     @IBOutlet weak var deathBefore: UILabel!
-    @IBOutlet weak var recoveryBefore: UILabel!
+    @IBOutlet weak var newCasesBefore: UILabel!
     @IBOutlet weak var activeCasesBefore: UILabel!
-    @IBOutlet weak var recoveryToday: UILabel!
+    @IBOutlet weak var newCasesToday: UILabel!
     @IBOutlet weak var deathToday: UILabel!
     @IBOutlet weak var activeCasesToday: UILabel!
     @IBOutlet weak var chart: LineChartView!
@@ -70,10 +70,10 @@ class IncidenciaViewController: UIViewController, ChartViewDelegate {
         generaGraficoLinea()
         regionNameLabel.text = region?.name
         activeCasesToday.text = String((region?.data![downData].active)!)
-        recoveryToday.text = String((region?.data![downData].recovered)! )
+        newCasesToday.text = String(((region?.data![downData].active)!) - ((region?.data![downData-1].active)!))
         deathToday.text = String((region?.data![downData].deaths)!)
         activeCasesBefore.text = String((region?.data![downData-21].active)!)
-        recoveryBefore.text = String((region?.data![downData-21].recovered)!)
+        newCasesBefore.text = String(((region?.data![downData-21].active)!) - ((region?.data![downData-22].active)!))
         deathBefore.text = String((region?.data![downData-21].deaths)!)
         todayDateLabel.text = dateFormatter.string(from: date)
         beforeDateLabel.text = dateFormatter.string(from: date4)

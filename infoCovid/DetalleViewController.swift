@@ -11,10 +11,10 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet weak var listButtonItem: UIBarButtonItem!
     @IBOutlet weak var lastUpdateLabel: UILabel!
-    @IBOutlet weak var newCasesLabel: UILabel!
+    @IBOutlet weak var activeCasesLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var deathsLabel: UILabel!
-    @IBOutlet weak var recoveredLabel: UILabel!
+    @IBOutlet weak var newCasesLabel: UILabel!
     @IBOutlet weak var IALabel: UILabel!
     @IBOutlet weak var dataStackView: UIStackView!
     @IBOutlet weak var conditionImage: UIImageView!
@@ -613,8 +613,8 @@ print("no vengo \(fromFavoriteLocationList)")
                     self.comunityName.text = region.name
                     self.regionNameSlide.text = region.name
                     self.deathsLabel.text = String( region.data![downData].deaths!)
-                    self.recoveredLabel.text = String( region.data![downData].recovered!)
-                    self.newCasesLabel.text = String(region.data![downData].active!)
+                    self.newCasesLabel.text = String((region.data![downData].active!) - (region.data![downData-1].active!))
+                    self.activeCasesLabel.text = String(region.data![downData].active!)
                     self.totalLabel.text = String( region.data![downData].confirmed!)
                     self.IALabel.text = String(format:"%.0f",((region.data![downData].incidentRate) ?? 0) - (region.data![downData-13].incidentRate ?? 0))
                     self.lastUpdateLabel.text = "Última actualización: " +
