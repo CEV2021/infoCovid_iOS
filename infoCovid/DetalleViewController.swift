@@ -103,9 +103,9 @@ class DetalleViewController: UIViewController, CLLocationManagerDelegate, UNUser
         //self.tabBarController?.tabBar.isHidden = true
         self.container.isHidden = false
         self.setupLoadingViews()//se hace la llamada a la funcion de carga
-        
+        print("esto es ia \(ia)")
         //se comprueba la variable ia para que no salten dos notificaciones cuando tome los datos desde la ubicacion
-        if ia != 0{
+        if ia > 0{
             conditionImageControl()
             //listButton.isHidden = false
             self.tabBarController?.tabBar.isHidden = false
