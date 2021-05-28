@@ -224,13 +224,13 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="v7o-Po-PuY">
-                                                    <rect key="frame" x="8" y="30" width="243" height="129"/>
+                                                    <rect key="frame" x="8.0000000000000142" y="30" width="242.33333333333337" height="129"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="129" id="L53-md-heJ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCX-87-IFQ">
-                                                    <rect key="frame" x="192.66666666666669" y="7" width="36.333333333333343" height="35.666666666666664"/>
+                                                    <rect key="frame" x="192" y="7" width="36.333333333333343" height="35.666666666666664"/>
                                                     <state key="normal" image="gearshape" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" scale="large"/>
                                                     </state>
@@ -239,16 +239,16 @@
                                                     </connections>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="17v-A2-H02">
-                                                    <rect key="frame" x="24" y="167" width="202.66666666666666" height="56.666666666666657"/>
+                                                    <rect key="frame" x="24" y="167" width="202" height="56.666666666666657"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ubicación actual" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnH-nX-Nba">
-                                                            <rect key="frame" x="0.0" y="0.0" width="202.66666666666666" height="27.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="202" height="27.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdJ-Gc-G7D">
-                                                            <rect key="frame" x="0.0" y="29.333333333333314" width="202.66666666666666" height="27.333333333333329"/>
+                                                            <rect key="frame" x="0.0" y="29.333333333333314" width="202" height="27.333333333333329"/>
                                                             <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -256,7 +256,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQt-ty-log">
-                                                    <rect key="frame" x="58.999999999999986" y="317.66666666666669" width="141.66666666666663" height="39"/>
+                                                    <rect key="frame" x="59" y="317.66666666666669" width="141" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <state key="normal" title="Contáctanos"/>
                                                     <connections>
@@ -264,7 +264,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIX-dy-L4r">
-                                                    <rect key="frame" x="13" y="272.66666666666669" width="234" height="39"/>
+                                                    <rect key="frame" x="13.000000000000014" y="272.66666666666669" width="233.33333333333337" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <state key="normal" title="Manual de uso">
                                                         <color key="titleColor" systemColor="linkColor"/>
@@ -1037,7 +1037,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFX-fw-sdU">
-                                    <rect key="frame" x="0.0" y="50" width="414" height="76"/>
+                                    <rect key="frame" x="0.0" y="49.999999999999993" width="414" height="76.333333333333314"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="España" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQe-2y-CNe">
@@ -1055,7 +1055,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mis Ubicaciones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tyv-oh-dta">
-                                    <rect key="frame" x="44" y="156" width="271" height="21"/>
+                                    <rect key="frame" x="44" y="156.33333333333334" width="271" height="21"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -1324,7 +1324,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="105.33333333333333" height="29.333333333333332"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="243" text="Nuevos casos" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="5s2-bK-I8B">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="243" text="Nuevos casos:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="5s2-bK-I8B">
                                                 <rect key="frame" x="87.333333333333343" y="0.0" width="105.33333333333334" height="29.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1351,7 +1351,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="106" height="29.333333333333332"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="243" text="Fallecidos" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="fMy-H7-Xwn">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="243" text="Fallecidos:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="fMy-H7-Xwn">
                                                 <rect key="frame" x="87" y="0.0" width="106" height="29.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1444,7 +1444,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="106" height="29.333333333333332"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="243" text="Fallecidos" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="c5e-SU-KnZ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="243" text="Fallecidos:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="c5e-SU-KnZ">
                                                 <rect key="frame" x="87" y="0.0" width="106" height="29.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
